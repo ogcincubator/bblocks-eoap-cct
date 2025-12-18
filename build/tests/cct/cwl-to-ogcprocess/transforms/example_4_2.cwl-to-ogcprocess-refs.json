@@ -1,0 +1,68 @@
+{
+  "id": "water-bodies",
+  "version": "1.0.0",
+  "title": "Water bodies detection based on NDWI and otsu threshold",
+  "description": "Water bodies detection based on NDWI and otsu threshold applied to Sentinel-2 COG STAC items",
+  "inputs": {
+    "aoi": {
+      "title": "area of interest",
+      "description": "area of interest as a bounding box",
+      "schema": {
+        "type": "string"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "epsg": {
+      "title": "EPSG code",
+      "description": "EPSG code",
+      "schema": {
+        "type": "string"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "stac_items": {
+      "title": "Sentinel-2 STAC items",
+      "description": "list of Sentinel-2 COG STAC items",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "bands": {
+      "title": "bands used for the NDWI",
+      "description": "bands used for the NDWI",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    }
+  },
+  "outputs": {
+    "stac_catalog": {
+      "title": "stac_catalog",
+      "description": "",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/x-directory"
+      }
+    }
+  },
+  "jobControlOptions": [
+    "async-execute",
+    "sync-execute"
+  ],
+  "outputTransmission": [
+    "value",
+    "reference"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "cwlVersion": "v1.2",
+  "$graph": [
+    {
+      "class": "Workflow",
+      "id": "feature-workflow",
+      "label": "GeoJSON Feature Processing Workflow",
+      "doc": "Workflow that processes GeoJSON Feature input and generates output",
+      "requirements": [
+        {
+          "class": "InlineJavascriptRequirement"
+        },
+        {
+          "class": "SchemaDefRequirement",
+          "types": [
+            {
+              "$import": "https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "id": "aoi",
+          "type": "https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature",
+          "label": "Area of interest",
+          "doc": "Area of interest defined in GeoJSON format"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "echo_output",
+          "type": "File",
+          "outputSource": [
+            "echo_step/echo_output"
+          ],
+          "label": "Echo output",
+          "doc": "Echoed GeoJSON Feature information"
+        }
+      ],
+      "steps": {
+        "echo_step": {
+          "run": "#clt",
+          "in": {
+            "aoi": "aoi"
+          },
+          "out": [
+            "echo_output"
+          ]
+        }
+      }
+    },
+    {
+      "class": "CommandLineTool",
+      "id": "clt",
+      "label": "Echo GeoJSON Feature",
+      "baseCommand": "echo",
+      "requirements": [
+        {
+          "class": "InlineJavascriptRequirement"
+        },
+        {
+          "class": "SchemaDefRequirement",
+          "types": [
+            {
+              "$import": "https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml"
+            }
+          ]
+        }
+      ],
+      "inputs": {
+        "aoi": {
+          "type": "https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature",
+          "label": "Area of interest",
+          "doc": "Area of interest defined in GeoJSON format",
+          "inputBinding": {
+            "valueFrom": "${\n  // Validate if type is 'Feature'\n  if (inputs.aoi.type !== 'Feature') {\n    throw \"Invalid GeoJSON type: expected 'Feature', got '\" + inputs.aoi.type + \"'\";\n  }\n  // get the Feature geometry type\n  return \"Feature with id '\" + inputs.aoi.id + \"' is of type: \" + inputs.aoi.geometry.type;\n}\n"
+          }
+        }
+      },
+      "outputs": {
+        "echo_output": {
+          "type": "stdout"
+        }
+      },
+      "stdout": "echo_output.txt"
+    }
+  ]
+}

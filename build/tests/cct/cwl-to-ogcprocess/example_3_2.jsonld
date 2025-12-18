@@ -1,0 +1,90 @@
+{
+  "@context": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
+  "cwlVersion": "v1.2",
+  "$graph": [
+    {
+      "class": "Workflow",
+      "id": "item-workflow",
+      "label": "STAC Item Processing Workflow",
+      "doc": "Workflow that processes STAC Item input and generates output",
+      "requirements": [
+        {
+          "class": "InlineJavascriptRequirement"
+        },
+        {
+          "class": "SchemaDefRequirement",
+          "types": [
+            {
+              "$import": "https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "id": "stac_item",
+          "type": "https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Item",
+          "label": "STAC Item",
+          "doc": "STAC Item representing a geospatial asset"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "result",
+          "type": "File",
+          "outputSource": [
+            "process_step/result"
+          ],
+          "label": "Process result",
+          "doc": "Processed STAC Item information"
+        }
+      ],
+      "steps": {
+        "process_step": {
+          "run": "#clt",
+          "in": {
+            "stac_item": "stac_item"
+          },
+          "out": [
+            "result"
+          ]
+        }
+      }
+    },
+    {
+      "class": "CommandLineTool",
+      "id": "clt",
+      "label": "Process STAC Item",
+      "baseCommand": "echo",
+      "requirements": [
+        {
+          "class": "InlineJavascriptRequirement"
+        },
+        {
+          "class": "SchemaDefRequirement",
+          "types": [
+            {
+              "$import": "https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml"
+            }
+          ]
+        }
+      ],
+      "inputs": {
+        "stac_item": {
+          "type": "https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Item",
+          "label": "STAC Item",
+          "doc": "STAC Item representing a geospatial asset",
+          "inputBinding": {
+            "valueFrom": "${\n  return \"STAC Item ID: \" + inputs.stac_item.id;\n}\n"
+          }
+        }
+      },
+      "outputs": {
+        "result": {
+          "type": "stdout"
+        }
+      },
+      "stdout": "result.txt"
+    }
+  ]
+}

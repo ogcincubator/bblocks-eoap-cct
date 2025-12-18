@@ -1,0 +1,23 @@
+$ref: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml
+x-jsonld-extra-terms:
+  Catalog: https://stac-extensions.github.io/Catalog
+  Collection: https://stac-extensions.github.io/Collection
+  Item: https://stac-extensions.github.io/Item
+  Asset: https://stac-extensions.github.io/Asset
+  Link: https://stac-extensions.github.io/Link
+  stac_version: https://stac-extensions.github.io/version
+  stac_extensions: https://stac-extensions.github.io/extensions
+  assets: https://stac-extensions.github.io/assets
+  links:
+    x-jsonld-id: https://stac-extensions.github.io/links
+    x-jsonld-container: '@list'
+  providers:
+    x-jsonld-id: https://schema.org/provider
+    x-jsonld-container: '@list'
+x-jsonld-vocab: https://www.opengis.net/def/metamodel/ogc-na/
+x-jsonld-prefixes:
+  stac: https://stac-extensions.github.io/
+  schema: https://schema.org/
+  dct: http://purl.org/dc/terms/
+  cwl: https://w3id.org/cwl/cwl#
+  eoap: https://eoap.github.io/schemas/cwl/

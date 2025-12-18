@@ -1,0 +1,42 @@
+{
+  "id": "item-workflow",
+  "version": "1.0.0",
+  "title": "STAC Item Processing Workflow",
+  "description": "Workflow that processes STAC Item input and generates output",
+  "inputs": {
+    "stac_item": {
+      "title": "STAC Item",
+      "description": "STAC Item representing a geospatial asset",
+      "schema": {
+        "allOf": [
+          {
+            "format": "stac-item"
+          },
+          {
+            "$ref": "https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/heads/release/v1.0.0/stac-spec/item-spec/json-schema/item.json"
+          }
+        ]
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    }
+  },
+  "outputs": {
+    "result": {
+      "title": "Process result",
+      "description": "Processed STAC Item information",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    }
+  },
+  "jobControlOptions": [
+    "async-execute",
+    "sync-execute"
+  ],
+  "outputTransmission": [
+    "value",
+    "reference"
+  ]
+}

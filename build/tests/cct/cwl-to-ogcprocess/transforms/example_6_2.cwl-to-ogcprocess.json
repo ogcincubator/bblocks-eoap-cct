@@ -1,0 +1,109 @@
+{
+  "id": "cvi-workflow",
+  "version": "1.0.0",
+  "title": "CVI Workflow (Dockerized)",
+  "description": "This workflow computes the Coastal Vulnerability Index (CVI) for Mediterranean coastal areas.\nIt processes coastline data, generates transects, computes various coastal parameters\n(landcover, slope, erosion, elevation), and calculates the final CVI values.\n",
+  "inputs": {
+    "config_stac_item_url": {
+      "title": "Configuration STAC item URL",
+      "description": "URL of the STAC item containing the configuration JSON file",
+      "schema": {
+        "type": "string"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "aois_stac_item_url": {
+      "title": "AOIs STAC item URL",
+      "description": "URL of the STAC item containing the Mediterranean AOIs CSV file",
+      "schema": {
+        "type": "string"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "tokens_stac_item_url": {
+      "title": "Tokens STAC item URL",
+      "description": "URL of the STAC item containing the authentication tokens file",
+      "schema": {
+        "type": "string"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    }
+  },
+  "outputs": {
+    "validated_config": {
+      "title": "Validated configuration",
+      "description": "Validated configuration JSON file",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    },
+    "coastline_gpkg": {
+      "title": "Coastline GeoPackage",
+      "description": "Extracted coastline geometry in GeoPackage format",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    },
+    "transects_geojson": {
+      "title": "Generated transects",
+      "description": "Perpendicular transects generated along the coastline",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    },
+    "transects_landcover": {
+      "title": "Transects with landcover data",
+      "description": "Transects enriched with landcover information",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    },
+    "transects_slope": {
+      "title": "Transects with slope data",
+      "description": "Transects enriched with slope information",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    },
+    "transects_erosion": {
+      "title": "Transects with erosion data",
+      "description": "Transects enriched with erosion information",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    },
+    "transects_elevation": {
+      "title": "Transects with elevation data",
+      "description": "Transects enriched with elevation information",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    },
+    "cvi_geojson": {
+      "title": "CVI results",
+      "description": "Final Coastal Vulnerability Index values for all transects",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    }
+  },
+  "jobControlOptions": [
+    "async-execute",
+    "sync-execute"
+  ],
+  "outputTransmission": [
+    "value",
+    "reference"
+  ]
+}

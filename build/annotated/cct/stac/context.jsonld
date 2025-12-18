@@ -1,0 +1,27 @@
+{
+  "@context": {
+    "@vocab": "https://www.opengis.net/def/metamodel/ogc-na/",
+    "Catalog": "stac:Catalog",
+    "Collection": "stac:Collection",
+    "Item": "stac:Item",
+    "Asset": "stac:Asset",
+    "Link": "stac:Link",
+    "stac_version": "stac:version",
+    "stac_extensions": "stac:extensions",
+    "assets": "stac:assets",
+    "links": {
+      "@id": "stac:links",
+      "@container": "@list"
+    },
+    "providers": {
+      "@id": "schema:provider",
+      "@container": "@list"
+    },
+    "stac": "https://stac-extensions.github.io/",
+    "schema": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "cwl": "https://w3id.org/cwl/cwl#",
+    "eoap": "https://eoap.github.io/schemas/cwl/",
+    "@version": 1.1
+  }
+}

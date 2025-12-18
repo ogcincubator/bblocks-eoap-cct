@@ -1,0 +1,42 @@
+{
+  "id": "feature-workflow",
+  "version": "1.0.0",
+  "title": "GeoJSON Feature Processing Workflow",
+  "description": "Workflow that processes GeoJSON Feature input and generates output",
+  "inputs": {
+    "aoi": {
+      "title": "Area of interest",
+      "description": "Area of interest defined in GeoJSON format",
+      "schema": {
+        "allOf": [
+          {
+            "format": "geojson-feature"
+          },
+          {
+            "$ref": "https://geojson.org/schema/Feature.json"
+          }
+        ]
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    }
+  },
+  "outputs": {
+    "echo_output": {
+      "title": "Echo output",
+      "description": "Echoed GeoJSON Feature information",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    }
+  },
+  "jobControlOptions": [
+    "async-execute",
+    "sync-execute"
+  ],
+  "outputTransmission": [
+    "value",
+    "reference"
+  ]
+}

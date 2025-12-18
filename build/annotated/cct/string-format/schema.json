@@ -1,0 +1,20 @@
+{
+  "$ref": "https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/string_format.yaml",
+  "x-jsonld-extra-terms": {
+    "Date": "http://www.w3.org/2001/XMLSchema#date",
+    "DateTime": "http://www.w3.org/2001/XMLSchema#dateTime",
+    "Time": "http://www.w3.org/2001/XMLSchema#time",
+    "Duration": "http://www.w3.org/2001/XMLSchema#duration",
+    "URI": "http://www.w3.org/2001/XMLSchema#anyURI",
+    "Email": "https://schema.org/email",
+    "UUID": "https://schema.org/identifier"
+  },
+  "x-jsonld-vocab": "https://www.opengis.net/def/metamodel/ogc-na/",
+  "x-jsonld-prefixes": {
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "cwl": "https://w3id.org/cwl/cwl#",
+    "eoap": "https://eoap.github.io/schemas/cwl/"
+  }
+}

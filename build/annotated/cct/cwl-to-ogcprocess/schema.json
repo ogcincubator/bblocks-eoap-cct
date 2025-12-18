@@ -1,0 +1,291 @@
+{
+  "$ref": "https://raw.githubusercontent.com/common-workflow-language/cwl-v1.2/main/json-schema/cwl.yaml",
+  "x-jsonld-extra-terms": {
+    "@comment": "Metadata and provenance",
+    "cwlVersion": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#cwlVersion",
+      "x-jsonld-type": "@id"
+    },
+    "class": {
+      "x-jsonld-id": "rdf:type",
+      "x-jsonld-type": "@id"
+    },
+    "$graph": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#graph",
+      "x-jsonld-container": "@graph"
+    },
+    "id": {
+      "x-jsonld-id": "http://purl.org/dc/terms/identifier",
+      "x-jsonld-type": "@id"
+    },
+    "label": {
+      "x-jsonld-id": "http://www.w3.org/2000/01/rdf-schema#label",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "doc": {
+      "x-jsonld-id": "http://www.w3.org/2000/01/rdf-schema#comment",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "inputs": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#input",
+      "x-jsonld-container": "@list"
+    },
+    "outputs": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#output",
+      "x-jsonld-container": "@list"
+    },
+    "steps": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#steps",
+      "x-jsonld-type": "@id"
+    },
+    "requirements": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#requirements",
+      "x-jsonld-container": "@set"
+    },
+    "hints": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#hints",
+      "x-jsonld-container": "@set"
+    },
+    "type": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#type",
+      "x-jsonld-type": "@id"
+    },
+    "format": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#format",
+      "x-jsonld-type": "@id"
+    },
+    "default": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#default",
+      "x-jsonld-type": "@json"
+    },
+    "baseCommand": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#baseCommand",
+      "x-jsonld-type": "@json"
+    },
+    "arguments": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#arguments",
+      "x-jsonld-container": "@list"
+    },
+    "stdin": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#stdin",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "stdout": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#stdout",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "stderr": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#stderr",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "run": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#run",
+      "x-jsonld-type": "@id"
+    },
+    "in": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#in",
+      "x-jsonld-type": "@id"
+    },
+    "out": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#out",
+      "x-jsonld-container": "@list"
+    },
+    "outputSource": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#outputSource",
+      "x-jsonld-type": "@id"
+    },
+    "source": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#source",
+      "x-jsonld-type": "@id"
+    },
+    "CommandLineTool": "https://w3id.org/cwl/cwl#CommandLineTool",
+    "Workflow": "https://w3id.org/cwl/cwl#Workflow",
+    "ExpressionTool": "https://w3id.org/cwl/cwl#ExpressionTool",
+    "null": "https://w3id.org/cwl/cwl#null",
+    "boolean": "http://www.w3.org/2001/XMLSchema#boolean",
+    "int": "http://www.w3.org/2001/XMLSchema#int",
+    "long": "http://www.w3.org/2001/XMLSchema#long",
+    "float": "http://www.w3.org/2001/XMLSchema#float",
+    "double": "http://www.w3.org/2001/XMLSchema#double",
+    "string": "http://www.w3.org/2001/XMLSchema#string",
+    "File": "https://w3id.org/cwl/cwl#File",
+    "Directory": "https://w3id.org/cwl/cwl#Directory",
+    "array": "https://w3id.org/cwl/cwl#array",
+    "record": "https://w3id.org/cwl/cwl#record",
+    "enum": "https://w3id.org/cwl/cwl#enum",
+    "items": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#items",
+      "x-jsonld-type": "@id"
+    },
+    "fields": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#fields",
+      "x-jsonld-container": "@list"
+    },
+    "symbols": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#symbols",
+      "x-jsonld-container": "@list"
+    },
+    "path": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#path",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "location": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#location",
+      "x-jsonld-type": "@id"
+    },
+    "basename": {
+      "x-jsonld-id": "https://schema.org/name",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "dirname": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#dirname",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "nameroot": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#nameroot",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "nameext": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#nameext",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "checksum": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#checksum",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "size": {
+      "x-jsonld-id": "https://schema.org/contentSize",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#long"
+    },
+    "secondaryFiles": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#secondaryFiles",
+      "x-jsonld-container": "@list"
+    },
+    "InlineJavascriptRequirement": "https://w3id.org/cwl/cwl#InlineJavascriptRequirement",
+    "SchemaDefRequirement": "https://w3id.org/cwl/cwl#SchemaDefRequirement",
+    "DockerRequirement": "https://w3id.org/cwl/cwl#DockerRequirement",
+    "SoftwareRequirement": "https://w3id.org/cwl/cwl#SoftwareRequirement",
+    "InitialWorkDirRequirement": "https://w3id.org/cwl/cwl#InitialWorkDirRequirement",
+    "EnvVarRequirement": "https://w3id.org/cwl/cwl#EnvVarRequirement",
+    "ShellCommandRequirement": "https://w3id.org/cwl/cwl#ShellCommandRequirement",
+    "ResourceRequirement": "https://w3id.org/cwl/cwl#ResourceRequirement",
+    "WorkReuse": "https://w3id.org/cwl/cwl#WorkReuse",
+    "NetworkAccess": "https://w3id.org/cwl/cwl#NetworkAccess",
+    "InplaceUpdateRequirement": "https://w3id.org/cwl/cwl#InplaceUpdateRequirement",
+    "ToolTimeLimit": "https://w3id.org/cwl/cwl#ToolTimeLimit",
+    "SubworkflowFeatureRequirement": "https://w3id.org/cwl/cwl#SubworkflowFeatureRequirement",
+    "ScatterFeatureRequirement": "https://w3id.org/cwl/cwl#ScatterFeatureRequirement",
+    "MultipleInputFeatureRequirement": "https://w3id.org/cwl/cwl#MultipleInputFeatureRequirement",
+    "StepInputExpressionRequirement": "https://w3id.org/cwl/cwl#StepInputExpressionRequirement",
+    "dockerPull": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#dockerPull",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "dockerLoad": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#dockerLoad",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "dockerFile": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#dockerFile",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "dockerImport": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#dockerImport",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "dockerImageId": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#dockerImageId",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "dockerOutputDirectory": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#dockerOutputDirectory",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "inputBinding": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#inputBinding",
+      "x-jsonld-type": "@id"
+    },
+    "position": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#position",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#int"
+    },
+    "prefix": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#prefix",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "separate": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#separate",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "itemSeparator": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#itemSeparator",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "valueFrom": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#valueFrom",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "shellQuote": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#shellQuote",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "loadContents": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#loadContents",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "loadListing": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#loadListing",
+      "x-jsonld-type": "@id"
+    },
+    "outputBinding": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#outputBinding",
+      "x-jsonld-type": "@id"
+    },
+    "glob": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#glob",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "outputEval": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#outputEval",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "scatter": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#scatter",
+      "x-jsonld-container": "@list"
+    },
+    "scatterMethod": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#scatterMethod",
+      "x-jsonld-type": "@id"
+    },
+    "intent": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#wasInfluencedBy",
+      "x-jsonld-type": "@id"
+    },
+    "$namespaces": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#namespaces",
+      "x-jsonld-type": "@json"
+    },
+    "$schemas": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#schemas",
+      "x-jsonld-container": "@list"
+    },
+    "$import": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#import",
+      "x-jsonld-type": "@id"
+    },
+    "$include": {
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#include",
+      "x-jsonld-type": "@id"
+    }
+  },
+  "x-jsonld-vocab": "https://w3id.org/cwl/cwl#",
+  "x-jsonld-prefixes": {
+    "cwl": "https://w3id.org/cwl/cwl#",
+    "dct": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "ogcproc": "http://www.opengis.net/def/ogcapi/processes/"
+  }
+}

@@ -1,0 +1,18 @@
+$ref: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/ogc.yaml
+x-jsonld-extra-terms:
+  BBox: http://www.opengis.net/ont/geosparql#BoundingBox
+  bbox:
+    x-jsonld-id: http://www.opengis.net/ont/geosparql#asWKT
+    x-jsonld-type: '@json'
+  crs:
+    x-jsonld-id: http://www.opengis.net/ont/geosparql#crs
+    x-jsonld-type: '@id'
+  CRS84: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+  CRS84h: http://www.opengis.net/def/crs/OGC/0/CRS84h
+x-jsonld-vocab: https://www.opengis.net/def/metamodel/ogc-na/
+x-jsonld-prefixes:
+  geo: http://www.opengis.net/ont/geosparql#
+  ogc: http://www.opengis.net/def/
+  dct: http://purl.org/dc/terms/
+  cwl: https://w3id.org/cwl/cwl#
+  eoap: https://eoap.github.io/schemas/cwl/

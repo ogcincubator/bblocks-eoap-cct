@@ -1,0 +1,27 @@
+{
+  "$ref": "https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml",
+  "x-jsonld-extra-terms": {
+    "Point": "https://purl.org/geojson/vocab#Point",
+    "LineString": "https://purl.org/geojson/vocab#LineString",
+    "Polygon": "https://purl.org/geojson/vocab#Polygon",
+    "MultiPoint": "https://purl.org/geojson/vocab#MultiPoint",
+    "MultiLineString": "https://purl.org/geojson/vocab#MultiLineString",
+    "MultiPolygon": "https://purl.org/geojson/vocab#MultiPolygon",
+    "GeometryCollection": "https://purl.org/geojson/vocab#GeometryCollection",
+    "Feature": "https://purl.org/geojson/vocab#Feature",
+    "FeatureCollection": "https://purl.org/geojson/vocab#FeatureCollection",
+    "geometry": "https://purl.org/geojson/vocab#geometry",
+    "coordinates": "https://purl.org/geojson/vocab#coordinates",
+    "properties": "https://purl.org/geojson/vocab#properties",
+    "features": "https://purl.org/geojson/vocab#features",
+    "bbox": "https://purl.org/geojson/vocab#bbox"
+  },
+  "x-jsonld-vocab": "https://www.opengis.net/def/metamodel/ogc-na/",
+  "x-jsonld-prefixes": {
+    "geojson": "https://purl.org/geojson/vocab#",
+    "schema": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "cwl": "https://w3id.org/cwl/cwl#",
+    "eoap": "https://eoap.github.io/schemas/cwl/"
+  }
+}

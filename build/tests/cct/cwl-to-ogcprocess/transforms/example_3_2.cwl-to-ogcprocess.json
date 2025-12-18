@@ -1,0 +1,71 @@
+{
+  "id": "item-workflow",
+  "version": "1.0.0",
+  "title": "STAC Item Processing Workflow",
+  "description": "Workflow that processes STAC Item input and generates output",
+  "inputs": {
+    "stac_item": {
+      "title": "STAC Item",
+      "description": "STAC Item representing a geospatial asset",
+      "schema": {
+        "type": "object",
+        "required": [
+          "type",
+          "stac_version",
+          "id",
+          "geometry",
+          "properties",
+          "links",
+          "assets"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Feature"
+            ]
+          },
+          "stac_version": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "geometry": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object"
+          },
+          "links": {
+            "type": "array"
+          },
+          "assets": {
+            "type": "object"
+          }
+        },
+        "format": "stac-item"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    }
+  },
+  "outputs": {
+    "result": {
+      "title": "Process result",
+      "description": "Processed STAC Item information",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    }
+  },
+  "jobControlOptions": [
+    "async-execute",
+    "sync-execute"
+  ],
+  "outputTransmission": [
+    "value",
+    "reference"
+  ]
+}

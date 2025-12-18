@@ -1,0 +1,60 @@
+{
+  "id": "mangrove-workflow",
+  "version": "1.0.0",
+  "title": "Mangrove Biomass Workflow",
+  "description": "Workflow for Mangrove Biomass Analysis\n  \nThis workflow orchestrates the mangrove biomass estimation process using\nSentinel-2 imagery. It wraps the mangrove_workflow.cwl tool to provide\na reusable workflow for analyzing different study areas.\n",
+  "inputs": {
+    "cloud_cover_max": {
+      "title": "Maximum Cloud Cover",
+      "description": "Maximum acceptable cloud cover percentage (0-100)",
+      "schema": {
+        "type": "number"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "days_back": {
+      "title": "Days Back",
+      "description": "Number of days to search backwards from current date",
+      "schema": {
+        "type": "integer"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "aoi": {
+      "title": "Area of Interest",
+      "description": "Area of interest as a bounding box",
+      "schema": {
+        "allOf": [
+          {
+            "format": "ogc-bbox"
+          },
+          {
+            "$ref": "https://raw.githubusercontent.com/opengeospatial/ogcapi-processes/master/openapi/schemas/processes-core/bbox.yaml"
+          }
+        ]
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    }
+  },
+  "outputs": {
+    "stac": {
+      "title": "stac",
+      "description": "",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/x-directory"
+      }
+    }
+  },
+  "jobControlOptions": [
+    "async-execute",
+    "sync-execute"
+  ],
+  "outputTransmission": [
+    "value",
+    "reference"
+  ]
+}

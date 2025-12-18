@@ -1,0 +1,93 @@
+
+
+{
+  "itemIdentifier": "eoap.cct.geojson",
+  "$schema": "https://raw.githubusercontent.com/opengeospatial/bblocks-postprocess/master/ogc/bblocks/metadata-schema.yaml",
+  "name": "eaop-cct:GeoJSON",
+  "abstract": "CWL custom types for GeoJSON geometries, features, and feature collections",
+  "description": "This building block defines CWL custom types for GeoJSON data structures, enabling Common Workflow Language workflows to handle geospatial vector data. These types provide a bridge between CWL workflow definitions and OGC API - Processes input/output schemas as defined in Table 13 of the OGC API - Processes Part 1 specification.\n\n## Relationship to OGC API - Processes\n\nThese custom types map directly to the schemas defined in Table 13 of OGC API - Processes Part 1 (OGC 18-062r3). When a CWL workflow is deployed as an OGC API - Processes service, these types are automatically converted to the appropriate JSON Schema definitions in the process description.\n\nA CWL input defined as:\n\n```yaml\ninputs:\n  area_of_interest:\n    type: eoap:geojson#Feature\n    doc: \"Area of interest for processing\"\n```\n\nMaps to an OGC API - Processes input schema:\n\n```json\n{\n  \"id\": \"area_of_interest\",\n  \"title\": \"Area of interest for processing\",\n  \"schema\": {\n    \"allOf\":{\n      {\n        \"format\": \"geojson-feature\"\n      },\n      {\n        \"$ref\": \"https://geojson.org/schema/Feature.json\"\n      }\n    }\n  }\n}\n```\n\n## Usage in CWL Workflows\n\nTo use these custom types in a CWL workflow:\n\n```yaml\ncwlVersion: v1.0\nclass: Workflow\n\nrequirements:\n  SchemaDefRequirement:\n    types:\n      - $import: https://eoap.github.io/schemas/cwl/geojson.yaml\n\ninputs:\n  input_feature:\n    type: eoap:geojson#Feature\n    inputBinding:\n      position: 1\n\noutputs:\n  output_collection:\n    type: eoap:geojson#FeatureCollection\n    outputBinding:\n      glob: result.json\n```\n",
+  "status": "under-development",
+  "dateTimeAddition": "2025-12-17T00:00:00Z",
+  "dateOfLastChange": "2025-12-18",
+  "version": "1.0",
+  "itemClass": "schema",
+  "register": "eoap-cct",
+  "dependsOn": [],
+  "scope": "dev",
+  "tags": [
+    "CWL",
+    "GeoJSON",
+    "geometry",
+    "feature",
+    "geospatial",
+    "OGC API Processes"
+  ],
+  "sourceSchema": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/schema.yaml",
+  "ldContext": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/context.jsonld",
+  "sources": [
+    {
+      "title": "GeoJSON Format Specification (RFC 7946)",
+      "link": "https://datatracker.ietf.org/doc/html/rfc7946"
+    },
+    {
+      "title": "OGC API - Processes Part 1 - Table 13",
+      "link": "https://docs.ogc.org/DRAFTS/18-062r3.html#_921c9ed7-3bf5-8c1d-a5be-f1ca4d0d5351"
+    },
+    {
+      "title": "EOAP CWL Custom Types - GeoJSON",
+      "link": "https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml"
+    }
+  ],
+  "maturity": "development",
+  "group": "EOAP",
+  "shaclShapes": {},
+  "schema": {
+    "application/yaml": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.yaml",
+    "application/json": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.json"
+  },
+  "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/context.jsonld",
+  "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/",
+  "rdfData": [],
+  "validationPassed": true,
+  "examples": [
+    {
+      "title": "GeoJSON Point",
+      "description": "CWL record value for a GeoJSON Point geometry",
+      "snippets": [
+        {
+          "language": "yaml",
+          "ref": "examples/point.yaml",
+          "code": "type: Point\ncoordinates: [125.6, 10.1]\n",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_1_1.yaml"
+        }
+      ]
+    },
+    {
+      "title": "GeoJSON Feature",
+      "description": "CWL record value for a GeoJSON Feature with Point geometry",
+      "snippets": [
+        {
+          "language": "yaml",
+          "ref": "examples/feature.yaml",
+          "code": "type: Feature\nid: point-1\ngeometry:\n  type: Point\n  coordinates: [125.6, 10.1]\nproperties:\n  name: Sample Point\n  description: A point feature example\n",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_2_1.yaml"
+        }
+      ]
+    },
+    {
+      "title": "GeoJSON Polygon",
+      "description": "CWL record value for a GeoJSON Polygon geometry",
+      "snippets": [
+        {
+          "language": "yaml",
+          "ref": "examples/polygon.yaml",
+          "code": "type: Polygon\ncoordinates:\n  - - [100.0, 0.0]\n    - [101.0, 0.0]\n    - [101.0, 1.0]\n    - [100.0, 1.0]\n    - [100.0, 0.0]\nbbox: [100.0, 0.0, 101.0, 1.0]\n",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_3_1.yaml"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$ref: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml\nx-jsonld-extra-terms:\n  Point: https://purl.org/geojson/vocab#Point\n  LineString: https://purl.org/geojson/vocab#LineString\n  Polygon: https://purl.org/geojson/vocab#Polygon\n  MultiPoint: https://purl.org/geojson/vocab#MultiPoint\n  MultiLineString: https://purl.org/geojson/vocab#MultiLineString\n  MultiPolygon: https://purl.org/geojson/vocab#MultiPolygon\n  GeometryCollection: https://purl.org/geojson/vocab#GeometryCollection\n  Feature: https://purl.org/geojson/vocab#Feature\n  FeatureCollection: https://purl.org/geojson/vocab#FeatureCollection\n  geometry: https://purl.org/geojson/vocab#geometry\n  coordinates: https://purl.org/geojson/vocab#coordinates\n  properties: https://purl.org/geojson/vocab#properties\n  features: https://purl.org/geojson/vocab#features\n  bbox: https://purl.org/geojson/vocab#bbox\nx-jsonld-vocab: https://www.opengis.net/def/metamodel/ogc-na/\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  schema: https://schema.org/\n  dct: http://purl.org/dc/terms/\n  cwl: https://w3id.org/cwl/cwl#\n  eoap: https://eoap.github.io/schemas/cwl/\n",
+  "gitRepository": "https://github.com/GeoLabs/bblocks-eoap-cct",
+  "gitPath": "_sources/geojson"
+}

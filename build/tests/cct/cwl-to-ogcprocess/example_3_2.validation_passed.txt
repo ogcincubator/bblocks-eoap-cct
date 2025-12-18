@@ -1,0 +1,20 @@
+Validation report for eoap.cct.cwl-to-ogcprocess - CWL to OGC API Processes Profile
+Generated 2025-12-18T16:57:32.915730+00:00
+=== Files ===
+Using example_3_2.json (example_3_2) from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_3_2.jsonld created
+Output Turtle example_3_2.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== Semantic Uplift ===
+Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl
+Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl
+Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl
+Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl
+=== End Semantic Uplift ===
+

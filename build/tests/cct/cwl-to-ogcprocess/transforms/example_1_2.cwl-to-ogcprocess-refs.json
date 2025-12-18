@@ -1,0 +1,42 @@
+{
+  "id": "bbox-workflow",
+  "version": "1.0.0",
+  "title": "OGC BBox Processing Workflow",
+  "description": "Workflow that processes OGC BBox input and generates output",
+  "inputs": {
+    "aoi": {
+      "title": "Area of interest",
+      "description": "Area of interest defined as a bounding box",
+      "schema": {
+        "allOf": [
+          {
+            "format": "ogc-bbox"
+          },
+          {
+            "$ref": "https://raw.githubusercontent.com/opengeospatial/ogcapi-processes/master/openapi/schemas/processes-core/bbox.yaml"
+          }
+        ]
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    }
+  },
+  "outputs": {
+    "echo_output": {
+      "title": "Echo output",
+      "description": "Echoed BBox information",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    }
+  },
+  "jobControlOptions": [
+    "async-execute",
+    "sync-execute"
+  ],
+  "outputTransmission": [
+    "value",
+    "reference"
+  ]
+}

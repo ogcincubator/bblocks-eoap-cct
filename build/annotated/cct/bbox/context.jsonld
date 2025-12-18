@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "@vocab": "https://www.opengis.net/def/metamodel/ogc-na/",
+    "BBox": "geo:BoundingBox",
+    "bbox": {
+      "@id": "geo:asWKT",
+      "@type": "@json"
+    },
+    "crs": {
+      "@id": "geo:crs",
+      "@type": "@id"
+    },
+    "CRS84": "ogc:crs/OGC/1.3/CRS84",
+    "CRS84h": "ogc:crs/OGC/0/CRS84h",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "ogc": "http://www.opengis.net/def/",
+    "dct": "http://purl.org/dc/terms/",
+    "cwl": "https://w3id.org/cwl/cwl#",
+    "eoap": "https://eoap.github.io/schemas/cwl/",
+    "@version": 1.1
+  }
+}

@@ -1,0 +1,1 @@
+value: "https://api.example.com/collections/{id}/items{?limit,bbox}"

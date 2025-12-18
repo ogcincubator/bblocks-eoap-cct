@@ -1,0 +1,14 @@
+{
+  "title": "Validation report for eoap.cct.string-format - eaop-cct:String-Format",
+  "bblockName": "eaop-cct:String-Format",
+  "bblockId": "eoap.cct.string-format",
+  "generated": "2025-12-18T16:57:31.970552+00:00",
+  "result": true,
+  "items": [],
+  "globalErrors": {},
+  "counts": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}

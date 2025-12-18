@@ -1,0 +1,14 @@
+{
+  "title": "Validation report for eoap.cct.geojson - eaop-cct:GeoJSON",
+  "bblockName": "eaop-cct:GeoJSON",
+  "bblockId": "eoap.cct.geojson",
+  "generated": "2025-12-18T16:57:32.004747+00:00",
+  "result": true,
+  "items": [],
+  "globalErrors": {},
+  "counts": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}

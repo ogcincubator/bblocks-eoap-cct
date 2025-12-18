@@ -1,0 +1,693 @@
+{
+  "title": "Validation report for eoap.cct.cwl-to-ogcprocess - CWL to OGC API Processes Profile",
+  "bblockName": "CWL to OGC API Processes Profile",
+  "bblockId": "eoap.cct.cwl-to-ogcprocess",
+  "generated": "2025-12-18T16:57:34.388611+00:00",
+  "result": true,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_1_1.yaml",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_1_1.yaml",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/x-yaml"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_1_1.yaml (example_1_1) from examples"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_1_2.json",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_1_2.json",
+        "exampleIndex": 1,
+        "snippetIndex": 2,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_1_2.json (example_1_2) from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_1_2.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_1_2.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_1_2.ttl",
+              "size": 79,
+              "isError": false,
+              "message": "Output Turtle example_1_2.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SEMANTIC_UPLIFT",
+          "title": "Semantic Uplift",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_2_1.yaml",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_2_1.yaml",
+        "exampleIndex": 2,
+        "snippetIndex": 1,
+        "language": "application/x-yaml"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_2_1.yaml (example_2_1) from examples"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_2_2.json",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_2_2.json",
+        "exampleIndex": 2,
+        "snippetIndex": 2,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_2_2.json (example_2_2) from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_2_2.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_2_2.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_2_2.ttl",
+              "size": 75,
+              "isError": false,
+              "message": "Output Turtle example_2_2.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SEMANTIC_UPLIFT",
+          "title": "Semantic Uplift",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_3_1.yaml",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_3_1.yaml",
+        "exampleIndex": 3,
+        "snippetIndex": 1,
+        "language": "application/x-yaml"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_3_1.yaml (example_3_1) from examples"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_3_2.json",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_3_2.json",
+        "exampleIndex": 3,
+        "snippetIndex": 2,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_3_2.json (example_3_2) from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_3_2.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_3_2.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_3_2.ttl",
+              "size": 75,
+              "isError": false,
+              "message": "Output Turtle example_3_2.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SEMANTIC_UPLIFT",
+          "title": "Semantic Uplift",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_4_1.yaml",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_4_1.yaml",
+        "exampleIndex": 4,
+        "snippetIndex": 1,
+        "language": "application/x-yaml"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_4_1.yaml (example_4_1) from examples"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_4_2.json",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_4_2.json",
+        "exampleIndex": 4,
+        "snippetIndex": 2,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_4_2.json (example_4_2) from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_4_2.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_4_2.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_4_2.ttl",
+              "size": 296,
+              "isError": false,
+              "message": "Output Turtle example_4_2.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SEMANTIC_UPLIFT",
+          "title": "Semantic Uplift",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_5_1.yaml",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_5_1.yaml",
+        "exampleIndex": 5,
+        "snippetIndex": 1,
+        "language": "application/x-yaml"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_5_1.yaml (example_5_1) from examples"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_5_2.json",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_5_2.json",
+        "exampleIndex": 5,
+        "snippetIndex": 2,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_5_2.json (example_5_2) from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_5_2.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_5_2.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_5_2.ttl",
+              "size": 204,
+              "isError": false,
+              "message": "Output Turtle example_5_2.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SEMANTIC_UPLIFT",
+          "title": "Semantic Uplift",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_6_1.yaml",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_6_1.yaml",
+        "exampleIndex": 6,
+        "snippetIndex": 1,
+        "language": "application/x-yaml"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_6_1.yaml (example_6_1) from examples"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/cwl-to-ogcprocess/example_6_2.json",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/cwl-to-ogcprocess/example_6_2.json",
+        "exampleIndex": 6,
+        "snippetIndex": 2,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_6_2.json (example_6_2) from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_6_2.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_6_2.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_6_2.ttl",
+              "size": 520,
+              "isError": false,
+              "message": "Output Turtle example_6_2.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SEMANTIC_UPLIFT",
+          "title": "Semantic Uplift",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

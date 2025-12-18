@@ -1,0 +1,66 @@
+{
+  "id": "bbox-workflow",
+  "version": "1.0.0",
+  "title": "OGC BBox Processing Workflow",
+  "description": "Workflow that processes OGC BBox input and generates output",
+  "inputs": {
+    "aoi": {
+      "title": "Area of interest",
+      "description": "Area of interest defined as a bounding box",
+      "schema": {
+        "type": "object",
+        "required": [
+          "bbox"
+        ],
+        "properties": {
+          "bbox": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "oneOf": [
+              {
+                "minItems": 4,
+                "maxItems": 4,
+                "description": "2D bbox"
+              },
+              {
+                "minItems": 6,
+                "maxItems": 6,
+                "description": "3D bbox"
+              }
+            ]
+          },
+          "crs": {
+            "type": "string",
+            "enum": [
+              "CRS84",
+              "CRS84h"
+            ],
+            "default": "CRS84"
+          }
+        }
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    }
+  },
+  "outputs": {
+    "echo_output": {
+      "title": "Echo output",
+      "description": "Echoed BBox information",
+      "schema": {
+        "type": "string",
+        "contentMediaType": "application/octet-stream"
+      }
+    }
+  },
+  "jobControlOptions": [
+    "async-execute",
+    "sync-execute"
+  ],
+  "outputTransmission": [
+    "value",
+    "reference"
+  ]
+}
