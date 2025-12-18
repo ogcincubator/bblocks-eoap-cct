@@ -1,0 +1,319 @@
+{
+  "@context": {
+    "@vocab": "https://w3id.org/cwl/cwl#",
+    "cwl": "https://w3id.org/cwl/cwl#",
+    "ogcproc": "http://www.opengis.net/def/ogcapi/processes/",
+    "dct": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "schema": "https://schema.org/",
+    
+    "@comment": "CWL Document structure",
+    "cwlVersion": {
+      "@id": "cwl:cwlVersion",
+      "@type": "@id"
+    },
+    "class": {
+      "@id": "rdf:type",
+      "@type": "@id"
+    },
+    "$graph": {
+      "@id": "cwl:graph",
+      "@container": "@graph"
+    },
+    
+    "@comment": "Process identification and documentation",
+    "id": {
+      "@id": "dct:identifier",
+      "@type": "@id"
+    },
+    "label": {
+      "@id": "rdfs:label",
+      "@type": "xsd:string"
+    },
+    "doc": {
+      "@id": "rdfs:comment",
+      "@type": "xsd:string"
+    },
+    
+    "@comment": "Workflow/CommandLineTool structure",
+    "inputs": {
+      "@id": "cwl:input",
+      "@container": "@list"
+    },
+    "outputs": {
+      "@id": "cwl:output",
+      "@container": "@list"
+    },
+    "steps": {
+      "@id": "cwl:steps",
+      "@type": "@id"
+    },
+    "requirements": {
+      "@id": "cwl:requirements",
+      "@container": "@set"
+    },
+    "hints": {
+      "@id": "cwl:hints",
+      "@container": "@set"
+    },
+    
+    "@comment": "Input/Output parameters",
+    "type": {
+      "@id": "cwl:type",
+      "@type": "@id"
+    },
+    "format": {
+      "@id": "cwl:format",
+      "@type": "@id"
+    },
+    "default": {
+      "@id": "cwl:default",
+      "@type": "@json"
+    },
+    
+    "@comment": "CommandLineTool specific",
+    "baseCommand": {
+      "@id": "cwl:baseCommand",
+      "@type": "@json"
+    },
+    "arguments": {
+      "@id": "cwl:arguments",
+      "@container": "@list"
+    },
+    "stdin": {
+      "@id": "cwl:stdin",
+      "@type": "xsd:string"
+    },
+    "stdout": {
+      "@id": "cwl:stdout",
+      "@type": "xsd:string"
+    },
+    "stderr": {
+      "@id": "cwl:stderr",
+      "@type": "xsd:string"
+    },
+    
+    "@comment": "Workflow specific",
+    "run": {
+      "@id": "cwl:run",
+      "@type": "@id"
+    },
+    "in": {
+      "@id": "cwl:in",
+      "@type": "@id"
+    },
+    "out": {
+      "@id": "cwl:out",
+      "@container": "@list"
+    },
+    "outputSource": {
+      "@id": "cwl:outputSource",
+      "@type": "@id"
+    },
+    "source": {
+      "@id": "cwl:source",
+      "@type": "@id"
+    },
+    
+    "@comment": "CWL type classes",
+    "CommandLineTool": "cwl:CommandLineTool",
+    "Workflow": "cwl:Workflow",
+    "ExpressionTool": "cwl:ExpressionTool",
+    
+    "@comment": "CWL primitive types",
+    "null": "cwl:null",
+    "boolean": "xsd:boolean",
+    "int": "xsd:int",
+    "long": "xsd:long",
+    "float": "xsd:float",
+    "double": "xsd:double",
+    "string": "xsd:string",
+    "File": "cwl:File",
+    "Directory": "cwl:Directory",
+    
+    "@comment": "CWL complex types",
+    "array": "cwl:array",
+    "record": "cwl:record",
+    "enum": "cwl:enum",
+    "items": {
+      "@id": "cwl:items",
+      "@type": "@id"
+    },
+    "fields": {
+      "@id": "cwl:fields",
+      "@container": "@list"
+    },
+    "symbols": {
+      "@id": "cwl:symbols",
+      "@container": "@list"
+    },
+    
+    "@comment": "File properties",
+    "path": {
+      "@id": "cwl:path",
+      "@type": "xsd:string"
+    },
+    "location": {
+      "@id": "cwl:location",
+      "@type": "@id"
+    },
+    "basename": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "dirname": {
+      "@id": "cwl:dirname",
+      "@type": "xsd:string"
+    },
+    "nameroot": {
+      "@id": "cwl:nameroot",
+      "@type": "xsd:string"
+    },
+    "nameext": {
+      "@id": "cwl:nameext",
+      "@type": "xsd:string"
+    },
+    "checksum": {
+      "@id": "cwl:checksum",
+      "@type": "xsd:string"
+    },
+    "size": {
+      "@id": "schema:contentSize",
+      "@type": "xsd:long"
+    },
+    "secondaryFiles": {
+      "@id": "cwl:secondaryFiles",
+      "@container": "@list"
+    },
+    
+    "@comment": "Requirements classes",
+    "InlineJavascriptRequirement": "cwl:InlineJavascriptRequirement",
+    "SchemaDefRequirement": "cwl:SchemaDefRequirement",
+    "DockerRequirement": "cwl:DockerRequirement",
+    "SoftwareRequirement": "cwl:SoftwareRequirement",
+    "InitialWorkDirRequirement": "cwl:InitialWorkDirRequirement",
+    "EnvVarRequirement": "cwl:EnvVarRequirement",
+    "ShellCommandRequirement": "cwl:ShellCommandRequirement",
+    "ResourceRequirement": "cwl:ResourceRequirement",
+    "WorkReuse": "cwl:WorkReuse",
+    "NetworkAccess": "cwl:NetworkAccess",
+    "InplaceUpdateRequirement": "cwl:InplaceUpdateRequirement",
+    "ToolTimeLimit": "cwl:ToolTimeLimit",
+    "SubworkflowFeatureRequirement": "cwl:SubworkflowFeatureRequirement",
+    "ScatterFeatureRequirement": "cwl:ScatterFeatureRequirement",
+    "MultipleInputFeatureRequirement": "cwl:MultipleInputFeatureRequirement",
+    "StepInputExpressionRequirement": "cwl:StepInputExpressionRequirement",
+    
+    "@comment": "Requirement properties",
+    "dockerPull": {
+      "@id": "cwl:dockerPull",
+      "@type": "xsd:string"
+    },
+    "dockerLoad": {
+      "@id": "cwl:dockerLoad",
+      "@type": "xsd:string"
+    },
+    "dockerFile": {
+      "@id": "cwl:dockerFile",
+      "@type": "xsd:string"
+    },
+    "dockerImport": {
+      "@id": "cwl:dockerImport",
+      "@type": "xsd:string"
+    },
+    "dockerImageId": {
+      "@id": "cwl:dockerImageId",
+      "@type": "xsd:string"
+    },
+    "dockerOutputDirectory": {
+      "@id": "cwl:dockerOutputDirectory",
+      "@type": "xsd:string"
+    },
+    
+    "@comment": "Input binding",
+    "inputBinding": {
+      "@id": "cwl:inputBinding",
+      "@type": "@id"
+    },
+    "position": {
+      "@id": "cwl:position",
+      "@type": "xsd:int"
+    },
+    "prefix": {
+      "@id": "cwl:prefix",
+      "@type": "xsd:string"
+    },
+    "separate": {
+      "@id": "cwl:separate",
+      "@type": "xsd:boolean"
+    },
+    "itemSeparator": {
+      "@id": "cwl:itemSeparator",
+      "@type": "xsd:string"
+    },
+    "valueFrom": {
+      "@id": "cwl:valueFrom",
+      "@type": "xsd:string"
+    },
+    "shellQuote": {
+      "@id": "cwl:shellQuote",
+      "@type": "xsd:boolean"
+    },
+    "loadContents": {
+      "@id": "cwl:loadContents",
+      "@type": "xsd:boolean"
+    },
+    "loadListing": {
+      "@id": "cwl:loadListing",
+      "@type": "@id"
+    },
+    
+    "@comment": "Output binding",
+    "outputBinding": {
+      "@id": "cwl:outputBinding",
+      "@type": "@id"
+    },
+    "glob": {
+      "@id": "cwl:glob",
+      "@type": "xsd:string"
+    },
+    "outputEval": {
+      "@id": "cwl:outputEval",
+      "@type": "xsd:string"
+    },
+    
+    "@comment": "Scatter/gather",
+    "scatter": {
+      "@id": "cwl:scatter",
+      "@container": "@list"
+    },
+    "scatterMethod": {
+      "@id": "cwl:scatterMethod",
+      "@type": "@id"
+    },
+    
+    "@comment": "Metadata and provenance",
+    "intent": {
+      "@id": "prov:wasInfluencedBy",
+      "@type": "@id"
+    },
+    "$namespaces": {
+      "@id": "cwl:namespaces",
+      "@type": "@json"
+    },
+    "$schemas": {
+      "@id": "cwl:schemas",
+      "@container": "@list"
+    },
+    "$import": {
+      "@id": "cwl:import",
+      "@type": "@id"
+    },
+    "$include": {
+      "@id": "cwl:include",
+      "@type": "@id"
+    }
+  }
+}

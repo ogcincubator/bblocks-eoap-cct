@@ -1,35 +1,58 @@
-# A short, descriptive name of this building block collection
-name: My OGC Building Blocks repository
+# Configuration for OGC Building Blocks dedicated to EOAP CWL Custom Types
+# Based on Earth Observation Application Package schemas
 
-# Short abstract for this collection (optional)
+identifier-prefix: eoap.cct.
+
+name: EOAP CWL Custom Types Building Blocks
+
 abstract: |
-  This is an example text for the abstract. It should be short and to the point.
-  A "Tell me more" link will appear if there is an additional description with a longer explanation.
+  Building Blocks for CWL Custom Types used in Earth Observation Application Packages (EOAP).
+  These types enable mapping between CWL workflow inputs/outputs and OGC API Processes descriptions.
 
-# Description for this collection (optional)
 description: |
-  The description can be longer. Both **the abstract** *and the description* support Markdown,
-  including [links](https://google.es).
+  The custom types provide a standardized way to describe:
+  - GeoJSON geometries and features for spatial inputs/outputs
+  - STAC Catalogs, Collections, and Items for EO data manifests
+  - OGC bounding boxes for spatial extents
+  - Standard string formats (datetime, URI, email, etc.)
+  
+  These types bridge the gap between CWL workflow specifications and OGC API Processes
+  processDescription schemas, enabling automatic mapping of inputs and outputs as described
+  in Table 13 of OGC API - Processes Part 1: Core ([OGC 18-062r3](https://docs.ogc.org/DRAFTS/18-062r3.html)).
+  
+  **Note**: These building blocks document CWL Custom Types defined in [eoap/schemas](https://github.com/eoap/schemas). 
+  The JSON Schemas provided are translations for documentation purposes. CWL uses Schema Salad as its schema 
+  language, which is based on Apache Avro Schema and extends it with semantic annotations for linked data.
+  
 
-# Customize the following prefix (will be prepended to the path of the building blocks):
-identifier-prefix: ogc.bbr.template.
+# Register metadata
+contact:
+  name: EOAP Community
+  url: https://eoap.github.io/
 
-# List of imports ("default" is an alias for the main OGC Building Blocks Register)
+version: 1.0.0
+
+# Base URL for the specification
+baseURL: https://eoap.github.io/schemas/
+
+# Additional metadata
+keywords:
+  - Earth Observation
+  - Application Package
+  - CWL
+  - Common Workflow Language
+  - OGC API Processes
+  - STAC
+  - GeoJSON
+  - geospatial
+  - workflows
+
+# Imports from other building block registers
 imports:
-  - default
+  - https://opengeospatial.github.io/bblocks/register.json
+  - https://ogcincubator.github.io/bblocks-ogcapi-records/build/register.json
+  - https://ogcincubator.github.io/bblocks-stac/build/register.json
+  - https://ogcincubator.github.io/bblocks-ogcapi-processes/build/register.json
+  - https://ogcincubator.github.io/bblocks-cwl/build/register.json
 
-# Whether to enable the (highly experimental) downcompiling of JSON schemas to an OpenAPI 3.0-compatible
-# version
-schema-oas30-downcompile: False
-
-# SPARQL configuration (optional)
-#   Authentication can be set through the sparql_username and sparql_password GitHub Workflow inputs
-#   (see .github/workflow/process-bblocks.yml)
-#
-# sparql:
-#   push: https://example.com/gsp           # SPARQL Graph Store Protocol endpoint for uploading data
-#   graph: https://my.bblocks.example.com/  # SPARQL Graph where data will be uploaded
-#                                           #  if left empty, the base URL for the publication will be used
-#   query: https://example.com/sparql       # SPARQL query endpoint where data will be available
-#   resources:                              # Additional resources to upload apart from building block metadata
-#      ontologies: true                     #   Whether to upload ontology files to the triplestore
+license: Apache-2.0

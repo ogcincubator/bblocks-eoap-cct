@@ -1,0 +1,17 @@
+- title: GeoJSON Point
+  description: CWL record value for a GeoJSON Point geometry
+  snippets:
+    - language: yaml
+      ref: examples/point.yaml
+
+- title: GeoJSON Feature
+  description: CWL record value for a GeoJSON Feature with Point geometry
+  snippets:
+    - language: yaml
+      ref: examples/feature.yaml
+
+- title: GeoJSON Polygon
+  description: CWL record value for a GeoJSON Polygon geometry
+  snippets:
+    - language: yaml
+      ref: examples/polygon.yaml

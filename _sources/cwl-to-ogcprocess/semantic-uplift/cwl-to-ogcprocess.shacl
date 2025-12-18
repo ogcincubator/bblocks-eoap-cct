@@ -1,0 +1,132 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cwl: <https://w3id.org/cwl/cwl#> .
+@prefix ogcproc: <http://www.opengis.net/def/ogcapi/processes/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:eoap:cwl-to-ogcprocess#> .
+
+# Transform CWL Workflow to OGC Process
+:CWLWorkflowToOGCProcess
+    a sh:NodeShape ;
+    sh:targetClass cwl:Workflow ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this a ogcproc:Process ;
+                    ogcproc:processID ?id ;
+                    ogcproc:title ?label ;
+                    ogcproc:description ?doc ;
+                    ogcproc:version ?version
+            }
+            WHERE {
+                $this a cwl:Workflow .
+                OPTIONAL { $this dct:identifier ?id }
+                OPTIONAL { $this rdfs:label ?label }
+                OPTIONAL { $this rdfs:comment ?doc }
+                OPTIONAL { $this cwl:cwlVersion ?version }
+            }
+        """ ;
+    ] ;
+.
+
+# Transform CWL CommandLineTool to OGC Process
+:CWLCommandLineToolToOGCProcess
+    a sh:NodeShape ;
+    sh:targetClass cwl:CommandLineTool ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this a ogcproc:Process ;
+                    ogcproc:processID ?id ;
+                    ogcproc:title ?label ;
+                    ogcproc:description ?doc ;
+                    ogcproc:version ?version
+            }
+            WHERE {
+                $this a cwl:CommandLineTool .
+                OPTIONAL { $this dct:identifier ?id }
+                OPTIONAL { $this rdfs:label ?label }
+                OPTIONAL { $this rdfs:comment ?doc }
+                OPTIONAL { $this cwl:cwlVersion ?version }
+            }
+        """ ;
+    ] ;
+.
+
+# Add process execution mode metadata
+:ProcessExecutionMode
+    a sh:NodeShape ;
+    sh:targetClass cwl:Workflow ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            
+            CONSTRUCT {
+                $this ogcproc:jobControlOptions "async-execute"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    ogcproc:outputTransmission "value"^^<http://www.w3.org/2001/XMLSchema#string>
+            }
+            WHERE {
+                $this a cwl:Workflow
+            }
+        """ ;
+    ] ;
+.
+
+# Link CWL process to OGC conformance classes
+:ProcessConformance
+    a sh:NodeShape ;
+    sh:targetClass cwl:Workflow ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            
+            CONSTRUCT {
+                $this dct:conformsTo <http://www.opengis.net/spec/ogcapi-processes-1/1.0/conf/core> ,
+                    <http://www.opengis.net/spec/ogcapi-processes-1/1.0/conf/json> ,
+                    <https://www.commonwl.org/v1.2/>
+            }
+            WHERE {
+                $this a cwl:Workflow
+            }
+        """ ;
+    ] ;
+.
+
+# Add process keywords from CWL intent
+:ProcessKeywordsFromIntent
+    a sh:NodeShape ;
+    sh:targetSubjectsOf <http://www.w3.org/ns/prov#wasInfluencedBy> ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            
+            CONSTRUCT {
+                $this ogcproc:keywords ?intent
+            }
+            WHERE {
+                $this prov:wasInfluencedBy ?intent
+            }
+        """ ;
+    ] ;
+.

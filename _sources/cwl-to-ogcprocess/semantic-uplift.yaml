@@ -1,0 +1,16 @@
+additionalSteps:
+  # Transform CWL Workflow to OGC Process metadata
+  - type: shacl
+    ref: semantic-uplift/cwl-to-ogcprocess.shacl
+  
+  # Transform CWL inputs to OGC Process inputs
+  - type: shacl
+    ref: semantic-uplift/cwl-inputs-to-ogcprocess.shacl
+  
+  # Transform CWL outputs to OGC Process outputs
+  - type: shacl
+    ref: semantic-uplift/cwl-outputs-to-ogcprocess.shacl
+  
+  # Map EOAP custom types to OGC schemas
+  - type: shacl
+    ref: semantic-uplift/eoap-types-to-ogcschemas.shacl

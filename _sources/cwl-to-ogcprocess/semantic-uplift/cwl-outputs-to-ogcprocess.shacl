@@ -1,0 +1,126 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cwl: <https://w3id.org/cwl/cwl#> .
+@prefix ogcproc: <http://www.opengis.net/def/ogcapi/processes/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:eoap:cwl-to-ogcprocess#> .
+
+# Transform CWL outputs to OGC Process outputs
+:CWLOutputToOGCOutput
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:output ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this ogcproc:output ?outputNode .
+                ?outputNode a ogcproc:OutputDescription ;
+                    ogcproc:outputID ?outputId ;
+                    ogcproc:title ?label ;
+                    ogcproc:description ?doc ;
+                    ogcproc:schema ?type
+            }
+            WHERE {
+                $this cwl:output ?outputNode .
+                OPTIONAL { ?outputNode dct:identifier ?outputId }
+                OPTIONAL { ?outputNode rdfs:label ?label }
+                OPTIONAL { ?outputNode rdfs:comment ?doc }
+                OPTIONAL { ?outputNode cwl:type ?type }
+            }
+        """ ;
+    ] ;
+.
+
+# Link output formats
+:OutputFormat
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:output ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            
+            CONSTRUCT {
+                ?outputNode dct:format ?format
+            }
+            WHERE {
+                $this cwl:output ?outputNode .
+                ?outputNode cwl:format ?format
+            }
+        """ ;
+    ] ;
+.
+
+# Mark File outputs as reference transmission
+:FileOutputTransmission
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:output ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            
+            CONSTRUCT {
+                ?outputNode ogcproc:transmissionMode "reference"^^<http://www.w3.org/2001/XMLSchema#string>
+            }
+            WHERE {
+                $this cwl:output ?outputNode .
+                ?outputNode cwl:type cwl:File
+            }
+        """ ;
+    ] ;
+.
+
+# Mark Directory outputs as reference transmission
+:DirectoryOutputTransmission
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:output ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            
+            CONSTRUCT {
+                ?outputNode ogcproc:transmissionMode "reference"^^<http://www.w3.org/2001/XMLSchema#string>
+            }
+            WHERE {
+                $this cwl:output ?outputNode .
+                ?outputNode cwl:type cwl:Directory
+            }
+        """ ;
+    ] ;
+.
+
+# Mark primitive type outputs as value transmission
+:ValueOutputTransmission
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:output ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            
+            CONSTRUCT {
+                ?outputNode ogcproc:transmissionMode "value"^^xsd:string
+            }
+            WHERE {
+                $this cwl:output ?outputNode .
+                ?outputNode cwl:type ?type .
+                FILTER(?type IN (xsd:string, xsd:int, xsd:long, xsd:float, xsd:double, xsd:boolean))
+            }
+        """ ;
+    ] ;
+.

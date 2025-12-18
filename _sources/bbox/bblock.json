@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/opengeospatial/bblocks-postprocess/master/ogc/bblocks/metadata-schema.yaml",
+  "name": "eaop-cct:OGC-BoundingBox",
+  "abstract": "CWL custom type for OGC bounding box with coordinate reference system",
+  "description": "Defines a CWL custom type for OGC bounding boxes conforming to OGC API standards. The BoundingBox type represents spatial extents with bbox coordinates and an optional CRS specification. Maps to the bbox schema defined in Table 13 of OGC API - Processes Part 2.",
+  "status": "under-development",
+  "dateTimeAddition": "2025-12-17T00:00:00Z",
+  "dateOfLastChange": "2025-12-17",
+  "version": "1.0",
+  "itemClass": "schema",
+  "register": "eoap-cct",
+  "dependsOn": [],
+  "scope": "dev",
+  "tags": [
+    "CWL",
+    "bounding box",
+    "bbox",
+    "OGC",
+    "spatial extent",
+    "CRS",
+    "OGC API Processes"
+  ],
+  "sourceSchema": "schema.yaml",
+  "ldContext": "context.jsonld",
+  "sources": [
+    {
+      "title": "OGC API - Features Part 1 - Bounding Box",
+      "link": "https://docs.ogc.org/is/17-069r4/17-069r4.html#_parameter_bbox"
+    },
+    {
+      "title": "OGC API - Processes Part 1 - Table 13",
+      "link": "https://docs.ogc.org/DRAFTS/18-062r3.html#_921c9ed7-3bf5-8c1d-a5be-f1ca4d0d5351"
+    },
+    {
+      "title": "CRS84 Definition",
+      "link": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+    },
+    {
+      "title": "EOAP CWL Custom Types - OGC BBox",
+      "link": "https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/ogc.yaml"
+    }
+  ],
+  "maturity": "development",
+  "group": "EOAP"
+}

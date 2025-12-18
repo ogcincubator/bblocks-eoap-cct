@@ -1,0 +1,12 @@
+- title: 2D BBox (CRS84)
+  description: CWL record value for a 2D bounding box using CRS84
+  snippets:
+    - language: yaml
+      ref: examples/bbox-2d.yaml
+
+- title: 3D BBox (CRS84h)
+  description: CWL record value for a 3D bounding box with elevation using CRS84h
+  snippets:
+    - language: yaml
+      ref: examples/bbox-3d.yaml
+

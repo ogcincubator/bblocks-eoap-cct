@@ -1,0 +1,47 @@
+- title: BBox Workflow
+  description: CWL Workflow using OGC BoundingBox custom type
+  snippets:
+    - language: yaml
+      ref: examples/bbox-workflow.cwl
+    - language: json
+      ref: examples/bbox-workflow.json
+
+- title: GeoJSON Feature Workflow
+  description: CWL Workflow using GeoJSON Feature custom type
+  snippets:
+    - language: yaml
+      ref: examples/feature-workflow.cwl
+    - language: json
+      ref: examples/feature-workflow.json
+
+- title: STAC Item Workflow
+  description: CWL Workflow using STAC Item custom type
+  snippets:
+    - language: yaml
+      ref: examples/item-workflow.cwl
+    - language: json
+      ref: examples/item-workflow.json
+
+- title: Water Bodies Detection Workflow
+  description: CWL packed workflow using standard CWL types (string, string[], Directory, File)
+  snippets:
+    - language: yaml
+      ref: examples/water-bodies-workflow.cwl
+    - language: json
+      ref: examples/water-bodies-workflow.json
+
+- title: Mangrove Workflow OSPD 2025
+  description: CWL packed workflow using standard CWL types (string, string[], Directory, File)
+  snippets:
+    - language: yaml
+      ref: examples/mangrove-workflow.cwl
+    - language: json
+      ref: examples/mangrove-workflow.json
+
+- title: Hartis CVI Workflow OSPD 2025
+  description: CWL packed workflow using standard CWL types (string, string[], Directory, File)
+  snippets:
+    - language: yaml
+      ref: examples/cvi-workflow.cwl
+    - language: json
+      ref: examples/cvi-workflow.json

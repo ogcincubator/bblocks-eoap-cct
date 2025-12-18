@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/opengeospatial/bblocks-postprocess/master/ogc/bblocks/metadata-schema.yaml",
+  "name": "eaop-cct:GeoJSON",
+  "abstract": "CWL custom types for GeoJSON geometries, features, and feature collections",
+  "description": "Defines CWL custom types for GeoJSON data structures including Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, Feature, FeatureCollection, and GeometryCollection. These types enable CWL workflows to handle geospatial vector data and map to OGC API - Processes input/output schemas (Table 13).",
+  "status": "under-development",
+  "dateTimeAddition": "2025-12-17T00:00:00Z",
+  "dateOfLastChange": "2025-12-17",
+  "version": "1.0",
+  "itemClass": "schema",
+  "register": "eoap-cct",
+  "dependsOn": [],
+  "scope": "dev",
+  "tags": [
+    "CWL",
+    "GeoJSON",
+    "geometry",
+    "feature",
+    "geospatial",
+    "OGC API Processes"
+  ],
+  "sourceSchema": "schema.yaml",
+  "ldContext": "context.jsonld",
+  "sources": [
+    {
+      "title": "GeoJSON Format Specification (RFC 7946)",
+      "link": "https://datatracker.ietf.org/doc/html/rfc7946"
+    },
+    {
+      "title": "OGC API - Processes Part 1 - Table 13",
+      "link": "https://docs.ogc.org/DRAFTS/18-062r3.html#_921c9ed7-3bf5-8c1d-a5be-f1ca4d0d5351"
+    },
+    {
+      "title": "EOAP CWL Custom Types - GeoJSON",
+      "link": "https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml"
+    }
+  ],
+  "maturity": "development",
+  "group": "EOAP"
+}

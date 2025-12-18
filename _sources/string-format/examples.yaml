@@ -1,0 +1,101 @@
+- title: Date value
+  description: ISO 8601 date format (YYYY-MM-DD)
+  snippets:
+    - language: yaml
+      ref: examples/date.yaml
+
+- title: DateTime value
+  description: RFC 3339 date-time format with timezone
+  snippets:
+    - language: yaml
+      ref: examples/datetime.yaml
+
+- title: Time value
+  description: Time of day in HH:MM:SS format
+  snippets:
+    - language: yaml
+      ref: examples/time.yaml
+
+- title: Duration value
+  description: ISO 8601 duration format
+  snippets:
+    - language: yaml
+      ref: examples/duration.yaml
+
+- title: URI value
+  description: Uniform Resource Identifier (RFC 3986)
+  snippets:
+    - language: yaml
+      ref: examples/uri.yaml
+
+- title: URIReference value
+  description: URI reference (absolute or relative)
+  snippets:
+    - language: yaml
+      ref: examples/uri-reference.yaml
+
+- title: URITemplate value
+  description: URI template with variables (RFC 6570)
+  snippets:
+    - language: yaml
+      ref: examples/uri-template.yaml
+
+- title: IRI value
+  description: Internationalized Resource Identifier supporting Unicode
+  snippets:
+    - language: yaml
+      ref: examples/iri.yaml
+
+- title: Email value
+  description: Standard email address (RFC 5321)
+  snippets:
+    - language: yaml
+      ref: examples/email.yaml
+
+- title: IDNEmail value
+  description: Internationalized email address (RFC 6531)
+  snippets:
+    - language: yaml
+      ref: examples/idn-email.yaml
+
+- title: Hostname value
+  description: DNS hostname (RFC 1123)
+  snippets:
+    - language: yaml
+      ref: examples/hostname.yaml
+
+- title: IDNHostname value
+  description: Internationalized hostname
+  snippets:
+    - language: yaml
+      ref: examples/idn-hostname.yaml
+
+- title: IPv4 value
+  description: IPv4 address
+  snippets:
+    - language: yaml
+      ref: examples/ipv4.yaml
+
+- title: IPv6 value
+  description: IPv6 address (RFC 4291)
+  snippets:
+    - language: yaml
+      ref: examples/ipv6.yaml
+
+- title: JsonPointer value
+  description: JSON Pointer for referencing JSON document locations (RFC 6901)
+  snippets:
+    - language: yaml
+      ref: examples/json-pointer.yaml
+
+- title: RelativeJsonPointer value
+  description: Relative JSON Pointer
+  snippets:
+    - language: yaml
+      ref: examples/relative-json-pointer.yaml
+
+- title: UUID value
+  description: Universally Unique Identifier (RFC 4122)
+  snippets:
+    - language: yaml
+      ref: examples/uuid.yaml

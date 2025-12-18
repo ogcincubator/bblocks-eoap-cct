@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "@vocab": "https://www.opengis.net/def/metamodel/ogc-na/",
+    "geojson": "https://purl.org/geojson/vocab#",
+    "schema": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "cwl": "https://w3id.org/cwl/cwl#",
+    "eoap": "https://eoap.github.io/schemas/cwl/",
+    
+    "Point": "geojson:Point",
+    "LineString": "geojson:LineString",
+    "Polygon": "geojson:Polygon",
+    "MultiPoint": "geojson:MultiPoint",
+    "MultiLineString": "geojson:MultiLineString",
+    "MultiPolygon": "geojson:MultiPolygon",
+    "GeometryCollection": "geojson:GeometryCollection",
+    "Feature": "geojson:Feature",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "geometry": "geojson:geometry",
+    "coordinates": "geojson:coordinates",
+    "properties": "geojson:properties",
+    "features": "geojson:features",
+    "bbox": "geojson:bbox"
+  }
+}

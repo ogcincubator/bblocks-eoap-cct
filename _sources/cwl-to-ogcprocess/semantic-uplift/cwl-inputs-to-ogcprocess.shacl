@@ -1,0 +1,125 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cwl: <https://w3id.org/cwl/cwl#> .
+@prefix ogcproc: <http://www.opengis.net/def/ogcapi/processes/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:eoap:cwl-to-ogcprocess#> .
+
+# Transform CWL inputs to OGC Process inputs
+:CWLInputToOGCInput
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:input ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this ogcproc:input ?inputNode .
+                ?inputNode a ogcproc:InputDescription ;
+                    ogcproc:inputID ?inputId ;
+                    ogcproc:title ?label ;
+                    ogcproc:description ?doc ;
+                    ogcproc:schema ?type
+            }
+            WHERE {
+                $this cwl:input ?inputNode .
+                OPTIONAL { ?inputNode dct:identifier ?inputId }
+                OPTIONAL { ?inputNode rdfs:label ?label }
+                OPTIONAL { ?inputNode rdfs:comment ?doc }
+                OPTIONAL { ?inputNode cwl:type ?type }
+            }
+        """ ;
+    ] ;
+.
+
+# Mark required vs optional inputs based on CWL type
+:InputMinOccurs
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:input ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            
+            CONSTRUCT {
+                ?inputNode ogcproc:minOccurs 1
+            }
+            WHERE {
+                $this cwl:input ?inputNode .
+                ?inputNode cwl:type ?type .
+                FILTER(!CONTAINS(STR(?type), "?") && !CONTAINS(STR(?type), "null"))
+            }
+        """ ;
+    ] ;
+.
+
+:InputOptional
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:input ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            
+            CONSTRUCT {
+                ?inputNode ogcproc:minOccurs 0
+            }
+            WHERE {
+                $this cwl:input ?inputNode .
+                ?inputNode cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "?") || CONTAINS(STR(?type), "null"))
+            }
+        """ ;
+    ] ;
+.
+
+# Add default values for inputs
+:InputDefaultValues
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:input ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            
+            CONSTRUCT {
+                ?inputNode ogcproc:defaultValue ?default
+            }
+            WHERE {
+                $this cwl:input ?inputNode .
+                ?inputNode cwl:default ?default
+            }
+        """ ;
+    ] ;
+.
+
+# Link input formats
+:InputFormat
+    a sh:NodeShape ;
+    sh:targetSubjectsOf cwl:input ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            
+            CONSTRUCT {
+                ?inputNode dct:format ?format
+            }
+            WHERE {
+                $this cwl:input ?inputNode .
+                ?inputNode cwl:format ?format
+            }
+        """ ;
+    ] ;
+.

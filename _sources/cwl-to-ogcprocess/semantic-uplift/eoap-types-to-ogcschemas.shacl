@@ -1,0 +1,254 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cwl: <https://w3id.org/cwl/cwl#> .
+@prefix ogcproc: <http://www.opengis.net/def/ogcapi/processes/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:eoap:cwl-to-ogcprocess#> .
+
+# Map EOAP BBox type to OGC schema metadata
+:EOAPBBoxToOGCSchema
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            SELECT ?this
+            WHERE {
+                ?this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "ogc.yaml#BBox"))
+            }
+        """ ;
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this ogcproc:schemaType "array"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    ogcproc:itemsType "number"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    ogcproc:minItems 4 ;
+                    ogcproc:maxItems 6 ;
+                    rdfs:seeAlso geo:BoundingBox
+            }
+            WHERE {
+                $this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "ogc.yaml#BBox"))
+            }
+        """ ;
+    ] ;
+.
+
+# Map EOAP GeoJSON Feature type to OGC schema metadata
+:EOAPGeoJSONFeatureToOGCSchema
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            SELECT ?this
+            WHERE {
+                ?this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#Feature"))
+            }
+        """ ;
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this ogcproc:schemaType "object"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    dct:format <https://www.iana.org/assignments/media-types/application/geo+json> ;
+                    rdfs:seeAlso <https://purl.org/geojson/vocab#Feature>
+            }
+            WHERE {
+                $this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#Feature"))
+            }
+        """ ;
+    ] ;
+.
+
+# Map EOAP GeoJSON Point type to OGC schema metadata
+:EOAPGeoJSONPointToOGCSchema
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            SELECT ?this
+            WHERE {
+                ?this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#Point"))
+            }
+        """ ;
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this ogcproc:schemaType "object"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    dct:format <https://www.iana.org/assignments/media-types/application/geo+json> ;
+                    rdfs:seeAlso <https://purl.org/geojson/vocab#Point>
+            }
+            WHERE {
+                $this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#Point"))
+            }
+        """ ;
+    ] ;
+.
+
+# Map EOAP GeoJSON Polygon type to OGC schema metadata
+:EOAPGeoJSONPolygonToOGCSchema
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            SELECT ?this
+            WHERE {
+                ?this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#Polygon"))
+            }
+        """ ;
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this ogcproc:schemaType "object"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    dct:format <https://www.iana.org/assignments/media-types/application/geo+json> ;
+                    rdfs:seeAlso <https://purl.org/geojson/vocab#Polygon>
+            }
+            WHERE {
+                $this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#Polygon"))
+            }
+        """ ;
+    ] ;
+.
+
+# Map EOAP STAC Item type to OGC schema metadata
+:EOAPSTACItemToOGCSchema
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            SELECT ?this
+            WHERE {
+                ?this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "stac.yaml#Item"))
+            }
+        """ ;
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this ogcproc:schemaType "object"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    dct:format <https://www.iana.org/assignments/media-types/application/json> ;
+                    rdfs:seeAlso <https://stacspec.org/#item-spec>
+            }
+            WHERE {
+                $this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "stac.yaml#Item"))
+            }
+        """ ;
+    ] ;
+.
+
+# Map EOAP STAC Catalog type to OGC schema metadata
+:EOAPSTACCatalogToOGCSchema
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            SELECT ?this
+            WHERE {
+                ?this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "stac.yaml#Catalog"))
+            }
+        """ ;
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            CONSTRUCT {
+                $this ogcproc:schemaType "object"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    dct:format <https://www.iana.org/assignments/media-types/application/json> ;
+                    rdfs:seeAlso <https://stacspec.org/#catalog-spec>
+            }
+            WHERE {
+                $this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "stac.yaml#Catalog"))
+            }
+        """ ;
+    ] ;
+.
+
+# Map EOAP string-format types to OGC schema metadata
+:EOAPStringFormatToOGCSchema
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            SELECT ?this
+            WHERE {
+                ?this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "string_format.yaml#"))
+            }
+        """ ;
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            
+            CONSTRUCT {
+                $this ogcproc:schemaType "string"^^xsd:string ;
+                    ogcproc:format ?format
+            }
+            WHERE {
+                $this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "string_format.yaml#"))
+                BIND(STRAFTER(STR(?type), "string_format.yaml#") AS ?format)
+            }
+        """ ;
+    ] ;
+.

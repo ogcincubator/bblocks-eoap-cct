@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/opengeospatial/bblocks-postprocess/master/ogc/bblocks/metadata-schema.yaml",
+  "name": "CWL to OGC API Processes Profile",
+  "abstract": "Profile for converting CWL CommandLineTool and Workflow definitions to OGC API Processes processDescriptions",
+  "description": "This building block provides a transformation profile that converts Common Workflow Language (CWL) CommandLineTool and Workflow definitions into OGC API - Processes processDescription schemas. It supports all EOAP custom types including BBox, GeoJSON, STAC, and String Formats, as well as standard CWL types. The profile enables automatic mapping of CWL workflow definitions to OGC API - Processes compliant service descriptions, facilitating the deployment of CWL workflows as OGC processes.",
+  "status": "under-development",
+  "dateTimeAddition": "2025-12-18T00:00:00Z",
+  "dateOfLastChange": "2025-12-18",
+  "version": "1.0",
+  "itemClass": "model",
+  "register": "eoap-cct",
+  "dependsOn": [
+    "ogc.cwl.v1_2_1.CWLWorkflow",
+    "ogc.api.processes.v1.schemas.process",
+    "eoap.cct.bbox",
+    "eoap.cct.geojson",
+    "eoap.cct.stac",
+    "eoap.cct.string-format"
+  ],
+  "scope": "dev",
+  "tags": [
+    "CWL",
+    "Common Workflow Language",
+    "OGC API Processes",
+    "processDescription",
+    "transformation",
+    "profile",
+    "EOAP",
+    "CommandLineTool",
+    "Workflow"
+  ],
+  "sources": [
+    {
+      "title": "Common Workflow Language (CWL) Specification",
+      "link": "https://www.commonwl.org/v1.2/"
+    },
+    {
+      "title": "OGC API - Processes Part 1: Core",
+      "link": "https://docs.ogc.org/is/18-062r2/18-062r2.html"
+    },
+    {
+      "title": "OGC Best Practice for Earth Observation Application Package",
+      "link": "https://docs.ogc.org/bp/20-089r1.html"
+    },
+    {
+      "title": "Earth Observation Application Package (EOAP) CWL Custom Types",
+      "link": "https://github.com/eoap/schemas"
+    }
+  ],
+  "maturity": "development",
+  "group": "EOAP",
+  "highlighted": true
+}

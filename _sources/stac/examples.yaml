@@ -1,0 +1,12 @@
+- title: STAC Item
+  description: CWL record value for a STAC Item
+  snippets:
+    - language: yaml
+      ref: examples/item.yaml
+
+- title: STAC Catalog
+  description: CWL record value for a STAC Catalog
+  snippets:
+    - language: yaml
+      ref: examples/catalog.yaml
+

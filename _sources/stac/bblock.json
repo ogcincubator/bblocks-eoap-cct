@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/opengeospatial/bblocks-postprocess/master/ogc/bblocks/metadata-schema.yaml",
+  "name": "eaop-cct:STAC",
+  "abstract": "CWL custom types for STAC Catalogs, Items, and Collections",
+  "description": "Defines CWL custom types for STAC (SpatioTemporal Asset Catalog) metadata structures including Catalog, Item, and Collection. These types enable CWL workflows to handle EO product manifests and map to OGC API - Processes input/output schemas for STAC resources as defined in OGC Best Practice for Earth Observation Application Package (section 6.2.3).",
+  "status": "under-development",
+  "dateTimeAddition": "2025-12-17T00:00:00Z",
+  "dateOfLastChange": "2025-12-17",
+  "version": "1.0",
+  "itemClass": "schema",
+  "register": "eoap-cct",
+  "dependsOn": ["eoap.cct.geojson"],
+  "scope": "dev",
+  "tags": [
+    "CWL",
+    "STAC",
+    "SpatioTemporal Asset Catalog",
+    "Earth Observation",
+    "metadata",
+    "OGC API Processes"
+  ],
+  "sourceSchema": "schema.yaml",
+  "ldContext": "context.jsonld",
+  "sources": [
+    {
+      "title": "STAC Specification v1.0.0",
+      "link": "https://github.com/radiantearth/stac-spec"
+    },
+    {
+      "title": "OGC Best Practice for Earth Observation Application Package",
+      "link": "https://docs.ogc.org/bp/20-089r1.html"
+    },
+    {
+      "title": "EOAP CWL Custom Types - STAC",
+      "link": "https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml"
+    }
+  ],
+  "maturity": "development",
+  "group": "EOAP"
+}

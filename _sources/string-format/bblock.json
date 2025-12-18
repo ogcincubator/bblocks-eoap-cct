@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/opengeospatial/bblocks-postprocess/master/ogc/bblocks/metadata-schema.yaml",
+  "name": "eaop-cct:String-Format",
+  "abstract": "CWL custom types for standard string formats (date, datetime, URI, email, etc.)",
+  "description": "Defines CWL custom types for standard string formats conforming to JSON Schema and OpenAPI specifications. These types enable workflows to validate and document string inputs/outputs with specific format constraints (datetime, URI, email, UUID, etc.). Maps to string format constraints in OGC API - Processes schemas (Table 13).",
+  "status": "under-development",
+  "dateTimeAddition": "2025-12-17T00:00:00Z",
+  "dateOfLastChange": "2025-12-17",
+  "version": "1.0",
+  "itemClass": "schema",
+  "register": "eoap-cct",
+  "dependsOn": [],
+  "scope": "dev",
+  "tags": [
+    "CWL",
+    "string format",
+    "datetime",
+    "URI",
+    "email",
+    "UUID",
+    "validation",
+    "OGC API Processes"
+  ],
+  "sourceSchema": "schema.yaml",
+  "ldContext": "context.jsonld",
+  "sources": [
+    {
+      "title": "JSON Schema Validation - String Formats",
+      "link": "https://json-schema.org/understanding-json-schema/reference/string.html#format"
+    },
+    {
+      "title": "OpenAPI 3.0 - Data Types",
+      "link": "https://swagger.io/docs/specification/v3_0/data-models/data-types/"
+    },
+    {
+      "title": "RFC 1123 - Requirements for Internet Hosts - Application and Support",
+      "link": "https://tools.ietf.org/html/rfc1123"
+    },
+    {
+      "title": "RFC 3339 - Date and Time on the Internet",
+      "link": "https://tools.ietf.org/html/rfc3339"
+    },
+    {
+      "title": "RFC 3986 - Uniform Resource Identifier (URI)",
+      "link": "https://tools.ietf.org/html/rfc3986"
+    },
+    {
+      "title": "RFC 3987 - Internationalized Resource Identifiers (IRIs)",
+      "link": "https://tools.ietf.org/html/rfc3987"
+    },
+    {
+      "title": "RFC 4122 - A Universally Unique IDentifier (UUID) URN Namespace",
+      "link": "https://tools.ietf.org/html/rfc4122"
+    },
+    {
+      "title": "RFC 4291 - IP Version 6 Addressing Architecture",
+      "link": "https://tools.ietf.org/html/rfc4291"
+    },
+    {
+      "title": "RFC 5321 - Simple Mail Transfer Protocol",
+      "link": "https://tools.ietf.org/html/rfc5321"
+    },
+    {
+      "title": "RFC 5890 - Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework",
+      "link": "https://tools.ietf.org/html/rfc5890"
+    },
+    {
+      "title": "RFC 6531 - Internationalized Email Headers",
+      "link": "https://tools.ietf.org/html/rfc6531"
+    },
+    {
+      "title": "RFC 6570 - A Uniform Resource Name (URN) Namespace for UUIDs",
+      "link": "https://tools.ietf.org/html/rfc6570"
+    },
+    {
+      "title": "RFC 6901 - JSON Pointer",
+      "link": "https://tools.ietf.org/html/rfc6901"
+    },
+    {
+      "title": "OGC API - Processes Part 1 - Table 13",
+      "link": "https://docs.ogc.org/DRAFTS/18-062r3.html#_921c9ed7-3bf5-8c1d-a5be-f1ca4d0d5351"
+    },
+    {
+      "title": "EOAP CWL Custom Types - String Formats",
+      "link": "https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/string_format.yaml"
+    }
+  ],
+  "maturity": "development",
+  "group": "EOAP"
+}
