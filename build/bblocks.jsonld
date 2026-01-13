@@ -1,7 +1,7 @@
 {
   "@context": [
     {
-      "@base": "https://geolabs.github.io/bblocks-eoap-cct"
+      "@base": "https://ogcincubator.github.io/bblocks-eoap-cct"
     },
     {
       "bblocks": "https://www.opengis.net/def/bblocks/",
@@ -141,26 +141,38 @@
       },
       "rdfs:seeAlso": {
         "@type": "@id"
+      },
+      "ontology": {
+        "@id": "prof:hasResource",
+        "@type": "@id"
+      },
+      "rdfData": {
+        "@id": "prof:hasResource",
+        "@type": "@id"
+      },
+      "links": {
+        "@id": "prof:hasResource",
+        "@context": "https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/json-link/context.jsonld"
       }
     }
   ],
   "name": "Building Blocks - EOAP CWL Custom Types Building Blocks",
   "abstract": "Building Blocks for CWL Custom Types used in Earth Observation Application Packages (EOAP).\nThese types enable mapping between CWL workflow inputs/outputs and OGC API Processes descriptions.\n",
   "description": "The custom types provide a standardized way to describe:\n- GeoJSON geometries and features for spatial inputs/outputs\n- STAC Catalogs, Collections, and Items for EO data manifests\n- OGC bounding boxes for spatial extents\n- Standard string formats (datetime, URI, email, etc.)\n\nThese types bridge the gap between CWL workflow specifications and OGC API Processes\nprocessDescription schemas, enabling automatic mapping of inputs and outputs as described\nin Table 13 of OGC API - Processes Part 1: Core ([OGC 18-062r3](https://docs.ogc.org/DRAFTS/18-062r3.html)).\n\n**Note**: These building blocks document CWL Custom Types defined in [eoap/schemas](https://github.com/eoap/schemas). \nThe JSON Schemas provided are translations for documentation purposes. CWL uses Schema Salad as its schema \nlanguage, which is based on Apache Avro Schema and extends it with semantic annotations for linked data.\n",
-  "modified": "2025-12-18T16:57:29.982016",
+  "modified": "2026-01-13T12:25:25.876083",
   "tooling": {
     "bblocks-postprocess": {
-      "commitId": "\"285d0905c7389562143593be3c626b653c2dc093",
-      "shortCommitId": "\"285d09",
-      "date": "2025-12-15T22:36:20+00:00\""
+      "commitId": "\"5c5cdf9715a991a423177ea9a663d07c902a3b0e",
+      "shortCommitId": "\"5c5cdf",
+      "date": "2026-01-13T12:02:25+00:00\""
     }
   },
-  "gitRepository": "https://github.com/GeoLabs/bblocks-eoap-cct",
-  "gitHubRepository": "https://github.com/GeoLabs/bblocks-eoap-cct/blob/master/",
-  "baseURL": "https://geolabs.github.io/bblocks-eoap-cct/",
-  "viewerURL": "https://geolabs.github.io/bblocks-eoap-cct/",
-  "validationReport": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/report.html",
-  "validationReportJson": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/report.json",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-eoap-cct",
+  "gitHubRepository": "https://github.com/ogcincubator/bblocks-eoap-cct/blob/master/",
+  "baseURL": "https://ogcincubator.github.io/bblocks-eoap-cct/",
+  "viewerURL": "https://ogcincubator.github.io/bblocks-eoap-cct/",
+  "validationReport": "https://ogcincubator.github.io/bblocks-eoap-cct/build/tests/report.html",
+  "validationReportJson": "https://ogcincubator.github.io/bblocks-eoap-cct/build/tests/report.json",
   "imports": [
     "https://opengeospatial.github.io/bblocks/register.json",
     "https://ogcincubator.github.io/bblocks-ogcapi-records/build/register.json",
@@ -168,7 +180,27 @@
     "https://ogcincubator.github.io/bblocks-ogcapi-processes/build/register.json",
     "https://ogcincubator.github.io/bblocks-cwl/build/register.json"
   ],
-  "remoteCacheDir": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/_cache",
+  "remoteCacheDir": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/_cache",
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://ogcincubator.github.io/bblocks-eoap-cct/build/register.json",
+      "type": "application/json",
+      "title": "This Building Blocks Register in JSON format"
+    },
+    {
+      "rel": "self",
+      "href": "https://ogcincubator.github.io/bblocks-eoap-cct/build/bblocks.ttl",
+      "type": "text/turtle",
+      "title": "This Building Blocks Register in RDF Turtle format"
+    },
+    {
+      "rel": "self",
+      "href": "https://ogcincubator.github.io/bblocks-eoap-cct/build/bblocks.jsonld",
+      "type": "application/ld+json",
+      "title": "This Building Blocks Register in JSON-LD format"
+    }
+  ],
   "@type": [
     "skos:ConceptScheme",
     "dcat:Catalog"
@@ -198,9 +230,9 @@
         "CRS",
         "OGC API Processes"
       ],
-      "sourceSchema": "https://geolabs.github.io/bblocks-eoap-cct/_sources/bbox/schema.yaml",
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/bbox/schema.yaml",
       "ldContext": {
-        "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/context.jsonld",
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
@@ -228,34 +260,35 @@
       "shaclShapes": null,
       "schema": [
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/schema.yaml",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/schema.json",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/bbox/context.jsonld",
-      "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/bbox/",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/bbox/context.jsonld",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/bbox/",
       "rdfData": [],
-      "validationPassed": true,
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-eoap-cct/blob/master/build/tests/cct/bbox/",
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/bbox/index.md"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/bbox/index.md"
         },
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/bbox/index.json"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/bbox/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.bbox"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/bblock/eoap.cct.bbox"
         }
       },
       "@id": "bblocks://eoap.cct.bbox",
@@ -266,9 +299,10 @@
       ],
       "skos:prefLabel": "eaop-cct:OGC-BoundingBox",
       "openAPIDocument": null,
+      "ontology": null,
       "profileOf": null,
       "skos:topConceptOf": {
-        "@id": "https://geolabs.github.io/bblocks-eoap-cct/"
+        "@id": "https://ogcincubator.github.io/bblocks-eoap-cct/"
       }
     },
     {
@@ -295,9 +329,9 @@
         "validation",
         "OGC API Processes"
       ],
-      "sourceSchema": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/schema.yaml",
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/string-format/schema.yaml",
       "ldContext": {
-        "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/context.jsonld",
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
@@ -369,34 +403,35 @@
       "shaclShapes": null,
       "schema": [
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/schema.yaml",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/schema.json",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/context.jsonld",
-      "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/string-format/context.jsonld",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/string-format/",
       "rdfData": [],
-      "validationPassed": true,
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-eoap-cct/blob/master/build/tests/cct/string-format/",
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/string-format/index.md"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/string-format/index.md"
         },
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/string-format/index.json"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/string-format/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.string-format"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/bblock/eoap.cct.string-format"
         }
       },
       "@id": "bblocks://eoap.cct.string-format",
@@ -407,9 +442,10 @@
       ],
       "skos:prefLabel": "eaop-cct:String-Format",
       "openAPIDocument": null,
+      "ontology": null,
       "profileOf": null,
       "skos:topConceptOf": {
-        "@id": "https://geolabs.github.io/bblocks-eoap-cct/"
+        "@id": "https://ogcincubator.github.io/bblocks-eoap-cct/"
       }
     },
     {
@@ -434,9 +470,9 @@
         "geospatial",
         "OGC API Processes"
       ],
-      "sourceSchema": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/schema.yaml",
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/geojson/schema.yaml",
       "ldContext": {
-        "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/context.jsonld",
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
@@ -460,34 +496,35 @@
       "shaclShapes": null,
       "schema": [
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.yaml",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.json",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/context.jsonld",
-      "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/geojson/context.jsonld",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/geojson/",
       "rdfData": [],
-      "validationPassed": true,
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-eoap-cct/blob/master/build/tests/cct/geojson/",
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/geojson/index.md"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/geojson/index.md"
         },
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/geojson/index.json"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/geojson/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.geojson"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/bblock/eoap.cct.geojson"
         }
       },
       "@id": "bblocks://eoap.cct.geojson",
@@ -498,9 +535,10 @@
       ],
       "skos:prefLabel": "eaop-cct:GeoJSON",
       "openAPIDocument": null,
+      "ontology": null,
       "profileOf": null,
       "skos:topConceptOf": {
-        "@id": "https://geolabs.github.io/bblocks-eoap-cct/"
+        "@id": "https://ogcincubator.github.io/bblocks-eoap-cct/"
       }
     },
     {
@@ -527,9 +565,9 @@
         "metadata",
         "OGC API Processes"
       ],
-      "sourceSchema": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/schema.yaml",
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/stac/schema.yaml",
       "ldContext": {
-        "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/context.jsonld",
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/stac/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
@@ -553,34 +591,35 @@
       "shaclShapes": null,
       "schema": [
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.yaml",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.json",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/context.jsonld",
-      "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/stac/context.jsonld",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/stac/",
       "rdfData": [],
-      "validationPassed": true,
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-eoap-cct/blob/master/build/tests/cct/stac/",
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/stac/index.md"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/stac/index.md"
         },
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/stac/index.json"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/stac/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.stac"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/bblock/eoap.cct.stac"
         }
       },
       "@id": "bblocks://eoap.cct.stac",
@@ -591,9 +630,10 @@
       ],
       "skos:prefLabel": "eaop-cct:STAC",
       "openAPIDocument": null,
+      "ontology": null,
       "profileOf": null,
       "skos:topConceptOf": {
-        "@id": "https://geolabs.github.io/bblocks-eoap-cct/"
+        "@id": "https://ogcincubator.github.io/bblocks-eoap-cct/"
       }
     },
     {
@@ -610,11 +650,11 @@
       "register": "eoap-cct",
       "dependsOn": [
         "bblocks://ogc.api.processes.v1.schemas.process",
-        "bblocks://eoap.cct.stac",
+        "bblocks://ogc.cwl.v1_2_1.CWLWorkflow",
         "bblocks://eoap.cct.bbox",
         "bblocks://eoap.cct.string-format",
-        "bblocks://eoap.cct.geojson",
-        "bblocks://ogc.cwl.v1_2_1.CWLWorkflow"
+        "bblocks://eoap.cct.stac",
+        "bblocks://eoap.cct.geojson"
       ],
       "scope": "dev",
       "tags": [
@@ -651,37 +691,37 @@
       "highlighted": true,
       "shaclShapes": null,
       "ldContext": {
-        "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
       },
       "schema": [
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.yaml",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.json",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceSchema": "https://geolabs.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/schema.yaml",
-      "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/context.jsonld",
-      "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/",
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/context.jsonld",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/",
       "rdfData": [],
       "validationPassed": true,
-      "testOutputs": "https://github.com/GeoLabs/bblocks-eoap-cct/blob/master/build/tests/cct/cwl-to-ogcprocess/",
+      "testOutputs": "https://github.com/ogcincubator/bblocks-eoap-cct/blob/master/build/tests/cct/cwl-to-ogcprocess/",
       "transforms": [
         {
           "id": "cwl-to-ogcprocess",
           "description": "Converts CWL CommandLineTool or Workflow to OGC API Processes processDescription with support for all EOAP custom types",
           "type": "jq",
-          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/transforms/cwl-to-ogcprocess.jq",
+          "ref": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/transforms/cwl-to-ogcprocess.jq",
           "code": "# Unified transform: CWL CommandLineTool/Workflow to OGC API Processes processDescription\n# Supports all EOAP custom types: BBox, GeoJSON, STAC, and String Formats\n\n# Helper function to extract the root element (first Workflow in $graph, or the document itself)\ndef getRootElement:\n  if has(\"$graph\") then\n    # Find the first Workflow in the $graph array\n    (.\"$graph\" | map(select(.class == \"Workflow\")) | first) // .\"$graph\"[0]\n  else\n    .\n  end;\n\n# Map BBox custom type to OGC schema\ndef mapBBoxType:\n  if (. | type) == \"string\" and ((. | contains(\"bbox.yaml#BBox\")) or (. | contains(\"ogc.yaml#BBox\"))) then\n    {\n      type: \"object\",\n      required: [\"bbox\"],\n      properties: {\n        bbox: {\n          type: \"array\",\n          items: { type: \"number\" },\n          oneOf: [\n            { minItems: 4, maxItems: 4, description: \"2D bbox\" },\n            { minItems: 6, maxItems: 6, description: \"3D bbox\" }\n          ]\n        },\n        crs: {\n          type: \"string\",\n          enum: [\"CRS84\", \"CRS84h\"],\n          default: \"CRS84\"\n        }\n      }\n    }\n  else\n    null\n  end;\n\n# Map GeoJSON custom types to OGC schemas\ndef mapGeoJSONType:\n  if (. | type) == \"string\" then\n    if (. | contains(\"geojson.yaml#\")) then\n      if (. | contains(\"Point\")) then\n        { \n          type: \"object\",\n          required: [\"type\", \"coordinates\"],\n          properties: {\n            type: { type: \"string\", enum: [\"Point\"] },\n            coordinates: { \n              type: \"array\",\n              minItems: 2,\n              maxItems: 3,\n              items: { type: \"number\" }\n            }\n          },\n          format: \"geojson-geometry\"\n        }\n      elif (. | contains(\"Feature\")) then\n        {\n          type: \"object\",\n          required: [\"type\", \"geometry\", \"properties\"],\n          properties: {\n            type: { type: \"string\", enum: [\"Feature\"] },\n            geometry: { type: \"object\" },\n            properties: { type: \"object\" }\n          },\n          format: \"geojson-feature\"\n        }\n      elif (. | contains(\"FeatureCollection\")) then\n        {\n          type: \"object\",\n          required: [\"type\", \"features\"],\n          properties: {\n            type: { type: \"string\", enum: [\"FeatureCollection\"] },\n            features: { \n              type: \"array\",\n              items: { type: \"object\" }\n            }\n          },\n          format: \"geojson-feature-collection\"\n        }\n      else\n        { type: \"object\", format: \"geojson-geometry\" }\n      end\n    else\n      null\n    end\n  else\n    null\n  end;\n\n# Map STAC custom types to OGC schemas  \ndef mapSTACType:\n  if (. | type) == \"string\" and (. | contains(\"stac.yaml#\")) then\n    if (. | contains(\"Item\")) then\n      {\n        type: \"object\",\n        required: [\"type\", \"stac_version\", \"id\", \"geometry\", \"properties\", \"links\", \"assets\"],\n        properties: {\n          type: { type: \"string\", enum: [\"Feature\"] },\n          stac_version: { type: \"string\" },\n          id: { type: \"string\" },\n          geometry: { type: \"object\" },\n          properties: { type: \"object\" },\n          links: { type: \"array\" },\n          assets: { type: \"object\" }\n        },\n        format: \"stac-item\"\n      }\n    elif (. | contains(\"Collection\")) then\n      {\n        type: \"object\",\n        required: [\"type\", \"stac_version\", \"id\", \"description\", \"license\", \"extent\", \"links\"],\n        format: \"stac-collection\"\n      }\n    elif (. | contains(\"Catalog\")) then\n      {\n        type: \"object\",\n        required: [\"type\", \"stac_version\", \"id\", \"description\", \"links\"],\n        format: \"stac-catalog\"\n      }\n    else\n      { type: \"object\", format: \"stac\" }\n    end\n  else\n    null\n  end;\n\n# Map string format custom types to OGC schemas\ndef mapStringFormatType:\n  if (. | type) == \"string\" and (. | contains(\"string-format.yaml#\")) then\n    if (. | contains(\"DateTime\")) then\n      { type: \"string\", format: \"date-time\" }\n    elif (. | contains(\"Date\")) then\n      { type: \"string\", format: \"date\" }\n    elif (. | contains(\"Time\")) then\n      { type: \"string\", format: \"time\" }\n    elif (. | contains(\"Duration\")) then\n      { type: \"string\", format: \"duration\" }\n    elif (. | contains(\"URI\")) then\n      { type: \"string\", format: \"uri\" }\n    elif (. | contains(\"Email\")) then\n      { type: \"string\", format: \"email\" }\n    elif (. | contains(\"UUID\")) then\n      { type: \"string\", format: \"uuid\" }\n    elif (. | contains(\"IPv4\")) then\n      { type: \"string\", format: \"ipv4\" }\n    elif (. | contains(\"IPv6\")) then\n      { type: \"string\", format: \"ipv6\" }\n    elif (. | contains(\"Hostname\")) then\n      { type: \"string\", format: \"hostname\" }\n    else\n      { type: \"string\" }\n    end\n  else\n    null\n  end;\n\n# Map CWL File type to OGC schema\ndef mapFileType:\n  if . == \"File\" or . == \"stdout\" or . == \"stderr\" then\n    {\n      type: \"string\",\n      contentMediaType: \"application/octet-stream\"\n    }\n  else\n    null\n  end;\n\n# Map CWL Directory type to OGC schema\ndef mapDirectoryType:\n  if . == \"Directory\" then\n    {\n      type: \"string\",\n      contentMediaType: \"application/x-directory\"\n    }\n  else\n    null\n  end;\n\n# Unified type mapper - tries all type mappings\ndef mapType:\n  . as $type |\n  # Check if it's an array type (e.g., \"string[]\", \"int[]\", etc.)\n  if ($type | type) == \"string\" and ($type | endswith(\"[]\")) then\n    # Extract base type by removing \"[]\" suffix\n    ($type | sub(\"\\\\[\\\\]$\"; \"\")) as $baseType |\n    {\n      type: \"array\",\n      items: ($baseType | mapType)\n    }\n  else\n    (mapBBoxType // mapGeoJSONType // mapSTACType // mapStringFormatType // mapFileType // mapDirectoryType // \n     if ($type | type) == \"string\" then\n       if $type == \"string\" then { type: \"string\" }\n       elif $type == \"int\" or $type == \"long\" then { type: \"integer\" }\n       elif $type == \"float\" or $type == \"double\" then { type: \"number\" }\n       elif $type == \"boolean\" then { type: \"boolean\" }\n       else { type: \"string\" }\n       end\n     else\n       { type: \"object\" }\n     end\n    )\n  end;\n\n# Process inputs\ndef processInputs:\n  if . then\n    if (. | type) == \"array\" then\n      # Workflow style: inputs is an array with id fields\n      map(\n        .type as $inputType |\n        {\n          key: .id,\n          value: {\n            title: (.label // .id),\n            description: (.doc // \"\"),\n            schema: ($inputType | mapType),\n            minOccurs: 1,\n            maxOccurs: 1\n          }\n        }\n      ) | from_entries\n    else\n      # CommandLineTool style: inputs is an object\n      to_entries | map(\n        .value.type as $inputType |\n        {\n          key: .key,\n          value: {\n            title: (.value.label // .key),\n            description: (.value.doc // \"\"),\n            schema: ($inputType | mapType),\n            minOccurs: 1,\n            maxOccurs: 1\n          }\n        }\n      ) | from_entries\n    end\n  else\n    {}\n  end;\n\n# Process outputs\ndef processOutputs:\n  if . then\n    if (. | type) == \"array\" then\n      # Workflow style: outputs is an array with id fields\n      map(\n        .type as $outputType |\n        {\n          key: .id,\n          value: {\n            title: (.label // .id),\n            description: (.doc // \"\"),\n            schema: ($outputType | mapType)\n          }\n        }\n      ) | from_entries\n    else\n      # CommandLineTool style: outputs is an object\n      to_entries | map(\n        .value.type as $outputType |\n        {\n          key: .key,\n          value: {\n            title: (.value.label // .key),\n            description: (.value.doc // \"\"),\n            schema: ($outputType | mapType)\n          }\n        }\n      ) | from_entries\n    end\n  else\n    {}\n  end;\n\n# Main transformation\ngetRootElement as $root |\n{\n  id: ($root.id // (if ($root.baseCommand | type) == \"array\" then $root.baseCommand[0] else $root.baseCommand end) // \"cwl-process\"),\n  version: \"1.0.0\",\n  title: ($root.label // \"CWL Process\"),\n  description: ($root.doc // \"Process converted from CWL\"),\n  \n  inputs: ($root.inputs | processInputs),\n  outputs: ($root.outputs | processOutputs),\n  \n  jobControlOptions: [\"async-execute\", \"sync-execute\"],\n  outputTransmission: [\"value\", \"reference\"]\n}\n",
           "inputs": {
             "mediaTypes": [
@@ -714,7 +754,7 @@
           "id": "cwl-to-ogcprocess-refs",
           "description": "Converts CWL CommandLineTool or Workflow to OGC API Processes processDescription with support for all EOAP custom types",
           "type": "jq",
-          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/transforms/cwl-to-ogcprocess-refs.jq",
+          "ref": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/cwl-to-ogcprocess/transforms/cwl-to-ogcprocess-refs.jq",
           "code": "# Unified transform: CWL CommandLineTool/Workflow to OGC API Processes processDescription\n# Uses reference schemas (allOf + $ref) for EOAP custom types: BBox, GeoJSON, STAC\n\n# Helper function to extract the root element (first Workflow in $graph, or the document itself)\ndef getRootElement:\n  if has(\"$graph\") then\n    # Find the first Workflow in the $graph array\n    (.\"$graph\" | map(select(.class == \"Workflow\")) | first) // .\"$graph\"[0]\n  else\n    .\n  end;\n\n# Map BBox custom type to OGC schema with reference\ndef mapBBoxType:\n  if (. | type) == \"string\" and ((. | contains(\"bbox.yaml#BBox\")) or (. | contains(\"ogc.yaml#BBox\"))) then\n    {\n      allOf: [\n        {\n          format: \"ogc-bbox\"\n        },\n        {\n          \"$ref\": \"https://raw.githubusercontent.com/opengeospatial/ogcapi-processes/master/openapi/schemas/processes-core/bbox.yaml\"\n        }\n      ]\n    }\n  else\n    null\n  end;\n\n# Map GeoJSON custom types to OGC schemas with references\ndef mapGeoJSONType:\n  if (. | type) == \"string\" then\n    if (. | contains(\"geojson.yaml#\")) then\n      if (. | contains(\"Point\")) then\n        {\n          allOf: [\n            {\n              format: \"geojson-geometry\"\n            },\n            {\n              \"$ref\": \"https://geojson.org/schema/Point.json\"\n            }\n          ]\n        }\n      elif (. | contains(\"Feature\")) then\n        {\n          allOf: [\n            {\n              format: \"geojson-feature\"\n            },\n            {\n              \"$ref\": \"https://geojson.org/schema/Feature.json\"\n            }\n          ]\n        }\n      elif (. | contains(\"FeatureCollection\")) then\n        {\n          allOf: [\n            {\n              format: \"geojson-feature-collection\"\n            },\n            {\n              \"$ref\": \"https://geojson.org/schema/FeatureCollection.json\"\n            }\n          ]\n        }\n      elif (. | contains(\"Polygon\")) then\n        {\n          allOf: [\n            {\n              format: \"geojson-geometry\"\n            },\n            {\n              \"$ref\": \"https://geojson.org/schema/Polygon.json\"\n            }\n          ]\n        }\n      else\n        {\n          allOf: [\n            {\n              format: \"geojson-geometry\"\n            },\n            {\n              \"$ref\": \"https://geojson.org/schema/Geometry.json\"\n            }\n          ]\n        }\n      end\n    else\n      null\n    end\n  else\n    null\n  end;\n\n# Map STAC custom types to OGC schemas with references\ndef mapSTACType:\n  if (. | type) == \"string\" and (. | contains(\"stac.yaml#\")) then\n    if (. | contains(\"Item\")) then\n      {\n        allOf: [\n          {\n            format: \"stac-item\"\n          },\n          {\n            \"$ref\": \"https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/heads/release/v1.0.0/stac-spec/item-spec/json-schema/item.json\"\n          }\n        ]\n      }\n    elif (. | contains(\"Collection\")) then\n      {\n        allOf: [\n          {\n            format: \"stac-collection\"\n          },\n          {\n            \"$ref\": \"https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/heads/release/v1.0.0/stac-spec/collection-spec/json-schema/collection.json\"\n          }\n        ]\n      }\n    elif (. | contains(\"Catalog\")) then\n      {\n        allOf: [\n          {\n            format: \"stac-catalog\"\n          },\n          {\n            \"$ref\": \"https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/heads/release/v1.0.0/stac-spec/catalog-spec/json-schema/catalog.json\"\n          }\n        ]\n      }\n    else\n      {\n        allOf: [\n          {\n            format: \"stac\"\n          },\n          {\n            \"$ref\": \"https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/heads/release/v1.0.0/stac-spec/catalog-spec/json-schema/catalog.json\"\n          }\n        ]\n      }\n    end\n  else\n    null\n  end;\n\n# Map string format custom types to OGC schemas\ndef mapStringFormatType:\n  if (. | type) == \"string\" and (. | contains(\"string-format.yaml#\")) then\n    if (. | contains(\"DateTime\")) then\n      { type: \"string\", format: \"date-time\" }\n    elif (. | contains(\"Date\")) then\n      { type: \"string\", format: \"date\" }\n    elif (. | contains(\"Time\")) then\n      { type: \"string\", format: \"time\" }\n    elif (. | contains(\"Duration\")) then\n      { type: \"string\", format: \"duration\" }\n    elif (. | contains(\"URI\")) then\n      { type: \"string\", format: \"uri\" }\n    elif (. | contains(\"Email\")) then\n      { type: \"string\", format: \"email\" }\n    elif (. | contains(\"UUID\")) then\n      { type: \"string\", format: \"uuid\" }\n    elif (. | contains(\"IPv4\")) then\n      { type: \"string\", format: \"ipv4\" }\n    elif (. | contains(\"IPv6\")) then\n      { type: \"string\", format: \"ipv6\" }\n    elif (. | contains(\"Hostname\")) then\n      { type: \"string\", format: \"hostname\" }\n    else\n      { type: \"string\" }\n    end\n  else\n    null\n  end;\n\n# Map CWL File type to OGC schema\ndef mapFileType:\n  if . == \"File\" or . == \"stdout\" or . == \"stderr\" then\n    {\n      type: \"string\",\n      contentMediaType: \"application/octet-stream\"\n    }\n  else\n    null\n  end;\n\n# Map CWL Directory type to OGC schema\ndef mapDirectoryType:\n  if . == \"Directory\" then\n    {\n      type: \"string\",\n      contentMediaType: \"application/x-directory\"\n    }\n  else\n    null\n  end;\n\n# Unified type mapper - tries all type mappings\ndef mapType:\n  . as $type |\n  # Check if it's an array type (e.g., \"string[]\", \"int[]\", etc.)\n  if ($type | type) == \"string\" and ($type | endswith(\"[]\")) then\n    # Extract base type by removing \"[]\" suffix\n    ($type | sub(\"\\\\[\\\\]$\"; \"\")) as $baseType |\n    {\n      type: \"array\",\n      items: ($baseType | mapType)\n    }\n  else\n    (mapBBoxType // mapGeoJSONType // mapSTACType // mapStringFormatType // mapFileType // mapDirectoryType // \n     if ($type | type) == \"string\" then\n       if $type == \"string\" then { type: \"string\" }\n       elif $type == \"int\" or $type == \"long\" then { type: \"integer\" }\n       elif $type == \"float\" or $type == \"double\" then { type: \"number\" }\n       elif $type == \"boolean\" then { type: \"boolean\" }\n       else { type: \"string\" }\n       end\n     else\n       { type: \"object\" }\n     end\n    )\n  end;\n\n# Process inputs\ndef processInputs:\n  if . then\n    if (. | type) == \"array\" then\n      # Workflow style: inputs is an array with id fields\n      map(\n        .type as $inputType |\n        {\n          key: .id,\n          value: {\n            title: (.label // .id),\n            description: (.doc // \"\"),\n            schema: ($inputType | mapType),\n            minOccurs: 1,\n            maxOccurs: 1\n          }\n        }\n      ) | from_entries\n    else\n      # CommandLineTool style: inputs is an object\n      to_entries | map(\n        .value.type as $inputType |\n        {\n          key: .key,\n          value: {\n            title: (.value.label // .key),\n            description: (.value.doc // \"\"),\n            schema: ($inputType | mapType),\n            minOccurs: 1,\n            maxOccurs: 1\n          }\n        }\n      ) | from_entries\n    end\n  else\n    {}\n  end;\n\n# Process outputs\ndef processOutputs:\n  if . then\n    if (. | type) == \"array\" then\n      # Workflow style: outputs is an array with id fields\n      map(\n        .type as $outputType |\n        {\n          key: .id,\n          value: {\n            title: (.label // .id),\n            description: (.doc // \"\"),\n            schema: ($outputType | mapType)\n          }\n        }\n      ) | from_entries\n    else\n      # CommandLineTool style: outputs is an object\n      to_entries | map(\n        .value.type as $outputType |\n        {\n          key: .key,\n          value: {\n            title: (.value.label // .key),\n            description: (.value.doc // \"\"),\n            schema: ($outputType | mapType)\n          }\n        }\n      ) | from_entries\n    end\n  else\n    {}\n  end;\n\n# Main transformation\ngetRootElement as $root |\n{\n  id: ($root.id // (if ($root.baseCommand | type) == \"array\" then $root.baseCommand[0] else $root.baseCommand end) // \"cwl-process\"),\n  version: \"1.0.0\",\n  title: ($root.label // \"CWL Process\"),\n  description: ($root.doc // \"Process converted from CWL\"),\n  \n  inputs: ($root.inputs | processInputs),\n  outputs: ($root.outputs | processOutputs),\n  \n  jobControlOptions: [\"async-execute\", \"sync-execute\"],\n  outputTransmission: [\"value\", \"reference\"]\n}\n",
           "inputs": {
             "mediaTypes": [
@@ -747,15 +787,15 @@
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/cwl-to-ogcprocess/index.md"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/cwl-to-ogcprocess/index.md"
         },
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/cwl-to-ogcprocess/index.json"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/cwl-to-ogcprocess/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.cwl-to-ogcprocess"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/bblock/eoap.cct.cwl-to-ogcprocess"
         }
       },
       "@id": "bblocks://eoap.cct.cwl-to-ogcprocess",
@@ -766,9 +806,10 @@
       ],
       "skos:prefLabel": "CWL to OGC API Processes Profile",
       "openAPIDocument": null,
+      "ontology": null,
       "profileOf": null,
       "skos:topConceptOf": {
-        "@id": "https://geolabs.github.io/bblocks-eoap-cct/"
+        "@id": "https://ogcincubator.github.io/bblocks-eoap-cct/"
       }
     }
   ],

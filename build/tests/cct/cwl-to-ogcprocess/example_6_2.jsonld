@@ -1,5 +1,5 @@
 {
-  "@context": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
+  "@context": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
   "cwlVersion": "v1.2",
   "$namespaces": {
     "s": "https://schema.org/"

@@ -22,8 +22,8 @@
     "geospatial",
     "OGC API Processes"
   ],
-  "sourceSchema": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/schema.yaml",
-  "ldContext": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/context.jsonld",
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/geojson/schema.yaml",
+  "ldContext": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/context.jsonld",
   "sources": [
     {
       "title": "GeoJSON Format Specification (RFC 7946)",
@@ -42,13 +42,14 @@
   "group": "EOAP",
   "shaclShapes": {},
   "schema": {
-    "application/yaml": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.yaml",
-    "application/json": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.json"
+    "application/yaml": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.json"
   },
-  "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/context.jsonld",
-  "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/geojson/context.jsonld",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/geojson/",
   "rdfData": [],
-  "validationPassed": true,
+  "validationPassed": false,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-eoap-cct/blob/master/build/tests/cct/geojson/",
   "examples": [
     {
       "title": "GeoJSON Point",
@@ -58,7 +59,7 @@
           "language": "yaml",
           "ref": "examples/point.yaml",
           "code": "type: Point\ncoordinates: [125.6, 10.1]\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_1_1.yaml"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_1_1.yaml"
         }
       ]
     },
@@ -70,7 +71,7 @@
           "language": "yaml",
           "ref": "examples/feature.yaml",
           "code": "type: Feature\nid: point-1\ngeometry:\n  type: Point\n  coordinates: [125.6, 10.1]\nproperties:\n  name: Sample Point\n  description: A point feature example\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_2_1.yaml"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_2_1.yaml"
         }
       ]
     },
@@ -82,12 +83,12 @@
           "language": "yaml",
           "ref": "examples/polygon.yaml",
           "code": "type: Polygon\ncoordinates:\n  - - [100.0, 0.0]\n    - [101.0, 0.0]\n    - [101.0, 1.0]\n    - [100.0, 1.0]\n    - [100.0, 0.0]\nbbox: [100.0, 0.0, 101.0, 1.0]\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_3_1.yaml"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_3_1.yaml"
         }
       ]
     }
   ],
   "annotatedSchema": "$ref: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml\nx-jsonld-extra-terms:\n  Point: https://purl.org/geojson/vocab#Point\n  LineString: https://purl.org/geojson/vocab#LineString\n  Polygon: https://purl.org/geojson/vocab#Polygon\n  MultiPoint: https://purl.org/geojson/vocab#MultiPoint\n  MultiLineString: https://purl.org/geojson/vocab#MultiLineString\n  MultiPolygon: https://purl.org/geojson/vocab#MultiPolygon\n  GeometryCollection: https://purl.org/geojson/vocab#GeometryCollection\n  Feature: https://purl.org/geojson/vocab#Feature\n  FeatureCollection: https://purl.org/geojson/vocab#FeatureCollection\n  geometry: https://purl.org/geojson/vocab#geometry\n  coordinates: https://purl.org/geojson/vocab#coordinates\n  properties: https://purl.org/geojson/vocab#properties\n  features: https://purl.org/geojson/vocab#features\n  bbox: https://purl.org/geojson/vocab#bbox\nx-jsonld-vocab: https://www.opengis.net/def/metamodel/ogc-na/\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  schema: https://schema.org/\n  dct: http://purl.org/dc/terms/\n  cwl: https://w3id.org/cwl/cwl#\n  eoap: https://eoap.github.io/schemas/cwl/\n",
-  "gitRepository": "https://github.com/GeoLabs/bblocks-eoap-cct",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-eoap-cct",
   "gitPath": "_sources/geojson"
 }

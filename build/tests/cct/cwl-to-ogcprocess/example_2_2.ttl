@@ -9,11 +9,11 @@
 [] cwl:cwlVersion <file:///github/workspace/v1.2> ;
     cwl:graph [ rdfs:label "Echo GeoJSON Feature"^^xsd:string ;
             dct:identifier <file:///github/workspace/clt> ;
-            ogcproc:input _:Nb3ba4bc271404733b6fe1025f9f3695f ;
-            ogcproc:output _:N3bc624f5d6364fa08ed084bd679eaf47 ;
+            ogcproc:input _:N10a204cfdccf42de9168cf90df510acc ;
+            ogcproc:output _:N116ac412478740239fd49bf54cd9730e ;
             cwl:baseCommand "\"echo\""^^rdf:JSON ;
-            cwl:input _:Nb3ba4bc271404733b6fe1025f9f3695f ;
-            cwl:output _:N3bc624f5d6364fa08ed084bd679eaf47 ;
+            cwl:input _:N10a204cfdccf42de9168cf90df510acc ;
+            cwl:output _:N116ac412478740239fd49bf54cd9730e ;
             cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
                 [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml> ] ;
                     ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
@@ -21,11 +21,11 @@
             ns1:type <file:///github/workspace/CommandLineTool> ],
         [ rdfs:label "GeoJSON Feature Processing Workflow"^^xsd:string ;
             dct:identifier <file:///github/workspace/feature-workflow> ;
-            ogcproc:input _:N0f879c478bd74508834e78a45b5166ee ;
-            ogcproc:output _:N58185ee233984825aeb66ab30a94522d ;
+            ogcproc:input _:N8368fb5c1f094f7d82d78c4476652309 ;
+            ogcproc:output _:Ncd53c2517b8e41f9bf2c8c85c9db0113 ;
             rdfs:comment "Workflow that processes GeoJSON Feature input and generates output"^^xsd:string ;
-            cwl:input _:N0f879c478bd74508834e78a45b5166ee ;
-            cwl:output _:N58185ee233984825aeb66ab30a94522d ;
+            cwl:input _:N8368fb5c1f094f7d82d78c4476652309 ;
+            cwl:output _:Ncd53c2517b8e41f9bf2c8c85c9db0113 ;
             cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
                 [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml> ] ;
                     ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
@@ -34,7 +34,9 @@
                             cwl:run <file:///github/workspace/#clt> ] ] ;
             ns1:type <file:///github/workspace/Workflow> ] .
 
-_:N012100b1314948e2a19a33fa7318d2d3 rdfs:label "Area of interest"^^xsd:string ;
+_:N04f4f1f84d7f496da5ec6f7eecf7b1a6 cwl:echo_output [ cwl:type <file:///github/workspace/stdout> ] .
+
+_:N222da70f427644afb6327f2c1a3d7aee rdfs:label "Area of interest"^^xsd:string ;
     dct:format <https://www.iana.org/assignments/media-types/application/geo+json> ;
     ogcproc:schemaType "object"^^xsd:string ;
     rdfs:comment "Area of interest defined in GeoJSON format"^^xsd:string ;
@@ -50,7 +52,7 @@ _:N012100b1314948e2a19a33fa7318d2d3 rdfs:label "Area of interest"^^xsd:string ;
 """^^xsd:string ] ;
     cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature> .
 
-_:N36f1b521b2984066870805ea18d00e16 rdfs:label "Area of interest"^^xsd:string ;
+_:N529c2d30383d4e46a85d9b9acc834e12 rdfs:label "Area of interest"^^xsd:string ;
     dct:format <https://www.iana.org/assignments/media-types/application/geo+json> ;
     dct:identifier <file:///github/workspace/aoi> ;
     ogcproc:schemaType "object"^^xsd:string ;
@@ -58,29 +60,27 @@ _:N36f1b521b2984066870805ea18d00e16 rdfs:label "Area of interest"^^xsd:string ;
     rdfs:seeAlso <https://purl.org/geojson/vocab#Feature> ;
     cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature> .
 
-_:N4eae8ab58dc04127a2652f52dbbc51e0 cwl:echo_output [ cwl:type <file:///github/workspace/stdout> ] .
+_:N5f6c6fa523294b5c91fbe18d12100684 cwl:aoi _:N222da70f427644afb6327f2c1a3d7aee .
 
-_:N7ec615905a9e4273b18b2cc6a4349131 cwl:aoi _:N012100b1314948e2a19a33fa7318d2d3 .
-
-_:Nf526bf7c784f4c3ea7347985fafd1632 rdfs:label "Echo output"^^xsd:string ;
+_:Nf75554450d784a6fbb60de6cdafba1b6 rdfs:label "Echo output"^^xsd:string ;
     dct:identifier <file:///github/workspace/echo_output> ;
     rdfs:comment "Echoed GeoJSON Feature information"^^xsd:string ;
     cwl:outputSource <file:///github/workspace/echo_step/echo_output> ;
     cwl:type <file:///github/workspace/File> .
 
-_:N0f879c478bd74508834e78a45b5166ee a ogcproc:InputDescription ;
-    rdf:first _:N36f1b521b2984066870805ea18d00e16 ;
+_:N10a204cfdccf42de9168cf90df510acc a ogcproc:InputDescription ;
+    rdf:first _:N5f6c6fa523294b5c91fbe18d12100684 ;
     rdf:rest () .
 
-_:N3bc624f5d6364fa08ed084bd679eaf47 a ogcproc:OutputDescription ;
-    rdf:first _:N4eae8ab58dc04127a2652f52dbbc51e0 ;
+_:N116ac412478740239fd49bf54cd9730e a ogcproc:OutputDescription ;
+    rdf:first _:N04f4f1f84d7f496da5ec6f7eecf7b1a6 ;
     rdf:rest () .
 
-_:N58185ee233984825aeb66ab30a94522d a ogcproc:OutputDescription ;
-    rdf:first _:Nf526bf7c784f4c3ea7347985fafd1632 ;
+_:N8368fb5c1f094f7d82d78c4476652309 a ogcproc:InputDescription ;
+    rdf:first _:N529c2d30383d4e46a85d9b9acc834e12 ;
     rdf:rest () .
 
-_:Nb3ba4bc271404733b6fe1025f9f3695f a ogcproc:InputDescription ;
-    rdf:first _:N7ec615905a9e4273b18b2cc6a4349131 ;
+_:Ncd53c2517b8e41f9bf2c8c85c9db0113 a ogcproc:OutputDescription ;
+    rdf:first _:Nf75554450d784a6fbb60de6cdafba1b6 ;
     rdf:rest () .
 

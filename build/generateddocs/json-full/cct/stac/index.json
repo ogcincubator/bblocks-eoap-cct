@@ -24,8 +24,8 @@
     "metadata",
     "OGC API Processes"
   ],
-  "sourceSchema": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/schema.yaml",
-  "ldContext": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/context.jsonld",
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/stac/schema.yaml",
+  "ldContext": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/stac/context.jsonld",
   "sources": [
     {
       "title": "STAC Specification v1.0.0",
@@ -44,13 +44,14 @@
   "group": "EOAP",
   "shaclShapes": {},
   "schema": {
-    "application/yaml": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.yaml",
-    "application/json": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.json"
+    "application/yaml": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.json"
   },
-  "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/context.jsonld",
-  "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/stac/context.jsonld",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-eoap-cct/_sources/stac/",
   "rdfData": [],
-  "validationPassed": true,
+  "validationPassed": false,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-eoap-cct/blob/master/build/tests/cct/stac/",
   "examples": [
     {
       "title": "STAC Item",
@@ -60,7 +61,7 @@
           "language": "yaml",
           "ref": "examples/item.yaml",
           "code": "type: Feature\nstac_version: \"1.0.0\"\nid: S2A_MSIL2A_20231201T103421\ngeometry:\n  type: Polygon\n  coordinates:\n    - - [-5.0, 51.0]\n      - [-4.0, 51.0]\n      - [-4.0, 52.0]\n      - [-5.0, 52.0]\n      - [-5.0, 51.0]\nbbox: [-5.0, 51.0, -4.0, 52.0]\nproperties:\n  datetime: \"2023-12-01T10:34:21Z\"\n  platform: sentinel-2a\nlinks:\n  - rel: self\n    href: https://example.com/items/S2A_MSIL2A_20231201T103421.json\n    type: application/json\nassets:\n  thumbnail:\n    href: https://example.com/thumbnails/S2A_MSIL2A_20231201T103421.jpg\n    type: image/jpeg\n    roles: [thumbnail]\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/stac/example_1_1.yaml"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/tests/cct/stac/example_1_1.yaml"
         }
       ]
     },
@@ -72,12 +73,12 @@
           "language": "yaml",
           "ref": "examples/catalog.yaml",
           "code": "type: Catalog\nstac_version: \"1.0.0\"\nid: sentinel-2-catalog\ntitle: Sentinel-2 Data Catalog\ndescription: Catalog of Sentinel-2 satellite imagery\nlinks:\n  - rel: self\n    href: https://example.com/catalogs/sentinel-2/catalog.json\n    type: application/json\n  - rel: root\n    href: https://example.com/catalog.json\n    type: application/json\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/stac/example_2_1.yaml"
+          "url": "https://ogcincubator.github.io/bblocks-eoap-cct/build/tests/cct/stac/example_2_1.yaml"
         }
       ]
     }
   ],
   "annotatedSchema": "$ref: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml\nx-jsonld-extra-terms:\n  Catalog: https://stac-extensions.github.io/Catalog\n  Collection: https://stac-extensions.github.io/Collection\n  Item: https://stac-extensions.github.io/Item\n  Asset: https://stac-extensions.github.io/Asset\n  Link: https://stac-extensions.github.io/Link\n  stac_version: https://stac-extensions.github.io/version\n  stac_extensions: https://stac-extensions.github.io/extensions\n  assets: https://stac-extensions.github.io/assets\n  links:\n    x-jsonld-id: https://stac-extensions.github.io/links\n    x-jsonld-container: '@list'\n  providers:\n    x-jsonld-id: https://schema.org/provider\n    x-jsonld-container: '@list'\nx-jsonld-vocab: https://www.opengis.net/def/metamodel/ogc-na/\nx-jsonld-prefixes:\n  stac: https://stac-extensions.github.io/\n  schema: https://schema.org/\n  dct: http://purl.org/dc/terms/\n  cwl: https://w3id.org/cwl/cwl#\n  eoap: https://eoap.github.io/schemas/cwl/\n",
-  "gitRepository": "https://github.com/GeoLabs/bblocks-eoap-cct",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-eoap-cct",
   "gitPath": "_sources/stac"
 }

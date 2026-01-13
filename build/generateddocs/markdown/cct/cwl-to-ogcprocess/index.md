@@ -256,7 +256,7 @@ $graph:
 #### jsonld
 ```jsonld
 {
-  "@context": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
+  "@context": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
   "cwlVersion": "v1.2",
   "$graph": [
     {
@@ -361,39 +361,45 @@ $graph:
 [] cwl:cwlVersion <file:///github/workspace/v1.2> ;
     cwl:graph [ rdfs:label "Echo OGC BBox"^^xsd:string ;
             dct:identifier <file:///github/workspace/clt> ;
-            ogcproc:input _:N918ff8aa5f5b4077b2a113a3c4419c66 ;
-            ogcproc:output _:N23f28c41835540b6867578826ea57f19 ;
+            ogcproc:input _:N9b570d691a92443ca5810809d1ea1d23 ;
+            ogcproc:output _:N7e5e3440145a44419f37bb2c650daf5d ;
             cwl:baseCommand "\"echo\""^^rdf:JSON ;
-            cwl:input _:N918ff8aa5f5b4077b2a113a3c4419c66 ;
-            cwl:output _:N23f28c41835540b6867578826ea57f19 ;
-            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
-                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
+            cwl:input _:N9b570d691a92443ca5810809d1ea1d23 ;
+            cwl:output _:N7e5e3440145a44419f37bb2c650daf5d ;
+            cwl:requirements [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
+                [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ] ;
             cwl:stdout "echo_output.txt"^^xsd:string ;
             ns1:type <file:///github/workspace/CommandLineTool> ],
         [ rdfs:label "OGC BBox Processing Workflow"^^xsd:string ;
             dct:identifier <file:///github/workspace/bbox-workflow> ;
-            ogcproc:input _:Na6e468c76d08461c9153ce59b3a95a5e ;
-            ogcproc:output _:N1d8c6926db324222922718737682f815 ;
+            ogcproc:input _:N2aa0e2b2048d40efadd4056fe2da99ff ;
+            ogcproc:output _:Nb7d959c183c64ad589323871e9c2573a ;
             rdfs:comment "Workflow that processes OGC BBox input and generates output"^^xsd:string ;
-            cwl:input _:Na6e468c76d08461c9153ce59b3a95a5e ;
-            cwl:output _:N1d8c6926db324222922718737682f815 ;
-            cwl:requirements [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
-                [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ] ;
+            cwl:input _:N2aa0e2b2048d40efadd4056fe2da99ff ;
+            cwl:output _:Nb7d959c183c64ad589323871e9c2573a ;
+            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
+                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
             cwl:steps [ cwl:echo_step [ cwl:in [ cwl:aoi "aoi" ] ;
                             cwl:out ( "echo_output" ) ;
                             cwl:run <file:///github/workspace/#clt> ] ] ;
             ns1:type <file:///github/workspace/Workflow> ] .
 
-_:N2ef283060df34ccbbbc9a20a4de88be2 cwl:aoi [ rdfs:label "Area of interest"^^xsd:string ;
-            ogcproc:itemsType "number"^^xsd:string ;
-            ogcproc:maxItems 6 ;
-            ogcproc:minItems 4 ;
-            ogcproc:schemaType "array"^^xsd:string ;
-            rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
-            rdfs:seeAlso geo:BoundingBox ;
-            cwl:inputBinding [ cwl:valueFrom """${
+_:N0123d86b40ba4ca693dd762dc38e8bbb rdfs:label "Echo output"^^xsd:string ;
+    dct:identifier <file:///github/workspace/echo_output> ;
+    rdfs:comment "Echoed BBox information"^^xsd:string ;
+    cwl:outputSource <file:///github/workspace/echo_step/echo_output> ;
+    cwl:type <file:///github/workspace/File> .
+
+_:N63da9710aec54c399896bb16368533a7 rdfs:label "Area of interest"^^xsd:string ;
+    ogcproc:itemsType "number"^^xsd:string ;
+    ogcproc:maxItems 6 ;
+    ogcproc:minItems 4 ;
+    ogcproc:schemaType "array"^^xsd:string ;
+    rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
+    rdfs:seeAlso geo:BoundingBox ;
+    cwl:inputBinding [ cwl:valueFrom """${
   // Validate the length of bbox to be either 4 or 6
   var bboxLength = inputs.aoi.bbox.length;
   if (bboxLength !== 4 && bboxLength !== 6) {
@@ -403,17 +409,9 @@ _:N2ef283060df34ccbbbc9a20a4de88be2 cwl:aoi [ rdfs:label "Area of interest"^^xsd
   return inputs.aoi.bbox.join(' ') + " CRS: " + inputs.aoi.crs;
 }
 """^^xsd:string ] ;
-            cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> ] .
+    cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> .
 
-_:N51819f1fe53045fbaa45ea905e03f182 cwl:echo_output [ cwl:type <file:///github/workspace/stdout> ] .
-
-_:N8e43ce6f56a34818a16be5fc76be64e6 rdfs:label "Echo output"^^xsd:string ;
-    dct:identifier <file:///github/workspace/echo_output> ;
-    rdfs:comment "Echoed BBox information"^^xsd:string ;
-    cwl:outputSource <file:///github/workspace/echo_step/echo_output> ;
-    cwl:type <file:///github/workspace/File> .
-
-_:Nff2ddb3123c24035a35b4c9980d59436 rdfs:label "Area of interest"^^xsd:string ;
+_:N6456c3df4272487db91edcd2db86f725 rdfs:label "Area of interest"^^xsd:string ;
     dct:identifier <file:///github/workspace/aoi> ;
     ogcproc:itemsType "number"^^xsd:string ;
     ogcproc:maxItems 6 ;
@@ -423,20 +421,24 @@ _:Nff2ddb3123c24035a35b4c9980d59436 rdfs:label "Area of interest"^^xsd:string ;
     rdfs:seeAlso geo:BoundingBox ;
     cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> .
 
-_:N1d8c6926db324222922718737682f815 a ogcproc:OutputDescription ;
-    rdf:first _:N8e43ce6f56a34818a16be5fc76be64e6 ;
+_:Na9e5bd2930c54eb2a4f7726083accf83 cwl:aoi _:N63da9710aec54c399896bb16368533a7 .
+
+_:Nc3899f595b3b46b2a175179c94076d04 cwl:echo_output [ cwl:type <file:///github/workspace/stdout> ] .
+
+_:N2aa0e2b2048d40efadd4056fe2da99ff a ogcproc:InputDescription ;
+    rdf:first _:N6456c3df4272487db91edcd2db86f725 ;
     rdf:rest () .
 
-_:N23f28c41835540b6867578826ea57f19 a ogcproc:OutputDescription ;
-    rdf:first _:N51819f1fe53045fbaa45ea905e03f182 ;
+_:N7e5e3440145a44419f37bb2c650daf5d a ogcproc:OutputDescription ;
+    rdf:first _:Nc3899f595b3b46b2a175179c94076d04 ;
     rdf:rest () .
 
-_:N918ff8aa5f5b4077b2a113a3c4419c66 a ogcproc:InputDescription ;
-    rdf:first _:N2ef283060df34ccbbbc9a20a4de88be2 ;
+_:N9b570d691a92443ca5810809d1ea1d23 a ogcproc:InputDescription ;
+    rdf:first _:Na9e5bd2930c54eb2a4f7726083accf83 ;
     rdf:rest () .
 
-_:Na6e468c76d08461c9153ce59b3a95a5e a ogcproc:InputDescription ;
-    rdf:first _:Nff2ddb3123c24035a35b4c9980d59436 ;
+_:Nb7d959c183c64ad589323871e9c2573a a ogcproc:OutputDescription ;
+    rdf:first _:N0123d86b40ba4ca693dd762dc38e8bbb ;
     rdf:rest () .
 
 
@@ -628,7 +630,7 @@ $graph:
 #### jsonld
 ```jsonld
 {
-  "@context": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
+  "@context": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
   "cwlVersion": "v1.2",
   "$graph": [
     {
@@ -732,11 +734,11 @@ $graph:
 [] cwl:cwlVersion <file:///github/workspace/v1.2> ;
     cwl:graph [ rdfs:label "Echo GeoJSON Feature"^^xsd:string ;
             dct:identifier <file:///github/workspace/clt> ;
-            ogcproc:input _:Nb3ba4bc271404733b6fe1025f9f3695f ;
-            ogcproc:output _:N3bc624f5d6364fa08ed084bd679eaf47 ;
+            ogcproc:input _:N10a204cfdccf42de9168cf90df510acc ;
+            ogcproc:output _:N116ac412478740239fd49bf54cd9730e ;
             cwl:baseCommand "\"echo\""^^rdf:JSON ;
-            cwl:input _:Nb3ba4bc271404733b6fe1025f9f3695f ;
-            cwl:output _:N3bc624f5d6364fa08ed084bd679eaf47 ;
+            cwl:input _:N10a204cfdccf42de9168cf90df510acc ;
+            cwl:output _:N116ac412478740239fd49bf54cd9730e ;
             cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
                 [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml> ] ;
                     ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
@@ -744,11 +746,11 @@ $graph:
             ns1:type <file:///github/workspace/CommandLineTool> ],
         [ rdfs:label "GeoJSON Feature Processing Workflow"^^xsd:string ;
             dct:identifier <file:///github/workspace/feature-workflow> ;
-            ogcproc:input _:N0f879c478bd74508834e78a45b5166ee ;
-            ogcproc:output _:N58185ee233984825aeb66ab30a94522d ;
+            ogcproc:input _:N8368fb5c1f094f7d82d78c4476652309 ;
+            ogcproc:output _:Ncd53c2517b8e41f9bf2c8c85c9db0113 ;
             rdfs:comment "Workflow that processes GeoJSON Feature input and generates output"^^xsd:string ;
-            cwl:input _:N0f879c478bd74508834e78a45b5166ee ;
-            cwl:output _:N58185ee233984825aeb66ab30a94522d ;
+            cwl:input _:N8368fb5c1f094f7d82d78c4476652309 ;
+            cwl:output _:Ncd53c2517b8e41f9bf2c8c85c9db0113 ;
             cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
                 [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml> ] ;
                     ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
@@ -757,7 +759,9 @@ $graph:
                             cwl:run <file:///github/workspace/#clt> ] ] ;
             ns1:type <file:///github/workspace/Workflow> ] .
 
-_:N012100b1314948e2a19a33fa7318d2d3 rdfs:label "Area of interest"^^xsd:string ;
+_:N04f4f1f84d7f496da5ec6f7eecf7b1a6 cwl:echo_output [ cwl:type <file:///github/workspace/stdout> ] .
+
+_:N222da70f427644afb6327f2c1a3d7aee rdfs:label "Area of interest"^^xsd:string ;
     dct:format <https://www.iana.org/assignments/media-types/application/geo+json> ;
     ogcproc:schemaType "object"^^xsd:string ;
     rdfs:comment "Area of interest defined in GeoJSON format"^^xsd:string ;
@@ -773,7 +777,7 @@ _:N012100b1314948e2a19a33fa7318d2d3 rdfs:label "Area of interest"^^xsd:string ;
 """^^xsd:string ] ;
     cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature> .
 
-_:N36f1b521b2984066870805ea18d00e16 rdfs:label "Area of interest"^^xsd:string ;
+_:N529c2d30383d4e46a85d9b9acc834e12 rdfs:label "Area of interest"^^xsd:string ;
     dct:format <https://www.iana.org/assignments/media-types/application/geo+json> ;
     dct:identifier <file:///github/workspace/aoi> ;
     ogcproc:schemaType "object"^^xsd:string ;
@@ -781,30 +785,28 @@ _:N36f1b521b2984066870805ea18d00e16 rdfs:label "Area of interest"^^xsd:string ;
     rdfs:seeAlso <https://purl.org/geojson/vocab#Feature> ;
     cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature> .
 
-_:N4eae8ab58dc04127a2652f52dbbc51e0 cwl:echo_output [ cwl:type <file:///github/workspace/stdout> ] .
+_:N5f6c6fa523294b5c91fbe18d12100684 cwl:aoi _:N222da70f427644afb6327f2c1a3d7aee .
 
-_:N7ec615905a9e4273b18b2cc6a4349131 cwl:aoi _:N012100b1314948e2a19a33fa7318d2d3 .
-
-_:Nf526bf7c784f4c3ea7347985fafd1632 rdfs:label "Echo output"^^xsd:string ;
+_:Nf75554450d784a6fbb60de6cdafba1b6 rdfs:label "Echo output"^^xsd:string ;
     dct:identifier <file:///github/workspace/echo_output> ;
     rdfs:comment "Echoed GeoJSON Feature information"^^xsd:string ;
     cwl:outputSource <file:///github/workspace/echo_step/echo_output> ;
     cwl:type <file:///github/workspace/File> .
 
-_:N0f879c478bd74508834e78a45b5166ee a ogcproc:InputDescription ;
-    rdf:first _:N36f1b521b2984066870805ea18d00e16 ;
+_:N10a204cfdccf42de9168cf90df510acc a ogcproc:InputDescription ;
+    rdf:first _:N5f6c6fa523294b5c91fbe18d12100684 ;
     rdf:rest () .
 
-_:N3bc624f5d6364fa08ed084bd679eaf47 a ogcproc:OutputDescription ;
-    rdf:first _:N4eae8ab58dc04127a2652f52dbbc51e0 ;
+_:N116ac412478740239fd49bf54cd9730e a ogcproc:OutputDescription ;
+    rdf:first _:N04f4f1f84d7f496da5ec6f7eecf7b1a6 ;
     rdf:rest () .
 
-_:N58185ee233984825aeb66ab30a94522d a ogcproc:OutputDescription ;
-    rdf:first _:Nf526bf7c784f4c3ea7347985fafd1632 ;
+_:N8368fb5c1f094f7d82d78c4476652309 a ogcproc:InputDescription ;
+    rdf:first _:N529c2d30383d4e46a85d9b9acc834e12 ;
     rdf:rest () .
 
-_:Nb3ba4bc271404733b6fe1025f9f3695f a ogcproc:InputDescription ;
-    rdf:first _:N7ec615905a9e4273b18b2cc6a4349131 ;
+_:Ncd53c2517b8e41f9bf2c8c85c9db0113 a ogcproc:OutputDescription ;
+    rdf:first _:Nf75554450d784a6fbb60de6cdafba1b6 ;
     rdf:rest () .
 
 
@@ -991,7 +993,7 @@ $graph:
 #### jsonld
 ```jsonld
 {
-  "@context": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
+  "@context": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
   "cwlVersion": "v1.2",
   "$graph": [
     {
@@ -1095,51 +1097,53 @@ $graph:
 [] cwl:cwlVersion <file:///github/workspace/v1.2> ;
     cwl:graph [ rdfs:label "Process STAC Item"^^xsd:string ;
             dct:identifier <file:///github/workspace/clt> ;
-            ogcproc:input _:N78020cef75184d139bade65a0e05bffa ;
-            ogcproc:output _:N78b1baa316584a18b5657920b36129ad ;
+            ogcproc:input _:N34aa56a769ba478e9d8c058efca042a1 ;
+            ogcproc:output _:Ndc21e7c9d2ad4523805c9b545f7e70d6 ;
             cwl:baseCommand "\"echo\""^^rdf:JSON ;
-            cwl:input _:N78020cef75184d139bade65a0e05bffa ;
-            cwl:output _:N78b1baa316584a18b5657920b36129ad ;
-            cwl:requirements [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
-                [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ] ;
+            cwl:input _:N34aa56a769ba478e9d8c058efca042a1 ;
+            cwl:output _:Ndc21e7c9d2ad4523805c9b545f7e70d6 ;
+            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
+                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
             cwl:stdout "result.txt"^^xsd:string ;
             ns1:type <file:///github/workspace/CommandLineTool> ],
         [ rdfs:label "STAC Item Processing Workflow"^^xsd:string ;
             dct:identifier <file:///github/workspace/item-workflow> ;
-            ogcproc:input _:Nc14b3670ceaf4c26ba1f6d123c3851b0 ;
-            ogcproc:output _:N98e373180ea54c78bcc105bd510b3c56 ;
+            ogcproc:input _:Nd3d43df611ff494493cc15556d3f66a4 ;
+            ogcproc:output _:N7c3706de92c042f09c2db2f02e7c364b ;
             rdfs:comment "Workflow that processes STAC Item input and generates output"^^xsd:string ;
-            cwl:input _:Nc14b3670ceaf4c26ba1f6d123c3851b0 ;
-            cwl:output _:N98e373180ea54c78bcc105bd510b3c56 ;
-            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
-                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
+            cwl:input _:Nd3d43df611ff494493cc15556d3f66a4 ;
+            cwl:output _:N7c3706de92c042f09c2db2f02e7c364b ;
+            cwl:requirements [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
+                [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ] ;
             cwl:steps [ cwl:process_step [ cwl:in [ cwl:stac_item "stac_item" ] ;
                             cwl:out ( "result" ) ;
                             cwl:run <file:///github/workspace/#clt> ] ] ;
             ns1:type <file:///github/workspace/Workflow> ] .
 
-_:N1cab67d67df9412a839381c97cc06b87 cwl:result [ cwl:type <file:///github/workspace/stdout> ] .
+_:N203219d91f9e4caaaea9c8cd30f2dd0d cwl:valueFrom """${
+  return "STAC Item ID: " + inputs.stac_item.id;
+}
+"""^^xsd:string .
 
-_:N2ed8861608604a3580432d8698931578 cwl:stac_item [ rdfs:label "STAC Item"^^xsd:string ;
+_:N40ee3b52b6c74e1db91e417033779493 cwl:stac_item [ rdfs:label "STAC Item"^^xsd:string ;
             dct:format <https://www.iana.org/assignments/media-types/application/json> ;
             ogcproc:schemaType "object"^^xsd:string ;
             rdfs:comment "STAC Item representing a geospatial asset"^^xsd:string ;
             rdfs:seeAlso <https://stacspec.org/#item-spec> ;
-            cwl:inputBinding [ cwl:valueFrom """${
-  return "STAC Item ID: " + inputs.stac_item.id;
-}
-"""^^xsd:string ] ;
+            cwl:inputBinding _:N203219d91f9e4caaaea9c8cd30f2dd0d ;
             cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Item> ] .
 
-_:N46517589c0a541ce9b1d074de6efa936 rdfs:label "Process result"^^xsd:string ;
+_:N4fecfbf2542944ce884fc8eab2fb6417 rdfs:label "Process result"^^xsd:string ;
     dct:identifier <file:///github/workspace/result> ;
     rdfs:comment "Processed STAC Item information"^^xsd:string ;
     cwl:outputSource <file:///github/workspace/process_step/result> ;
     cwl:type <file:///github/workspace/File> .
 
-_:Nac714017df834f139702b1fa1abd8dff rdfs:label "STAC Item"^^xsd:string ;
+_:N852008ea85bb47b3849b2cbd36e6c38b cwl:type <file:///github/workspace/stdout> .
+
+_:N9b185f2baa234cfc9e89df350b12a376 rdfs:label "STAC Item"^^xsd:string ;
     dct:format <https://www.iana.org/assignments/media-types/application/json> ;
     dct:identifier <file:///github/workspace/stac_item> ;
     ogcproc:schemaType "object"^^xsd:string ;
@@ -1147,20 +1151,22 @@ _:Nac714017df834f139702b1fa1abd8dff rdfs:label "STAC Item"^^xsd:string ;
     rdfs:seeAlso <https://stacspec.org/#item-spec> ;
     cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Item> .
 
-_:N78020cef75184d139bade65a0e05bffa a ogcproc:InputDescription ;
-    rdf:first _:N2ed8861608604a3580432d8698931578 ;
+_:Ncaf4c7a632ed4a588c3ae6e062a95224 cwl:result _:N852008ea85bb47b3849b2cbd36e6c38b .
+
+_:N34aa56a769ba478e9d8c058efca042a1 a ogcproc:InputDescription ;
+    rdf:first _:N40ee3b52b6c74e1db91e417033779493 ;
     rdf:rest () .
 
-_:N78b1baa316584a18b5657920b36129ad a ogcproc:OutputDescription ;
-    rdf:first _:N1cab67d67df9412a839381c97cc06b87 ;
+_:N7c3706de92c042f09c2db2f02e7c364b a ogcproc:OutputDescription ;
+    rdf:first _:N4fecfbf2542944ce884fc8eab2fb6417 ;
     rdf:rest () .
 
-_:N98e373180ea54c78bcc105bd510b3c56 a ogcproc:OutputDescription ;
-    rdf:first _:N46517589c0a541ce9b1d074de6efa936 ;
+_:Nd3d43df611ff494493cc15556d3f66a4 a ogcproc:InputDescription ;
+    rdf:first _:N9b185f2baa234cfc9e89df350b12a376 ;
     rdf:rest () .
 
-_:Nc14b3670ceaf4c26ba1f6d123c3851b0 a ogcproc:InputDescription ;
-    rdf:first _:Nac714017df834f139702b1fa1abd8dff ;
+_:Ndc21e7c9d2ad4523805c9b545f7e70d6 a ogcproc:OutputDescription ;
+    rdf:first _:Ncaf4c7a632ed4a588c3ae6e062a95224 ;
     rdf:rest () .
 
 
@@ -1798,7 +1804,7 @@ $graph:
 #### jsonld
 ```jsonld
 {
-  "@context": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
+  "@context": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
   "cwlVersion": "v1.0",
   "$namespaces": {
     "s": "https://schema.org/"
@@ -2193,13 +2199,79 @@ $graph:
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 [] cwl:cwlVersion <file:///github/workspace/v1.0> ;
-    cwl:graph [ rdfs:label "Water body detection based on NDWI and otsu threshold"^^xsd:string ;
+    cwl:graph [ rdfs:label "Water bodies detection based on NDWI and otsu threshold"^^xsd:string ;
+            dct:identifier <file:///github/workspace/water-bodies> ;
+            ogcproc:input _:N770b149b9d87482fbc36a9f392331ac2 ;
+            ogcproc:output _:Nbd7eb32de03149b9b13c1908de74a20b ;
+            rdfs:comment "Water bodies detection based on NDWI and otsu threshold applied to Sentinel-2 COG STAC items"^^xsd:string ;
+            cwl:input _:N770b149b9d87482fbc36a9f392331ac2 ;
+            cwl:output _:Nbd7eb32de03149b9b13c1908de74a20b ;
+            cwl:requirements [ ns1:type <file:///github/workspace/ScatterFeatureRequirement> ],
+                [ ns1:type <file:///github/workspace/SubworkflowFeatureRequirement> ],
+                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
+            cwl:steps [ cwl:node_stac [ cwl:in [ cwl:item "stac_items" ;
+                                    cwl:rasters [ cwl:source <file:///github/workspace/node_water_bodies/detected_water_body> ] ] ;
+                            cwl:out ( "stac_catalog" ) ;
+                            cwl:run <file:///github/workspace/#stac> ] ;
+                    cwl:node_water_bodies [ cwl:in [ cwl:aoi "aoi" ;
+                                    cwl:bands "bands" ;
+                                    cwl:epsg "epsg" ;
+                                    cwl:item "stac_items" ] ;
+                            cwl:out ( "detected_water_body" ) ;
+                            cwl:run <file:///github/workspace/#detect_water_body> ;
+                            cwl:scatter ( "item" ) ;
+                            cwl:scatterMethod <file:///github/workspace/dotproduct> ] ] ;
+            ns1:type <file:///github/workspace/Workflow> ],
+        [ dct:identifier <file:///github/workspace/crop> ;
+            ogcproc:input _:N2b771978d48343e9a74c6396abf3cfc4 ;
+            ogcproc:output _:N349569651688402db101fc0fef7b3bb7 ;
+            cwl:arguments () ;
+            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/crop:latest"^^xsd:string ] ] ;
+            cwl:input _:N2b771978d48343e9a74c6396abf3cfc4 ;
+            cwl:output _:N349569651688402db101fc0fef7b3bb7 ;
+            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
+                                    cwl:PYTHONPATH "/app" ] ] ;
+                    cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ dct:identifier <file:///github/workspace/norm_diff> ;
+            ogcproc:input _:Nbcce4f2d169a459fb5b5450fa81bda1b ;
+            ogcproc:output _:Nb2782d9823d041d4a6d52b0a9e6ae60a ;
+            cwl:arguments () ;
+            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/norm_diff:latest"^^xsd:string ] ] ;
+            cwl:input _:Nbcce4f2d169a459fb5b5450fa81bda1b ;
+            cwl:output _:Nb2782d9823d041d4a6d52b0a9e6ae60a ;
+            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
+                                    cwl:PYTHONPATH "/app" ] ] ;
+                    cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ dct:identifier <file:///github/workspace/otsu> ;
+            ogcproc:input _:N29d9e9503516429580cfca5bdc85888f ;
+            ogcproc:output _:N0ccded199132450e8e50bfe25832a08a ;
+            cwl:arguments () ;
+            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/otsu:latest"^^xsd:string ] ] ;
+            cwl:input _:N29d9e9503516429580cfca5bdc85888f ;
+            cwl:output _:N0ccded199132450e8e50bfe25832a08a ;
+            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
+                                    cwl:PYTHONPATH "/app" ] ] ;
+                    cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ rdfs:label "Water body detection based on NDWI and otsu threshold"^^xsd:string ;
             dct:identifier <file:///github/workspace/detect_water_body> ;
-            ogcproc:input _:N3917e8f248c5418eb7864d4f71368d3d ;
-            ogcproc:output _:N7969cf65452447af86c1cba27685f88c ;
+            ogcproc:input _:N563c03302abc4f9b8caaecf98021c4cf ;
+            ogcproc:output _:Na9d39125805643e09ea4bd42effeaa2c ;
             rdfs:comment "Water body detection based on NDWI and otsu threshold"^^xsd:string ;
-            cwl:input _:N3917e8f248c5418eb7864d4f71368d3d ;
-            cwl:output _:N7969cf65452447af86c1cba27685f88c ;
+            cwl:input _:N563c03302abc4f9b8caaecf98021c4cf ;
+            cwl:output _:Na9d39125805643e09ea4bd42effeaa2c ;
             cwl:requirements [ ns1:type <file:///github/workspace/ScatterFeatureRequirement> ] ;
             cwl:steps [ cwl:node_crop [ cwl:in [ cwl:aoi "aoi" ;
                                     cwl:band "bands" ;
@@ -2216,80 +2288,14 @@ $graph:
                             cwl:out ( "binary_mask_item" ) ;
                             cwl:run <file:///github/workspace/#otsu> ] ] ;
             ns1:type <file:///github/workspace/Workflow> ],
-        [ rdfs:label "Water bodies detection based on NDWI and otsu threshold"^^xsd:string ;
-            dct:identifier <file:///github/workspace/water-bodies> ;
-            ogcproc:input _:Ne23ed50c61594efaab050d226ecbbba6 ;
-            ogcproc:output _:N80f430af93e5496d8294357289e0543f ;
-            rdfs:comment "Water bodies detection based on NDWI and otsu threshold applied to Sentinel-2 COG STAC items"^^xsd:string ;
-            cwl:input _:Ne23ed50c61594efaab050d226ecbbba6 ;
-            cwl:output _:N80f430af93e5496d8294357289e0543f ;
-            cwl:requirements [ ns1:type <file:///github/workspace/ScatterFeatureRequirement> ],
-                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
-                [ ns1:type <file:///github/workspace/SubworkflowFeatureRequirement> ] ;
-            cwl:steps [ cwl:node_stac [ cwl:in [ cwl:item "stac_items" ;
-                                    cwl:rasters [ cwl:source <file:///github/workspace/node_water_bodies/detected_water_body> ] ] ;
-                            cwl:out ( "stac_catalog" ) ;
-                            cwl:run <file:///github/workspace/#stac> ] ;
-                    cwl:node_water_bodies [ cwl:in [ cwl:aoi "aoi" ;
-                                    cwl:bands "bands" ;
-                                    cwl:epsg "epsg" ;
-                                    cwl:item "stac_items" ] ;
-                            cwl:out ( "detected_water_body" ) ;
-                            cwl:run <file:///github/workspace/#detect_water_body> ;
-                            cwl:scatter ( "item" ) ;
-                            cwl:scatterMethod <file:///github/workspace/dotproduct> ] ] ;
-            ns1:type <file:///github/workspace/Workflow> ],
-        [ dct:identifier <file:///github/workspace/otsu> ;
-            ogcproc:input _:Naa397ebf3abc46f8a4485340f7dd57f6 ;
-            ogcproc:output _:Nb099e2757de14741bfdc048b07bfcc70 ;
-            cwl:arguments () ;
-            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/otsu:latest"^^xsd:string ] ] ;
-            cwl:input _:Naa397ebf3abc46f8a4485340f7dd57f6 ;
-            cwl:output _:Nb099e2757de14741bfdc048b07bfcc70 ;
-            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
-                                    cwl:PYTHONPATH "/app" ] ] ;
-                    cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ] ;
-            ns1:type <file:///github/workspace/CommandLineTool> ],
         [ dct:identifier <file:///github/workspace/stac> ;
-            ogcproc:input _:Ne03905699a1845309d9ffce193e3e3dc ;
-            ogcproc:output _:Nbfc43a54839845b6bf123d8e43291b65 ;
+            ogcproc:input _:Na28fe05711dd4903ac84c8749022b431 ;
+            ogcproc:output _:N8bf9e2ad31b64aa1a2b8f0054ef8c5ca ;
             cwl:arguments () ;
             cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
             cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/stac:latest"^^xsd:string ] ] ;
-            cwl:input _:Ne03905699a1845309d9ffce193e3e3dc ;
-            cwl:output _:Nbfc43a54839845b6bf123d8e43291b65 ;
-            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
-                                    cwl:PYTHONPATH "/app" ] ] ;
-                    cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ] ;
-            ns1:type <file:///github/workspace/CommandLineTool> ],
-        [ dct:identifier <file:///github/workspace/norm_diff> ;
-            ogcproc:input _:N19a81b482c974c198cbe57ff263260e1 ;
-            ogcproc:output _:N1a238dddcd7b410088e70f7a88b40ee7 ;
-            cwl:arguments () ;
-            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/norm_diff:latest"^^xsd:string ] ] ;
-            cwl:input _:N19a81b482c974c198cbe57ff263260e1 ;
-            cwl:output _:N1a238dddcd7b410088e70f7a88b40ee7 ;
-            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
-                                    cwl:PYTHONPATH "/app" ] ] ;
-                    cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ] ;
-            ns1:type <file:///github/workspace/CommandLineTool> ],
-        [ dct:identifier <file:///github/workspace/crop> ;
-            ogcproc:input _:N456679cb776f4915b3ab641a4ac169d8 ;
-            ogcproc:output _:N6af66f4e61ad4b3ca8e9b55f6542adb2 ;
-            cwl:arguments () ;
-            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/crop:latest"^^xsd:string ] ] ;
-            cwl:input _:N456679cb776f4915b3ab641a4ac169d8 ;
-            cwl:output _:N6af66f4e61ad4b3ca8e9b55f6542adb2 ;
+            cwl:input _:Na28fe05711dd4903ac84c8749022b431 ;
+            cwl:output _:N8bf9e2ad31b64aa1a2b8f0054ef8c5ca ;
             cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
                                     cwl:PYTHONPATH "/app" ] ] ;
                     cwl:InlineJavascriptRequirement [ ] ;
@@ -2300,147 +2306,155 @@ $graph:
     cwl:schemas "http://schema.org/version/9.0/schemaorg-current-http.rdf" ;
     ns2:softwareVersion "1.4.1" .
 
-_:N01780a006f644b5da0e7d6b738a57718 rdfs:comment "EPSG code"^^xsd:string ;
+_:N0c06dd9d798a424a8a396830c506aa41 cwl:binary_mask_item [ cwl:outputBinding [ cwl:glob "*.tif"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/File> ] .
+
+_:N0c825bb4a6b74ad6b50d1dcd813accaa cwl:prefix "--epsg"^^xsd:string .
+
+_:N0feb7fa893c54aabb7d8a33bafd7f0ec cwl:glob "."^^xsd:string .
+
+_:N1352d756793c4f93a41b9cdcfc34d58d rdfs:comment "EPSG code"^^xsd:string ;
     cwl:default "\"EPSG:4326\""^^rdf:JSON ;
     cwl:type <file:///github/workspace/string> .
 
-_:N01dff208193d48ffb4c2c5628ae8c3d3 cwl:inputBinding [ cwl:prefix "--input-item"^^xsd:string ] ;
-    cwl:items <file:///github/workspace/string> ;
-    cwl:type <file:///github/workspace/array> .
+_:N229e9727dcf14a4d9084cf9b6bbdaee8 cwl:outputBinding _:N0feb7fa893c54aabb7d8a33bafd7f0ec ;
+    cwl:type <file:///github/workspace/Directory> .
 
-_:N026e90b0e07f4bceb65a0aac797d5a30 cwl:rasters [ cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
-            cwl:type <file:///github/workspace/File[]> ] .
-
-_:N06fb16c394de4db583aef34e16d9b45c cwl:glob "*.tif"^^xsd:string .
-
-_:N0c2e421ad5aa4c1585f8c2b13d916bc5 rdfs:label "bands used for the NDWI"^^xsd:string ;
-    rdfs:comment "bands used for the NDWI"^^xsd:string ;
-    cwl:default "[\"green\",\"nir\"]"^^rdf:JSON ;
-    cwl:type <file:///github/workspace/string[]> .
-
-_:N1353631f048045d1ae4232e64a65a9f9 cwl:stac_catalog [ cwl:outputBinding [ cwl:glob "."^^xsd:string ] ;
-            cwl:type <file:///github/workspace/Directory> ] .
-
-_:N16b35f79369e4213b4e12f6fb9b77582 cwl:glob "*.tif"^^xsd:string .
-
-_:N173a4fd6d5e048cc80ab6f02935ebf03 rdfs:comment "bands used for the NDWI"^^xsd:string ;
-    cwl:type <file:///github/workspace/string[]> .
-
-_:N18bc00985fc74c53b9ada473dee7f020 cwl:outputBinding _:N06fb16c394de4db583aef34e16d9b45c ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N19eca5e9997e4aee99f82add07432d6e cwl:binary_mask_item [ cwl:outputBinding _:N16b35f79369e4213b4e12f6fb9b77582 ;
-            cwl:type <file:///github/workspace/File> ] .
-
-_:N1d2f3176f8d147b4964b88ee5f9516c1 cwl:inputBinding [ cwl:prefix "--epsg"^^xsd:string ] ;
+_:N253e78e4cfe243eb85afc43afae2b75b cwl:inputBinding [ cwl:prefix "--input-item"^^xsd:string ] ;
     cwl:type <file:///github/workspace/string> .
 
-_:N207055ce8c874a4aa3b56d0364b505cd cwl:inputBinding [ cwl:prefix "--water-body"^^xsd:string ] ;
-    cwl:items <file:///github/workspace/File> ;
-    cwl:type <file:///github/workspace/array> .
-
-_:N29951b65ed844f95a5be8851e463d030 cwl:raster [ cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
-            cwl:type <file:///github/workspace/File> ] .
-
-_:N3054afbeb39d43ccbbc5caa7f6989072 rdfs:label "EPSG code"^^xsd:string ;
-    rdfs:comment "EPSG code"^^xsd:string ;
-    cwl:default "\"EPSG:4326\""^^rdf:JSON ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N392dc008c73f4b30a922a3ff71ca20a0 cwl:inputBinding [ cwl:prefix "--aoi"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N392e9ef604a649878729b559437e6222 cwl:type _:N207055ce8c874a4aa3b56d0364b505cd .
-
-_:N3ac5ee6a1c6f4c2bb89fdd98885414ec cwl:aoi [ rdfs:label "area of interest"^^xsd:string ;
-            rdfs:comment "area of interest as a bounding box"^^xsd:string ;
-            cwl:type <file:///github/workspace/string> ] ;
-    cwl:bands _:N0c2e421ad5aa4c1585f8c2b13d916bc5 ;
-    cwl:epsg _:N3054afbeb39d43ccbbc5caa7f6989072 ;
-    cwl:stac_items [ rdfs:label "Sentinel-2 STAC items"^^xsd:string ;
-            rdfs:comment "list of Sentinel-2 COG STAC items"^^xsd:string ;
-            cwl:type <file:///github/workspace/string[]> ] .
-
-_:N40320750b1334d03b7215c3aeb519dec dct:identifier <file:///github/workspace/detected_water_body> ;
+_:N29587e2601b54a4faa92b811a0ae57fd dct:identifier <file:///github/workspace/detected_water_body> ;
     cwl:outputSource <file:///github/workspace/node_otsu/binary_mask_item> ;
     cwl:type <file:///github/workspace/File> .
 
-_:N4465ea05b0034674a5cb3daa9bd19a81 cwl:outputBinding [ cwl:glob "*.tif"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N4fb355739b35490e9888501963923e28 cwl:inputBinding [ cwl:prefix "--input-item"^^xsd:string ] ;
+_:N2ef3beadf3c54a5e84ee1997547e14f4 rdfs:comment "area of interest as a bounding box"^^xsd:string ;
     cwl:type <file:///github/workspace/string> .
 
-_:N585092e5a09f43659be856f3a40871b8 cwl:item [ cwl:type _:N01dff208193d48ffb4c2c5628ae8c3d3 ] ;
-    cwl:rasters _:N392e9ef604a649878729b559437e6222 .
+_:N314a62cedd4441158ed14bb8e5d95f79 cwl:prefix "--water-body"^^xsd:string .
 
-_:N6ecdc2bc0059425d9bcacb9f2b939c1e cwl:ndwi _:N18bc00985fc74c53b9ada473dee7f020 .
+_:N377581efd5fb41a789a8c5ef77071398 cwl:inputBinding _:N314a62cedd4441158ed14bb8e5d95f79 ;
+    cwl:items <file:///github/workspace/File> ;
+    cwl:type <file:///github/workspace/array> .
 
-_:N9999555f4af64e2b81a8c6287dc40dcc cwl:aoi _:N392dc008c73f4b30a922a3ff71ca20a0 ;
-    cwl:band [ cwl:inputBinding [ cwl:prefix "--band"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/string> ] ;
-    cwl:epsg _:N1d2f3176f8d147b4964b88ee5f9516c1 ;
-    cwl:item _:N4fb355739b35490e9888501963923e28 .
+_:N392e05b7ddfa47c990f7a6d5991ce425 cwl:stac_catalog _:N229e9727dcf14a4d9084cf9b6bbdaee8 .
 
-_:N9f577632be544fa28ee5c078e5604170 dct:identifier <file:///github/workspace/stac_catalog> ;
-    cwl:outputSource <file:///github/workspace/node_stac/stac_catalog> ;
-    cwl:type <file:///github/workspace/Directory> .
+_:N42e7e64895a5440689b02235999d1060 cwl:inputBinding [ cwl:prefix "--input-item"^^xsd:string ] ;
+    cwl:items <file:///github/workspace/string> ;
+    cwl:type <file:///github/workspace/array> .
 
-_:Na011951a30954578b0936e1f0d64574e cwl:aoi [ rdfs:comment "area of interest as a bounding box"^^xsd:string ;
-            cwl:type <file:///github/workspace/string> ] ;
-    cwl:bands _:N173a4fd6d5e048cc80ab6f02935ebf03 ;
-    cwl:epsg _:N01780a006f644b5da0e7d6b738a57718 ;
+_:N476048a222e8404da4ecd1e373340e09 cwl:inputBinding [ cwl:prefix "--aoi"^^xsd:string ] ;
+    cwl:type <file:///github/workspace/string> .
+
+_:N5175c230705b4e2595512c243ae743a2 cwl:raster [ cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
+            cwl:type <file:///github/workspace/File> ] .
+
+_:N5fa14acb128c49fc9b08051086207524 rdfs:label "Sentinel-2 STAC items"^^xsd:string ;
+    rdfs:comment "list of Sentinel-2 COG STAC items"^^xsd:string ;
+    cwl:type <file:///github/workspace/string[]> .
+
+_:N606e7c41550a4793b427efc10571b56b cwl:inputBinding _:N0c825bb4a6b74ad6b50d1dcd813accaa ;
+    cwl:type <file:///github/workspace/string> .
+
+_:N6387b3c5e1ee4e0c85de6ec8f47ab930 cwl:position "1"^^xsd:int .
+
+_:N64c73293d4ef430a83c668d53cf42529 cwl:prefix "--band"^^xsd:string .
+
+_:N666a2c25f8d644348014b590d7fc6772 rdfs:label "area of interest"^^xsd:string ;
+    rdfs:comment "area of interest as a bounding box"^^xsd:string ;
+    cwl:type <file:///github/workspace/string> .
+
+_:N673bbd2fc3bb48b992b9fd7ff0605486 cwl:type _:N377581efd5fb41a789a8c5ef77071398 .
+
+_:N704cf0bb36834a009ee131c596789196 cwl:item [ cwl:type _:N42e7e64895a5440689b02235999d1060 ] ;
+    cwl:rasters _:N673bbd2fc3bb48b992b9fd7ff0605486 .
+
+_:N793f89d9bf1640159d05c2f60591724f cwl:rasters [ cwl:inputBinding _:N6387b3c5e1ee4e0c85de6ec8f47ab930 ;
+            cwl:type <file:///github/workspace/File[]> ] .
+
+_:N80a14e5e120645a6b9198ae1e8270483 cwl:outputBinding [ cwl:glob "*.tif"^^xsd:string ] ;
+    cwl:type <file:///github/workspace/File> .
+
+_:N84ee5e6d52924ad79d0f488afff216bf cwl:inputBinding _:N64c73293d4ef430a83c668d53cf42529 ;
+    cwl:type <file:///github/workspace/string> .
+
+_:N97b7062025904b8385f14ebf6f4bfdca cwl:aoi _:N476048a222e8404da4ecd1e373340e09 ;
+    cwl:band _:N84ee5e6d52924ad79d0f488afff216bf ;
+    cwl:epsg _:N606e7c41550a4793b427efc10571b56b ;
+    cwl:item _:N253e78e4cfe243eb85afc43afae2b75b .
+
+_:N98905b983bdf4e029c7489ed2ea812e2 cwl:cropped [ cwl:outputBinding [ cwl:glob "*.tif"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/File> ] .
+
+_:N9d5ef109547349f7ac6e09770faaff68 cwl:aoi _:N2ef3beadf3c54a5e84ee1997547e14f4 ;
+    cwl:bands [ rdfs:comment "bands used for the NDWI"^^xsd:string ;
+            cwl:type <file:///github/workspace/string[]> ] ;
+    cwl:epsg _:N1352d756793c4f93a41b9cdcfc34d58d ;
     cwl:item [ rdfs:comment "STAC item"^^xsd:string ;
             cwl:type <file:///github/workspace/string> ] .
 
-_:Nd310422558844bbcaa87979859eb597b cwl:cropped _:N4465ea05b0034674a5cb3daa9bd19a81 .
+_:Nac98413eb72247bd8750a07ff2b753f1 cwl:ndwi _:N80a14e5e120645a6b9198ae1e8270483 .
 
-_:N19a81b482c974c198cbe57ff263260e1 a ogcproc:InputDescription ;
-    rdf:first _:N026e90b0e07f4bceb65a0aac797d5a30 ;
+_:Nbea88fe5307f41caa469645bd6c04c43 cwl:aoi _:N666a2c25f8d644348014b590d7fc6772 ;
+    cwl:bands [ rdfs:label "bands used for the NDWI"^^xsd:string ;
+            rdfs:comment "bands used for the NDWI"^^xsd:string ;
+            cwl:default "[\"green\",\"nir\"]"^^rdf:JSON ;
+            cwl:type <file:///github/workspace/string[]> ] ;
+    cwl:epsg [ rdfs:label "EPSG code"^^xsd:string ;
+            rdfs:comment "EPSG code"^^xsd:string ;
+            cwl:default "\"EPSG:4326\""^^rdf:JSON ;
+            cwl:type <file:///github/workspace/string> ] ;
+    cwl:stac_items _:N5fa14acb128c49fc9b08051086207524 .
+
+_:Ne56868a03f7f4a8f8a0bd5c118c86f3f dct:identifier <file:///github/workspace/stac_catalog> ;
+    cwl:outputSource <file:///github/workspace/node_stac/stac_catalog> ;
+    cwl:type <file:///github/workspace/Directory> .
+
+_:N0ccded199132450e8e50bfe25832a08a a ogcproc:OutputDescription ;
+    rdf:first _:N0c06dd9d798a424a8a396830c506aa41 ;
     rdf:rest () .
 
-_:N1a238dddcd7b410088e70f7a88b40ee7 a ogcproc:OutputDescription ;
-    rdf:first _:N6ecdc2bc0059425d9bcacb9f2b939c1e ;
+_:N29d9e9503516429580cfca5bdc85888f a ogcproc:InputDescription ;
+    rdf:first _:N5175c230705b4e2595512c243ae743a2 ;
     rdf:rest () .
 
-_:N3917e8f248c5418eb7864d4f71368d3d a ogcproc:InputDescription ;
-    rdf:first _:Na011951a30954578b0936e1f0d64574e ;
+_:N2b771978d48343e9a74c6396abf3cfc4 a ogcproc:InputDescription ;
+    rdf:first _:N97b7062025904b8385f14ebf6f4bfdca ;
     rdf:rest () .
 
-_:N456679cb776f4915b3ab641a4ac169d8 a ogcproc:InputDescription ;
-    rdf:first _:N9999555f4af64e2b81a8c6287dc40dcc ;
+_:N349569651688402db101fc0fef7b3bb7 a ogcproc:OutputDescription ;
+    rdf:first _:N98905b983bdf4e029c7489ed2ea812e2 ;
     rdf:rest () .
 
-_:N6af66f4e61ad4b3ca8e9b55f6542adb2 a ogcproc:OutputDescription ;
-    rdf:first _:Nd310422558844bbcaa87979859eb597b ;
+_:N563c03302abc4f9b8caaecf98021c4cf a ogcproc:InputDescription ;
+    rdf:first _:N9d5ef109547349f7ac6e09770faaff68 ;
     rdf:rest () .
 
-_:N7969cf65452447af86c1cba27685f88c a ogcproc:OutputDescription ;
-    rdf:first _:N40320750b1334d03b7215c3aeb519dec ;
+_:N770b149b9d87482fbc36a9f392331ac2 a ogcproc:InputDescription ;
+    rdf:first _:Nbea88fe5307f41caa469645bd6c04c43 ;
     rdf:rest () .
 
-_:N80f430af93e5496d8294357289e0543f a ogcproc:OutputDescription ;
-    rdf:first _:N9f577632be544fa28ee5c078e5604170 ;
+_:N8bf9e2ad31b64aa1a2b8f0054ef8c5ca a ogcproc:OutputDescription ;
+    rdf:first _:N392e05b7ddfa47c990f7a6d5991ce425 ;
     rdf:rest () .
 
-_:Naa397ebf3abc46f8a4485340f7dd57f6 a ogcproc:InputDescription ;
-    rdf:first _:N29951b65ed844f95a5be8851e463d030 ;
+_:Na28fe05711dd4903ac84c8749022b431 a ogcproc:InputDescription ;
+    rdf:first _:N704cf0bb36834a009ee131c596789196 ;
     rdf:rest () .
 
-_:Nb099e2757de14741bfdc048b07bfcc70 a ogcproc:OutputDescription ;
-    rdf:first _:N19eca5e9997e4aee99f82add07432d6e ;
+_:Na9d39125805643e09ea4bd42effeaa2c a ogcproc:OutputDescription ;
+    rdf:first _:N29587e2601b54a4faa92b811a0ae57fd ;
     rdf:rest () .
 
-_:Nbfc43a54839845b6bf123d8e43291b65 a ogcproc:OutputDescription ;
-    rdf:first _:N1353631f048045d1ae4232e64a65a9f9 ;
+_:Nb2782d9823d041d4a6d52b0a9e6ae60a a ogcproc:OutputDescription ;
+    rdf:first _:Nac98413eb72247bd8750a07ff2b753f1 ;
     rdf:rest () .
 
-_:Ne03905699a1845309d9ffce193e3e3dc a ogcproc:InputDescription ;
-    rdf:first _:N585092e5a09f43659be856f3a40871b8 ;
+_:Nbcce4f2d169a459fb5b5450fa81bda1b a ogcproc:InputDescription ;
+    rdf:first _:N793f89d9bf1640159d05c2f60591724f ;
     rdf:rest () .
 
-_:Ne23ed50c61594efaab050d226ecbbba6 a ogcproc:InputDescription ;
-    rdf:first _:N3ac5ee6a1c6f4c2bb89fdd98885414ec ;
+_:Nbd7eb32de03149b9b13c1908de74a20b a ogcproc:OutputDescription ;
+    rdf:first _:Ne56868a03f7f4a8f8a0bd5c118c86f3f ;
     rdf:rest () .
 
 
@@ -2894,7 +2908,7 @@ schemas:
 #### jsonld
 ```jsonld
 {
-  "@context": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
+  "@context": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
   "$graph": [
     {
       "class": "CommandLineTool",
@@ -3148,55 +3162,30 @@ schemas:
 @prefix cwl: <https://w3id.org/cwl/cwl#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix ns1: <s:> .
-@prefix ns2: <rdf:> .
+@prefix ns1: <rdf:> .
+@prefix ns2: <s:> .
 @prefix ogcproc: <http://www.opengis.net/def/ogcapi/processes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 [] cwl:cwlVersion <file:///github/workspace/v1.0> ;
-    cwl:graph [ dct:identifier <file:///github/workspace/parse_aoi> ;
-            ogcproc:input _:Nf5d5d694bb884a2394e9e5dce8ff8d45 ;
-            ogcproc:output _:N03e9060013c34e5da2a266021544a430 ;
-            cwl:arguments ( "--" ) ;
-            cwl:baseCommand "\"echo\""^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "alpine:3.22.2"^^xsd:string ] ] ;
-            cwl:input _:Nf5d5d694bb884a2394e9e5dce8ff8d45 ;
-            cwl:output _:N03e9060013c34e5da2a266021544a430 ;
-            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ;
-                    cwl:SchemaDefRequirement [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ] ] ;
-            ns2:type <file:///github/workspace/CommandLineTool> ],
-        [ dct:identifier <file:///github/workspace/mangrove_cli> ;
-            ogcproc:input _:Nd6941b6cfcd648dab4db1173e56e4567 ;
-            ogcproc:output _:N49038c7da2824c119ccf86c71fd3d1ac ;
-            cwl:arguments ( "--" ) ;
-            cwl:baseCommand "\"/app/cwl/bin/mangrove_workflow_for_cwl\""^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/geolabs/kindgrove/mangrove-cwl:v0.0.1-rc7"^^xsd:string ] ] ;
-            cwl:input _:Nd6941b6cfcd648dab4db1173e56e4567 ;
-            cwl:output _:N49038c7da2824c119ccf86c71fd3d1ac ;
-            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ] ;
-            ns2:type <file:///github/workspace/CommandLineTool> ],
-        [ rdfs:label "Mangrove Biomass Workflow"^^xsd:string ;
+    cwl:graph [ rdfs:label "Mangrove Biomass Workflow"^^xsd:string ;
             dct:identifier <file:///github/workspace/mangrove-workflow> ;
-            ogcproc:input _:Nf40e91469d214f6e9c17a47f99da6756 ;
-            ogcproc:output _:N2dfe5fb1f1a74c6b80dfa2169976080b ;
+            ogcproc:input _:N6c9029e443d142d4b2464dbd66dc29bd ;
+            ogcproc:output _:Ned2f4f9e4d724c2499649965b7de1c41 ;
             rdfs:comment """Workflow for Mangrove Biomass Analysis
   
 This workflow orchestrates the mangrove biomass estimation process using
 Sentinel-2 imagery. It wraps the mangrove_workflow.cwl tool to provide
 a reusable workflow for analyzing different study areas.
 """^^xsd:string ;
-            cwl:input _:Nf40e91469d214f6e9c17a47f99da6756 ;
-            cwl:output _:N2dfe5fb1f1a74c6b80dfa2169976080b ;
+            cwl:input _:N6c9029e443d142d4b2464dbd66dc29bd ;
+            cwl:output _:Ned2f4f9e4d724c2499649965b7de1c41 ;
             cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
                     cwl:ScatterFeatureRequirement [ ] ;
-                    cwl:SchemaDefRequirement [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ],
-                                [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ] ;
+                    cwl:SchemaDefRequirement [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ],
+                                [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ] ;
                     cwl:StepInputExpressionRequirement [ ] ;
                     cwl:SubworkflowFeatureRequirement [ ] ] ;
             cwl:steps [ cwl:parse_aoi [ cwl:in [ cwl:aoi "aoi" ] ;
@@ -3211,35 +3200,93 @@ a reusable workflow for analyzing different study areas.
                                     cwl:west "parse_aoi/west" ] ;
                             cwl:out ( "result" ) ;
                             cwl:run <file:///github/workspace/#mangrove_cli> ] ] ;
-            ns2:type <file:///github/workspace/Workflow> ] ;
+            ns1:type <file:///github/workspace/Workflow> ],
+        [ dct:identifier <file:///github/workspace/parse_aoi> ;
+            ogcproc:input _:N7e719b086bd447859820ddf851d87074 ;
+            ogcproc:output _:N15287461e7ea4757832fdce740e9956a ;
+            cwl:arguments ( "--" ) ;
+            cwl:baseCommand "\"echo\""^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "alpine:3.22.2"^^xsd:string ] ] ;
+            cwl:input _:N7e719b086bd447859820ddf851d87074 ;
+            cwl:output _:N15287461e7ea4757832fdce740e9956a ;
+            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ;
+                    cwl:SchemaDefRequirement [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ dct:identifier <file:///github/workspace/mangrove_cli> ;
+            ogcproc:input _:Nff252f9daff94db08660c890b43bc480 ;
+            ogcproc:output _:Naaef9b28061e4d27a97de437c2338b67 ;
+            cwl:arguments ( "--" ) ;
+            cwl:baseCommand "\"/app/cwl/bin/mangrove_workflow_for_cwl\""^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/geolabs/kindgrove/mangrove-cwl:v0.0.1-rc7"^^xsd:string ] ] ;
+            cwl:input _:Nff252f9daff94db08660c890b43bc480 ;
+            cwl:output _:Naaef9b28061e4d27a97de437c2338b67 ;
+            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ] ;
     cwl:namespaces "{\"s\":\"https://schema.org/\"}"^^rdf:JSON ;
     cwl:schemas "http://schema.org/version/9.0/schemaorg-current-http.rdf" ;
-    ns1:author [ ns2:type ns1:Person ;
-            ns1:name "Cameron Sajedi" ] ;
-    ns1:codeRepository "https://github.com/starling-foundries/KindGrove" ;
-    ns1:contributor [ ns2:type ns1:Person ;
-            ns1:identifier "https://orcid.org/0000-0002-9617-8641" ;
-            ns1:name "Gérald Fenoy" ] ;
-    ns1:keywords "OSPD",
+    ns2:author [ ns1:type ns2:Person ;
+            ns2:name "Cameron Sajedi" ] ;
+    ns2:codeRepository "https://github.com/starling-foundries/KindGrove" ;
+    ns2:contributor [ ns1:type ns2:Person ;
+            ns2:identifier "https://orcid.org/0000-0002-9617-8641" ;
+            ns2:name "Gérald Fenoy" ] ;
+    ns2:keywords "OSPD",
         "biomass",
         "mangrove" ;
-    ns1:license "https://github.com/starling-foundries/KindGrove?tab=MIT-1-ov-file#readme" ;
-    ns1:softwareVersion "0.0.1" .
+    ns2:license "https://github.com/starling-foundries/KindGrove?tab=MIT-1-ov-file#readme" ;
+    ns2:softwareVersion "0.0.1" .
 
-_:N0860f139664d423585d8aea575c6c044 cwl:outputEval "$(inputs.aoi.bbox[2])"^^xsd:string .
+_:N00540dab2a8640e6804f33e043b04184 cwl:inputBinding [ cwl:prefix "--days_back"^^xsd:string ] ;
+    cwl:type <file:///github/workspace/int> .
 
-_:N1419faf3ec264e5fb132f09d512843be cwl:glob "outputs"^^xsd:string .
+_:N065f607dbde74cdead66fc7fbd8cbda5 cwl:outputEval "$(inputs.aoi.bbox[2])"^^xsd:string .
 
-_:N15ca917121d94e55a2b7ec5a6ff464ac cwl:prefix "--west"^^xsd:string .
+_:N069a84705c7f43b882ff0592beec8fb8 cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[0])"^^xsd:string ] ;
+    cwl:type <file:///github/workspace/float> .
 
-_:N1f0da69914c04129a3d5da533929310a cwl:aoi [ rdfs:label "Area of Interest"^^xsd:string ;
-            ogcproc:itemsType "number"^^xsd:string ;
-            ogcproc:maxItems 6 ;
-            ogcproc:minItems 4 ;
-            ogcproc:schemaType "array"^^xsd:string ;
-            rdfs:comment "Area of interest as a bounding box"^^xsd:string ;
-            rdfs:seeAlso geo:BoundingBox ;
-            cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> ] ;
+_:N10ae29c7452a443ea486a832a4695230 cwl:east [ cwl:outputBinding _:N065f607dbde74cdead66fc7fbd8cbda5 ;
+            cwl:type <file:///github/workspace/float> ] ;
+    cwl:north [ cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[3])"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/float> ] ;
+    cwl:output_dir [ cwl:outputBinding [ cwl:outputEval "$(\"outputs\")"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/string> ] ;
+    cwl:south [ cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[1])"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/float> ] ;
+    cwl:west _:N069a84705c7f43b882ff0592beec8fb8 .
+
+_:N115fc48e3c814a12be8249e8def7ef45 cwl:stac [ cwl:outputSource <file:///github/workspace/step_1/result> ;
+            cwl:type <file:///github/workspace/Directory> ] .
+
+_:N1261ed64baf64e489c115422aa39a3d6 cwl:inputBinding [ cwl:prefix "--east"^^xsd:string ] ;
+    cwl:type <file:///github/workspace/float> .
+
+_:N17f86ce0971d4d0aaa5782b922e2834b cwl:cloud_cover_max [ cwl:inputBinding [ cwl:prefix "--cloud_cover_max"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/float> ] ;
+    cwl:days_back _:N00540dab2a8640e6804f33e043b04184 ;
+    cwl:east _:N1261ed64baf64e489c115422aa39a3d6 ;
+    cwl:north [ cwl:inputBinding [ cwl:prefix "--north"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/float> ] ;
+    cwl:output_dir [ cwl:inputBinding [ cwl:prefix "--output_dir"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/string> ] ;
+    cwl:south [ cwl:inputBinding [ cwl:prefix "--south"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/float> ] ;
+    cwl:west [ cwl:inputBinding [ cwl:prefix "--west"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/float> ] .
+
+_:N32a6960e5bf34d5bbf0ac7516acaa9f3 rdfs:label "Area of Interest"^^xsd:string ;
+    ogcproc:itemsType "number"^^xsd:string ;
+    ogcproc:maxItems 6 ;
+    ogcproc:minItems 4 ;
+    ogcproc:schemaType "array"^^xsd:string ;
+    rdfs:comment "Area of interest as a bounding box"^^xsd:string ;
+    rdfs:seeAlso geo:BoundingBox ;
+    cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> .
+
+_:N7bcb926c02b6446c86bf29093e670374 cwl:aoi _:N32a6960e5bf34d5bbf0ac7516acaa9f3 ;
     cwl:cloud_cover_max [ rdfs:label "Maximum Cloud Cover"^^xsd:string ;
             rdfs:comment "Maximum acceptable cloud cover percentage (0-100)"^^xsd:string ;
             cwl:type <file:///github/workspace/float> ] ;
@@ -3247,13 +3294,7 @@ _:N1f0da69914c04129a3d5da533929310a cwl:aoi [ rdfs:label "Area of Interest"^^xsd
             rdfs:comment "Number of days to search backwards from current date"^^xsd:string ;
             cwl:type <file:///github/workspace/int> ] .
 
-_:N2291cb9eda7c42798ffc1d9c9d0f04bd cwl:inputBinding [ cwl:prefix "--south"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N23d961bedc014f29be200bb5d3221b88 cwl:inputBinding [ cwl:prefix "--output_dir"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N242216cdd7534e8daeba1d909ed4de2e cwl:aoi [ rdfs:label "Area of interest"^^xsd:string ;
+_:Nca1d9738a1334766b6a05e55d36e349e cwl:aoi [ rdfs:label "Area of interest"^^xsd:string ;
             ogcproc:itemsType "number"^^xsd:string ;
             ogcproc:maxItems 6 ;
             ogcproc:minItems 4 ;
@@ -3262,76 +3303,35 @@ _:N242216cdd7534e8daeba1d909ed4de2e cwl:aoi [ rdfs:label "Area of interest"^^xsd
             rdfs:seeAlso geo:BoundingBox ;
             cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> ] .
 
-_:N29d6d99489624e608e43dc5bcce181ce cwl:outputEval "$(\"outputs\")"^^xsd:string .
+_:Ncded18d6e4a34ffe96bdc4181ccd2e6d cwl:glob "outputs"^^xsd:string .
 
-_:N2ebd5c95d447465e8e4c430571627e37 cwl:prefix "--east"^^xsd:string .
-
-_:N30c864f5353a445394bd49b57e9549a5 cwl:outputBinding _:N1419faf3ec264e5fb132f09d512843be ;
+_:Ndb6ca1751ee8421badfb3b1dc002e484 cwl:outputBinding _:Ncded18d6e4a34ffe96bdc4181ccd2e6d ;
     cwl:type <file:///github/workspace/Directory> .
 
-_:N39339c5467be4f199597f2ff9f6bd619 cwl:prefix "--north"^^xsd:string .
+_:Nf17f6f5adf0944f890bd36c4424deb28 cwl:result _:Ndb6ca1751ee8421badfb3b1dc002e484 .
 
-_:N41820769fcf34776b6fa6a7107c7ff70 cwl:inputBinding _:N2ebd5c95d447465e8e4c430571627e37 ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N53fd664769d249af8381b6d62a9dea66 cwl:outputBinding _:N0860f139664d423585d8aea575c6c044 ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N57e3289c61f64fb68d16a631beb67557 cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[3])"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N59b6d7be64514891bc2e64221e7d8173 cwl:outputEval "$(inputs.aoi.bbox[0])"^^xsd:string .
-
-_:N5a63d3d3e87a4e80affb425036b5670a cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[1])"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N659aff3a729744b4a34ee1972376b7d9 cwl:cloud_cover_max [ cwl:inputBinding [ cwl:prefix "--cloud_cover_max"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/float> ] ;
-    cwl:days_back [ cwl:inputBinding [ cwl:prefix "--days_back"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/int> ] ;
-    cwl:east _:N41820769fcf34776b6fa6a7107c7ff70 ;
-    cwl:north [ cwl:inputBinding _:N39339c5467be4f199597f2ff9f6bd619 ;
-            cwl:type <file:///github/workspace/float> ] ;
-    cwl:output_dir _:N23d961bedc014f29be200bb5d3221b88 ;
-    cwl:south _:N2291cb9eda7c42798ffc1d9c9d0f04bd ;
-    cwl:west [ cwl:inputBinding _:N15ca917121d94e55a2b7ec5a6ff464ac ;
-            cwl:type <file:///github/workspace/float> ] .
-
-_:N69ce2c0f25f042b68216b23c3493f8d7 cwl:result _:N30c864f5353a445394bd49b57e9549a5 .
-
-_:N76bed7a771334d18ac4ce82963f7ecc8 cwl:stac [ cwl:outputSource <file:///github/workspace/step_1/result> ;
-            cwl:type <file:///github/workspace/Directory> ] .
-
-_:N9b3cc93176c84e46923c0345ebf87f73 cwl:east _:N53fd664769d249af8381b6d62a9dea66 ;
-    cwl:north _:N57e3289c61f64fb68d16a631beb67557 ;
-    cwl:output_dir [ cwl:outputBinding _:N29d6d99489624e608e43dc5bcce181ce ;
-            cwl:type <file:///github/workspace/string> ] ;
-    cwl:south _:N5a63d3d3e87a4e80affb425036b5670a ;
-    cwl:west [ cwl:outputBinding _:N59b6d7be64514891bc2e64221e7d8173 ;
-            cwl:type <file:///github/workspace/float> ] .
-
-_:N03e9060013c34e5da2a266021544a430 a ogcproc:OutputDescription ;
-    rdf:first _:N9b3cc93176c84e46923c0345ebf87f73 ;
+_:N15287461e7ea4757832fdce740e9956a a ogcproc:OutputDescription ;
+    rdf:first _:N10ae29c7452a443ea486a832a4695230 ;
     rdf:rest () .
 
-_:N2dfe5fb1f1a74c6b80dfa2169976080b a ogcproc:OutputDescription ;
-    rdf:first _:N76bed7a771334d18ac4ce82963f7ecc8 ;
+_:N6c9029e443d142d4b2464dbd66dc29bd a ogcproc:InputDescription ;
+    rdf:first _:N7bcb926c02b6446c86bf29093e670374 ;
     rdf:rest () .
 
-_:N49038c7da2824c119ccf86c71fd3d1ac a ogcproc:OutputDescription ;
-    rdf:first _:N69ce2c0f25f042b68216b23c3493f8d7 ;
+_:N7e719b086bd447859820ddf851d87074 a ogcproc:InputDescription ;
+    rdf:first _:Nca1d9738a1334766b6a05e55d36e349e ;
     rdf:rest () .
 
-_:Nd6941b6cfcd648dab4db1173e56e4567 a ogcproc:InputDescription ;
-    rdf:first _:N659aff3a729744b4a34ee1972376b7d9 ;
+_:Naaef9b28061e4d27a97de437c2338b67 a ogcproc:OutputDescription ;
+    rdf:first _:Nf17f6f5adf0944f890bd36c4424deb28 ;
     rdf:rest () .
 
-_:Nf40e91469d214f6e9c17a47f99da6756 a ogcproc:InputDescription ;
-    rdf:first _:N1f0da69914c04129a3d5da533929310a ;
+_:Ned2f4f9e4d724c2499649965b7de1c41 a ogcproc:OutputDescription ;
+    rdf:first _:N115fc48e3c814a12be8249e8def7ef45 ;
     rdf:rest () .
 
-_:Nf5d5d694bb884a2394e9e5dce8ff8d45 a ogcproc:InputDescription ;
-    rdf:first _:N242216cdd7534e8daeba1d909ed4de2e ;
+_:Nff252f9daff94db08660c890b43bc480 a ogcproc:InputDescription ;
+    rdf:first _:N17f86ce0971d4d0aaa5782b922e2834b ;
     rdf:rest () .
 
 
@@ -4496,7 +4496,7 @@ $graph:
 #### jsonld
 ```jsonld
 {
-  "@context": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
+  "@context": "https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld",
   "cwlVersion": "v1.2",
   "$namespaces": {
     "s": "https://schema.org/"
@@ -5165,30 +5165,15 @@ $graph:
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 [] cwl:cwlVersion <file:///github/workspace/v1.2> ;
-    cwl:graph [ rdfs:label "Download input data"^^xsd:string ;
-            dct:identifier <file:///github/workspace/eodag_search> ;
-            ogcproc:input _:Nf5ec6ffc40d14d24ae8462516f0564e4 ;
-            ogcproc:output _:Ne7636444d64d4a66a19fc94c20524f32 ;
-            rdfs:comment "Downloads STAC item assets using EODAG"^^xsd:string ;
-            cwl:arguments ( [ cwl:prefix "--output-dir"^^xsd:string ;
-                        cwl:valueFrom "$(runtime.outdir)"^^xsd:string ] ) ;
-            cwl:baseCommand "[\"eodag\",\"download\"]"^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/cs-si/eodag:v3.10.x"^^xsd:string ] ] ;
-            cwl:input _:Nf5ec6ffc40d14d24ae8462516f0564e4 ;
-            cwl:output _:Ne7636444d64d4a66a19fc94c20524f32 ;
-            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:NetworkAccess [ cwl:networkAccess true ] ] ;
-            ns1:type <file:///github/workspace/CommandLineTool> ;
-            ns2:softwareVersion "latest" ],
-        [ rdfs:label "Compute CVI"^^xsd:string ;
+    cwl:graph [ rdfs:label "Compute CVI"^^xsd:string ;
             dct:identifier <file:///github/workspace/compute-cvi-tool> ;
-            ogcproc:input _:N97b6d11d25b84b889cab25fde26c9d1b ;
-            ogcproc:output _:Ncc7c4492702d470f8216f62472804d63 ;
+            ogcproc:input _:N16e72c2d09c7440fb42a38dc858e974d ;
+            ogcproc:output _:N848b68d4d22842d99852a624121434f2 ;
             rdfs:comment "Computes final Coastal Vulnerability Index from all parameters"^^xsd:string ;
             cwl:baseCommand "[\"python3\",\"/app/steps/compute_cvi.py\"]"^^rdf:JSON ;
             cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/hartis-org/cvi-workflow:latest"^^xsd:string ] ] ;
-            cwl:input _:N97b6d11d25b84b889cab25fde26c9d1b ;
-            cwl:output _:Ncc7c4492702d470f8216f62472804d63 ;
+            cwl:input _:N16e72c2d09c7440fb42a38dc858e974d ;
+            cwl:output _:N848b68d4d22842d99852a624121434f2 ;
             cwl:requirements [ cwl:InitialWorkDirRequirement [ cwl:listing [ cwl:entry "$({class: 'Directory', listing: []})" ;
                                     cwl:entryname "$(inputs.output_dir)" ;
                                     cwl:writable true ],
@@ -5201,14 +5186,14 @@ $graph:
             ns1:type <file:///github/workspace/CommandLineTool> ],
         [ rdfs:label "CVI Workflow (Dockerized)"^^xsd:string ;
             dct:identifier <file:///github/workspace/cvi-workflow> ;
-            ogcproc:input _:N4d48305395d0469399a5e624b20556bd ;
-            ogcproc:output _:Nf83dc1dd84a5498db7a9f1807cc297ca ;
+            ogcproc:input _:N437355b85ca74f9e8014e21a8e9276b5 ;
+            ogcproc:output _:Nfb8a0cb53602446b8cc0bea91efb9c78 ;
             rdfs:comment """This workflow computes the Coastal Vulnerability Index (CVI) for Mediterranean coastal areas.
 It processes coastline data, generates transects, computes various coastal parameters
 (landcover, slope, erosion, elevation), and calculates the final CVI values.
 """^^xsd:string ;
-            cwl:input _:N4d48305395d0469399a5e624b20556bd ;
-            cwl:output _:Nf83dc1dd84a5498db7a9f1807cc297ca ;
+            cwl:input _:N437355b85ca74f9e8014e21a8e9276b5 ;
+            cwl:output _:Nfb8a0cb53602446b8cc0bea91efb9c78 ;
             cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
                     cwl:StepInputExpressionRequirement [ ] ] ;
             cwl:steps [ cwl:compute_cvi [ rdfs:label "Compute CVI Index"^^xsd:string ;
@@ -5297,117 +5282,166 @@ It processes coastline data, generates transects, computes various coastal param
             ns2:keywords "CVI, coastal vulnerability, Mediterranean, earth observation" ;
             ns2:license "https://opensource.org/licenses/MIT" ;
             ns2:version "1.0.0" ],
+        [ rdfs:label "Download input data"^^xsd:string ;
+            dct:identifier <file:///github/workspace/eodag_search> ;
+            ogcproc:input _:Nf64e6c514e254ebfbd206e227e2972c6 ;
+            ogcproc:output _:N38a604baf4954e5892fc3d0b0fc539cc ;
+            rdfs:comment "Downloads STAC item assets using EODAG"^^xsd:string ;
+            cwl:arguments ( [ cwl:prefix "--output-dir"^^xsd:string ;
+                        cwl:valueFrom "$(runtime.outdir)"^^xsd:string ] ) ;
+            cwl:baseCommand "[\"eodag\",\"download\"]"^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/cs-si/eodag:v3.10.x"^^xsd:string ] ] ;
+            cwl:input _:Nf64e6c514e254ebfbd206e227e2972c6 ;
+            cwl:output _:N38a604baf4954e5892fc3d0b0fc539cc ;
+            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:NetworkAccess [ cwl:networkAccess true ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ;
+            ns2:softwareVersion "latest" ],
         [ rdfs:label "Setup Environment"^^xsd:string ;
             dct:identifier <file:///github/workspace/setup-env-tool> ;
-            ogcproc:input _:N605ab1e98cb141f3ae26fe3870be7eb9 ;
-            ogcproc:output _:Neb9ebc6cf7524aa58358484c3af2c310 ;
+            ogcproc:input _:Ne214710d3dc64ac9b90f51ebe0e2bb32 ;
+            ogcproc:output _:Nbf18f8369f884e2ba7bc509ac805e58c ;
             rdfs:comment "Validates configuration and initializes the working environment"^^xsd:string ;
             cwl:baseCommand "[\"python3\",\"/app/steps/setup_env.py\"]"^^rdf:JSON ;
             cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/hartis-org/cvi-workflow:latest"^^xsd:string ] ] ;
-            cwl:input _:N605ab1e98cb141f3ae26fe3870be7eb9 ;
-            cwl:output _:Neb9ebc6cf7524aa58358484c3af2c310 ;
+            cwl:input _:Ne214710d3dc64ac9b90f51ebe0e2bb32 ;
+            cwl:output _:Nbf18f8369f884e2ba7bc509ac805e58c ;
             cwl:requirements [ cwl:InitialWorkDirRequirement [ cwl:listing [ cwl:entry "$({class: 'Directory', listing: []})" ;
                                     cwl:entryname "$(inputs.output_dir)" ;
                                     cwl:writable true ],
                                 "$(inputs.config_json)" ] ;
                     cwl:InlineJavascriptRequirement [ ] ] ;
             ns1:type <file:///github/workspace/CommandLineTool> ],
-        [ rdfs:label "Generate Transects"^^xsd:string ;
-            dct:identifier <file:///github/workspace/generate-transects-tool> ;
-            ogcproc:input _:N1043302db592425f8fa9d55de737c1d7 ;
-            ogcproc:output _:Nbaaf535724834816ad35bd40e5abe8b8 ;
-            rdfs:comment "Generates perpendicular transects along the coastline"^^xsd:string ;
-            cwl:baseCommand "[\"python3\",\"/app/steps/generate_transects.py\"]"^^rdf:JSON ;
+        [ rdfs:label "Compute Parameter"^^xsd:string ;
+            dct:identifier <file:///github/workspace/compute-parameter-tool> ;
+            ogcproc:input _:N42f493bcf0a648f986f54dda93a44104 ;
+            ogcproc:output _:Nca73609e92c140c482617d8630b53d39 ;
+            rdfs:comment "Computes a CVI parameter (landcover, slope, erosion, or elevation) for transects"^^xsd:string ;
+            cwl:baseCommand "[\"python3\"]"^^rdf:JSON ;
             cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/hartis-org/cvi-workflow:latest"^^xsd:string ] ] ;
-            cwl:input _:N1043302db592425f8fa9d55de737c1d7 ;
-            cwl:output _:Nbaaf535724834816ad35bd40e5abe8b8 ;
+            cwl:input _:N42f493bcf0a648f986f54dda93a44104 ;
+            cwl:output _:Nca73609e92c140c482617d8630b53d39 ;
             cwl:requirements [ cwl:InitialWorkDirRequirement [ cwl:listing [ cwl:entry "$({class: 'Directory', listing: []})" ;
                                     cwl:entryname "$(inputs.output_dir)" ;
                                     cwl:writable true ],
-                                "$(inputs.coastline_gpkg)" ] ;
+                                [ cwl:entry "$(inputs.transects_geojson)" ],
+                                [ cwl:entry "$(inputs.tokens_env)" ],
+                                [ cwl:entry "$(inputs.config_json)" ] ] ;
                     cwl:InlineJavascriptRequirement [ ] ] ;
             ns1:type <file:///github/workspace/CommandLineTool> ],
         [ rdfs:label "Extract Coastline"^^xsd:string ;
             dct:identifier <file:///github/workspace/extract-coastline-tool> ;
-            ogcproc:input _:N76011466cba84e75b94f87e19ef78d02 ;
-            ogcproc:output _:N7c4a64c6ff45488a80f5d860f09e10dc ;
+            ogcproc:input _:N6ae86cd17d954567814ec40c43f73561 ;
+            ogcproc:output _:N530568e62d454e40b68c717c129167cf ;
             rdfs:comment "Extracts coastline geometry from Mediterranean AOIs"^^xsd:string ;
             cwl:baseCommand "[\"python3\",\"/app/steps/extract_coastline.py\"]"^^rdf:JSON ;
             cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/hartis-org/cvi-workflow:latest"^^xsd:string ] ] ;
-            cwl:input _:N76011466cba84e75b94f87e19ef78d02 ;
-            cwl:output _:N7c4a64c6ff45488a80f5d860f09e10dc ;
+            cwl:input _:N6ae86cd17d954567814ec40c43f73561 ;
+            cwl:output _:N530568e62d454e40b68c717c129167cf ;
             cwl:requirements [ cwl:InitialWorkDirRequirement [ cwl:listing [ cwl:entry "$({class: 'Directory', listing: []})" ;
                                     cwl:entryname "$(inputs.output_dir)" ;
                                     cwl:writable true ],
                                 "$(inputs.med_aois_csv)" ] ;
                     cwl:InlineJavascriptRequirement [ ] ] ;
             ns1:type <file:///github/workspace/CommandLineTool> ],
-        [ rdfs:label "Compute Parameter"^^xsd:string ;
-            dct:identifier <file:///github/workspace/compute-parameter-tool> ;
-            ogcproc:input _:Ncc313451f4404e7ebe5dc59299f5edde ;
-            ogcproc:output _:Nbddc187a178648ae90ee5d6614844ae6 ;
-            rdfs:comment "Computes a CVI parameter (landcover, slope, erosion, or elevation) for transects"^^xsd:string ;
-            cwl:baseCommand "[\"python3\"]"^^rdf:JSON ;
+        [ rdfs:label "Generate Transects"^^xsd:string ;
+            dct:identifier <file:///github/workspace/generate-transects-tool> ;
+            ogcproc:input _:Nc4edbbdde4a84a6c8ad20b6f5004e84b ;
+            ogcproc:output _:N4f25ccc724c74e0d923d83cf867a79fe ;
+            rdfs:comment "Generates perpendicular transects along the coastline"^^xsd:string ;
+            cwl:baseCommand "[\"python3\",\"/app/steps/generate_transects.py\"]"^^rdf:JSON ;
             cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/hartis-org/cvi-workflow:latest"^^xsd:string ] ] ;
-            cwl:input _:Ncc313451f4404e7ebe5dc59299f5edde ;
-            cwl:output _:Nbddc187a178648ae90ee5d6614844ae6 ;
-            cwl:requirements [ cwl:InitialWorkDirRequirement [ cwl:listing [ cwl:entry "$(inputs.config_json)" ],
-                                [ cwl:entry "$(inputs.tokens_env)" ],
-                                [ cwl:entry "$(inputs.transects_geojson)" ],
-                                [ cwl:entry "$({class: 'Directory', listing: []})" ;
+            cwl:input _:Nc4edbbdde4a84a6c8ad20b6f5004e84b ;
+            cwl:output _:N4f25ccc724c74e0d923d83cf867a79fe ;
+            cwl:requirements [ cwl:InitialWorkDirRequirement [ cwl:listing [ cwl:entry "$({class: 'Directory', listing: []})" ;
                                     cwl:entryname "$(inputs.output_dir)" ;
-                                    cwl:writable true ] ] ;
+                                    cwl:writable true ],
+                                "$(inputs.coastline_gpkg)" ] ;
                     cwl:InlineJavascriptRequirement [ ] ] ;
             ns1:type <file:///github/workspace/CommandLineTool> ] ;
     cwl:namespaces "{\"s\":\"https://schema.org/\"}"^^rdf:JSON ;
     cwl:schemas ( "http://schema.org/version/latest/schemaorg-current-http.rdf" ) .
 
-_:N00afa96c66944648991382f63b3b2de0 cwl:glob "$(inputs.output_dir)/coastline.gpkg"^^xsd:string .
+_:N00226c33e6fe438e94fa1831d8704eef rdfs:label "Validated configuration"^^xsd:string ;
+    rdfs:comment "Validated configuration JSON file"^^xsd:string ;
+    cwl:outputSource <file:///github/workspace/setup_env/config_validated> ;
+    cwl:type <file:///github/workspace/File> .
 
-_:N016d1596201e4d55813802a27c65ed83 rdfs:comment "Mediterranean areas of interest CSV"^^xsd:string ;
+_:N0079bc302b0249128d2fd624bad21180 cwl:position "1"^^xsd:int .
+
+_:N02e06ca2ff0d4fa495659c4a36f7766c cwl:config_json [ rdfs:comment "Configuration JSON file"^^xsd:string ;
+            cwl:inputBinding [ cwl:position "5"^^xsd:int ] ;
+            cwl:type <file:///github/workspace/File> ] ;
+    cwl:output_dir [ rdfs:comment "Output directory path"^^xsd:string ;
+            cwl:inputBinding [ cwl:position "6"^^xsd:int ] ;
+            cwl:type <file:///github/workspace/string> ] ;
+    cwl:transects_elevation [ rdfs:comment "Transects with elevation data"^^xsd:string ;
+            cwl:inputBinding [ cwl:position "4"^^xsd:int ] ;
+            cwl:type <file:///github/workspace/File> ] ;
+    cwl:transects_erosion [ rdfs:comment "Transects with erosion data"^^xsd:string ;
+            cwl:inputBinding [ cwl:position "3"^^xsd:int ] ;
+            cwl:type <file:///github/workspace/File> ] ;
+    cwl:transects_landcover [ rdfs:comment "Transects with landcover data"^^xsd:string ;
+            cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
+            cwl:type <file:///github/workspace/File> ] ;
+    cwl:transects_slope [ rdfs:comment "Transects with slope data"^^xsd:string ;
+            cwl:inputBinding [ cwl:position "2"^^xsd:int ] ;
+            cwl:type <file:///github/workspace/File> ] .
+
+_:N048587aab7864a2fa1b44f5e2716bd1f cwl:coastline_gpkg [ rdfs:comment "Extracted coastline GeoPackage"^^xsd:string ;
+            cwl:outputBinding [ cwl:glob "$(inputs.output_dir)/coastline.gpkg"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/File> ] .
+
+_:N05d79e1ede9a41d7823908504d04e1ff rdfs:comment "Output directory path"^^xsd:string ;
+    cwl:inputBinding [ cwl:position "4"^^xsd:int ] ;
+    cwl:type <file:///github/workspace/string> .
+
+_:N0b453174f4754e82af22f72a734c4722 rdfs:label "Generated transects"^^xsd:string ;
+    rdfs:comment "Perpendicular transects generated along the coastline"^^xsd:string ;
+    cwl:outputSource <file:///github/workspace/generate_transects/transects_geojson> ;
+    cwl:type <file:///github/workspace/File> .
+
+_:N1c3e497b6daf4a1aa24c43f831632300 rdfs:comment "Coastline GeoPackage"^^xsd:string ;
     cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
     cwl:type <file:///github/workspace/File> .
 
-_:N0338737842a34c659ffa009e20ef517c cwl:position "2"^^xsd:int .
+_:N21fc6035db5240cab6eb2da4f26f163e rdfs:comment "Generated transects GeoJSON"^^xsd:string ;
+    cwl:outputBinding [ cwl:glob "$(inputs.output_dir)/transects.geojson"^^xsd:string ] ;
+    cwl:type <file:///github/workspace/File> .
 
-_:N0a7d91949faf4c519e5b2bf24c810aff cwl:out_geojson [ rdfs:comment "Final CVI results GeoJSON"^^xsd:string ;
-            cwl:outputBinding [ cwl:glob "$(inputs.output_dir)/transects_with_cvi_equal.geojson"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/File> ] .
+_:N25017f05a90c44be9c67609549a94c10 rdfs:label "AOIs STAC item URL"^^xsd:string ;
+    rdfs:comment "URL of the STAC item containing the Mediterranean AOIs CSV file"^^xsd:string ;
+    cwl:default "\"https://eocatalog.p2.csgroup.space/collections/cvi-workflow-resources/items/mediterranean-coastal-aois\""^^rdf:JSON ;
+    cwl:type <file:///github/workspace/string> .
 
-_:N0ae5d7ba06ae4b51abcc8d5abc27aec9 cwl:position "4"^^xsd:int .
+_:N2e9e265e5fd94c579c6c685ceff8f4bb rdfs:label "Transects with landcover data"^^xsd:string ;
+    rdfs:comment "Transects enriched with landcover information"^^xsd:string ;
+    cwl:outputSource <file:///github/workspace/compute_landcover/result> ;
+    cwl:type <file:///github/workspace/File> .
 
-_:N1232c84a454f43ad903d0038dbccda8e rdfs:comment "Output directory path"^^xsd:string ;
+_:N308db1e00ae44c1c8a0f7db1eb72ab39 rdfs:label "Transects with elevation data"^^xsd:string ;
+    rdfs:comment "Transects enriched with elevation information"^^xsd:string ;
+    cwl:outputSource <file:///github/workspace/compute_elevation/result> ;
+    cwl:type <file:///github/workspace/File> .
+
+_:N33f1f9fda5f14b62bdbf2df1603e2611 rdfs:label "Tokens STAC item URL"^^xsd:string ;
+    rdfs:comment "URL of the STAC item containing the authentication tokens file"^^xsd:string ;
+    cwl:default "\"https://eocatalog.p2.csgroup.space/collections/cvi-workflow-resources/items/cvi-authentication-template\""^^rdf:JSON ;
+    cwl:type <file:///github/workspace/string> .
+
+_:N39d8ac2996c1452c8788e8dda0d39be7 rdfs:comment "Output directory path"^^xsd:string ;
     cwl:inputBinding [ cwl:position "2"^^xsd:int ] ;
     cwl:type <file:///github/workspace/string> .
 
-_:N13f66a7797154fcdb91a06bb5544dbc4 cwl:transects_geojson [ rdfs:comment "Generated transects GeoJSON"^^xsd:string ;
-            cwl:outputBinding [ cwl:glob "$(inputs.output_dir)/transects.geojson"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/File> ] .
+_:N46c825eba9ba481986a1e0903c990e4a cwl:glob "$(inputs.output_dir)/*.geojson"^^xsd:string .
 
-_:N16fde73b089542e69247d85c05c726de rdfs:label "Configuration STAC item URL"^^xsd:string ;
-    rdfs:comment "URL of the STAC item containing the configuration JSON file"^^xsd:string ;
-    cwl:default "\"https://eocatalog.p2.csgroup.space/collections/cvi-workflow-resources/items/cvi-scoring-configuration\""^^rdf:JSON ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N1d729686a27345d1bee7ab7de82a3ef6 cwl:coastline_gpkg [ rdfs:comment "Extracted coastline GeoPackage"^^xsd:string ;
-            cwl:outputBinding _:N00afa96c66944648991382f63b3b2de0 ;
-            cwl:type <file:///github/workspace/File> ] .
-
-_:N1e91e574a24f41ec9dabebf187c5f8f1 rdfs:comment "Python script path for parameter computation"^^xsd:string ;
-    cwl:inputBinding [ cwl:position "0"^^xsd:int ] ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N20f3bccb4e7642b3bfad0a9a6d22b716 cwl:config_validated [ rdfs:comment "Validated configuration file"^^xsd:string ;
-            cwl:outputBinding [ cwl:glob "$(inputs.output_dir)/config_validated.json"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/File> ] .
-
-_:N2245a9de93e54a5c946878f6f721eca1 cwl:config_json [ rdfs:comment "Configuration JSON file"^^xsd:string ;
+_:N4d3d8cf74de74f12a352f8cb8e1352ef cwl:config_json [ rdfs:comment "Configuration JSON file"^^xsd:string ;
             cwl:inputBinding [ cwl:position "3"^^xsd:int ] ;
             cwl:type <file:///github/workspace/File> ] ;
-    cwl:output_dir [ rdfs:comment "Output directory path"^^xsd:string ;
-            cwl:inputBinding [ cwl:position "4"^^xsd:int ] ;
+    cwl:output_dir _:N05d79e1ede9a41d7823908504d04e1ff ;
+    cwl:script [ rdfs:comment "Python script path for parameter computation"^^xsd:string ;
+            cwl:inputBinding [ cwl:position "0"^^xsd:int ] ;
             cwl:type <file:///github/workspace/string> ] ;
-    cwl:script _:N1e91e574a24f41ec9dabebf187c5f8f1 ;
     cwl:tokens_env [ rdfs:comment "Authentication tokens file"^^xsd:string ;
             cwl:inputBinding [ cwl:position "2"^^xsd:int ] ;
             cwl:type <file:///github/workspace/File> ] ;
@@ -5415,187 +5449,145 @@ _:N2245a9de93e54a5c946878f6f721eca1 cwl:config_json [ rdfs:comment "Configuratio
             cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
             cwl:type <file:///github/workspace/File> ] .
 
-_:N2a6a4eb71a8c4eca907cebfc5f082f1d rdfs:label "Coastline GeoPackage"^^xsd:string ;
+_:N5084f6b3679d4f23bdd88702334176aa rdfs:comment "Transects enriched with parameter data"^^xsd:string ;
+    cwl:outputBinding _:N46c825eba9ba481986a1e0903c990e4a ;
+    cwl:type <file:///github/workspace/File> .
+
+_:N55cbcadb536a40f5b6393c1f31c3f65e cwl:result _:N5084f6b3679d4f23bdd88702334176aa .
+
+_:N59d3ee9129124db692f9ca0fab4ec9d8 cwl:stac_item_url [ rdfs:comment "URL of the STAC item to download"^^xsd:string ;
+            cwl:inputBinding [ cwl:prefix "--stac-item"^^xsd:string ] ;
+            cwl:type <file:///github/workspace/string> ] .
+
+_:N5eb238102c6e4fa58ef18c7d28acd2fd cwl:aois_stac_item_url _:N25017f05a90c44be9c67609549a94c10 ;
+    cwl:config_stac_item_url [ rdfs:label "Configuration STAC item URL"^^xsd:string ;
+            rdfs:comment "URL of the STAC item containing the configuration JSON file"^^xsd:string ;
+            cwl:default "\"https://eocatalog.p2.csgroup.space/collections/cvi-workflow-resources/items/cvi-scoring-configuration\""^^rdf:JSON ;
+            cwl:type <file:///github/workspace/string> ] ;
+    cwl:tokens_stac_item_url _:N33f1f9fda5f14b62bdbf2df1603e2611 .
+
+_:N66e65bc9f52c44938eaca3b49693f601 rdfs:label "Coastline GeoPackage"^^xsd:string ;
     rdfs:comment "Extracted coastline geometry in GeoPackage format"^^xsd:string ;
     cwl:outputSource <file:///github/workspace/extract_coastline/coastline_gpkg> ;
     cwl:type <file:///github/workspace/File> .
 
-_:N35a70288f53d4414a8e3bf9db246f302 rdfs:comment "Transects with elevation data"^^xsd:string ;
-    cwl:inputBinding _:N0ae5d7ba06ae4b51abcc8d5abc27aec9 ;
+_:N715d866a6656436196b9f1bf176b5548 cwl:position "2"^^xsd:int .
+
+_:N7c5f9aaa2eac4e88b5e76d4e057735f6 cwl:glob "$(inputs.output_dir)/config_validated.json"^^xsd:string .
+
+_:N83740929c39344e28518648d64391943 cwl:glob "$(inputs.output_dir)/transects_with_cvi_equal.geojson"^^xsd:string .
+
+_:N83f5cac4d31c4e1c9198925ac0534940 rdfs:comment "Mediterranean areas of interest CSV"^^xsd:string ;
+    cwl:inputBinding _:N0079bc302b0249128d2fd624bad21180 ;
     cwl:type <file:///github/workspace/File> .
 
-_:N35e4bc4bf41b48008493c0242ff24325 cwl:coastline_gpkg [ rdfs:comment "Coastline GeoPackage"^^xsd:string ;
-            cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
-            cwl:type <file:///github/workspace/File> ] ;
-    cwl:output_dir _:N1232c84a454f43ad903d0038dbccda8e .
-
-_:N39ef8c3dbaa84b898b9de29fb4e07db1 rdfs:label "Transects with landcover data"^^xsd:string ;
-    rdfs:comment "Transects enriched with landcover information"^^xsd:string ;
-    cwl:outputSource <file:///github/workspace/compute_landcover/result> ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N4341c7bb1bdf470ba7f796bda159d568 cwl:position "3"^^xsd:int .
-
-_:N498ca5701bec4320a861461ab0d04744 cwl:position "2"^^xsd:int .
-
-_:N4c8df3c45d7049668d965f94aba53320 rdfs:comment "Output directory path"^^xsd:string ;
-    cwl:inputBinding [ cwl:position "2"^^xsd:int ] ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N503912ffe61a447d8f0c4cb5cd70efbc rdfs:comment "Directory containing downloaded STAC item assets"^^xsd:string ;
-    cwl:outputBinding [ cwl:glob "$(runtime.outdir)/*"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/Directory> .
-
-_:N526d1c9a5f65480b89c0c106df6e430c rdfs:comment "Transects with landcover data"^^xsd:string ;
+_:N8e3af61bf58a4d898055066c920d4d47 rdfs:comment "Configuration JSON file"^^xsd:string ;
     cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
     cwl:type <file:///github/workspace/File> .
 
-_:N53daf27ba9de43e19d0de962c4845390 cwl:result [ rdfs:comment "Transects enriched with parameter data"^^xsd:string ;
-            cwl:outputBinding [ cwl:glob "$(inputs.output_dir)/*.geojson"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/File> ] .
-
-_:N5f87c300842a443d8c627ee11856aaf7 rdfs:label "CVI results"^^xsd:string ;
-    rdfs:comment "Final Coastal Vulnerability Index values for all transects"^^xsd:string ;
-    cwl:outputSource <file:///github/workspace/compute_cvi/out_geojson> ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N6339cf8bffc24eb89acd51cd95e5a66b rdfs:comment "URL of the STAC item to download"^^xsd:string ;
-    cwl:inputBinding [ cwl:prefix "--stac-item"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N63932637694543e0b517e0d3ca91c504 rdfs:label "Transects with elevation data"^^xsd:string ;
-    rdfs:comment "Transects enriched with elevation information"^^xsd:string ;
-    cwl:outputSource <file:///github/workspace/compute_elevation/result> ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N874d6143554e4c4bba148faf2a68842a rdfs:label "Transects with slope data"^^xsd:string ;
-    rdfs:comment "Transects enriched with slope information"^^xsd:string ;
-    cwl:outputSource <file:///github/workspace/compute_slope/result> ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N8c9bbaf1feba4bd18cfee10261aa0c87 rdfs:label "AOIs STAC item URL"^^xsd:string ;
-    rdfs:comment "URL of the STAC item containing the Mediterranean AOIs CSV file"^^xsd:string ;
-    cwl:default "\"https://eocatalog.p2.csgroup.space/collections/cvi-workflow-resources/items/mediterranean-coastal-aois\""^^rdf:JSON ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N8df81a94273c4c08b29fc002c3c1b820 cwl:stac_item_url _:N6339cf8bffc24eb89acd51cd95e5a66b .
-
-_:N9b9210dde43c431c8e9dec3fa6c95e1a rdfs:label "Generated transects"^^xsd:string ;
-    rdfs:comment "Perpendicular transects generated along the coastline"^^xsd:string ;
-    cwl:outputSource <file:///github/workspace/generate_transects/transects_geojson> ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N9cb8e7e8225d46e084b69fb6182b96b1 rdfs:label "Validated configuration"^^xsd:string ;
-    rdfs:comment "Validated configuration JSON file"^^xsd:string ;
-    cwl:outputSource <file:///github/workspace/setup_env/config_validated> ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N9e60ba27115d4206b86d04cf256556a5 cwl:config_json [ rdfs:comment "Configuration JSON file"^^xsd:string ;
-            cwl:inputBinding [ cwl:position "5"^^xsd:int ] ;
+_:N8f37d7df14f34cd0aefa3d0903099a43 cwl:coastline_gpkg _:N66e65bc9f52c44938eaca3b49693f601 ;
+    cwl:cvi_geojson [ rdfs:label "CVI results"^^xsd:string ;
+            rdfs:comment "Final Coastal Vulnerability Index values for all transects"^^xsd:string ;
+            cwl:outputSource <file:///github/workspace/compute_cvi/out_geojson> ;
             cwl:type <file:///github/workspace/File> ] ;
-    cwl:output_dir [ rdfs:comment "Output directory path"^^xsd:string ;
-            cwl:inputBinding [ cwl:position "6"^^xsd:int ] ;
-            cwl:type <file:///github/workspace/string> ] ;
-    cwl:transects_elevation _:N35a70288f53d4414a8e3bf9db246f302 ;
-    cwl:transects_erosion [ rdfs:comment "Transects with erosion data"^^xsd:string ;
-            cwl:inputBinding _:N4341c7bb1bdf470ba7f796bda159d568 ;
-            cwl:type <file:///github/workspace/File> ] ;
-    cwl:transects_landcover _:N526d1c9a5f65480b89c0c106df6e430c ;
-    cwl:transects_slope [ rdfs:comment "Transects with slope data"^^xsd:string ;
-            cwl:inputBinding _:N0338737842a34c659ffa009e20ef517c ;
-            cwl:type <file:///github/workspace/File> ] .
-
-_:N9ea4aa6c569542f8b88da2b5b7a8f66f rdfs:comment "Configuration JSON file"^^xsd:string ;
-    cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
-    cwl:type <file:///github/workspace/File> .
-
-_:Na17c31d7daba41698e8d455a132ea16e cwl:coastline_gpkg _:N2a6a4eb71a8c4eca907cebfc5f082f1d ;
-    cwl:cvi_geojson _:N5f87c300842a443d8c627ee11856aaf7 ;
-    cwl:transects_elevation _:N63932637694543e0b517e0d3ca91c504 ;
+    cwl:transects_elevation _:N308db1e00ae44c1c8a0f7db1eb72ab39 ;
     cwl:transects_erosion [ rdfs:label "Transects with erosion data"^^xsd:string ;
             rdfs:comment "Transects enriched with erosion information"^^xsd:string ;
             cwl:outputSource <file:///github/workspace/compute_erosion/result> ;
             cwl:type <file:///github/workspace/File> ] ;
-    cwl:transects_geojson _:N9b9210dde43c431c8e9dec3fa6c95e1a ;
-    cwl:transects_landcover _:N39ef8c3dbaa84b898b9de29fb4e07db1 ;
-    cwl:transects_slope _:N874d6143554e4c4bba148faf2a68842a ;
-    cwl:validated_config _:N9cb8e7e8225d46e084b69fb6182b96b1 .
+    cwl:transects_geojson _:N0b453174f4754e82af22f72a734c4722 ;
+    cwl:transects_landcover _:N2e9e265e5fd94c579c6c685ceff8f4bb ;
+    cwl:transects_slope [ rdfs:label "Transects with slope data"^^xsd:string ;
+            rdfs:comment "Transects enriched with slope information"^^xsd:string ;
+            cwl:outputSource <file:///github/workspace/compute_slope/result> ;
+            cwl:type <file:///github/workspace/File> ] ;
+    cwl:validated_config _:N00226c33e6fe438e94fa1831d8704eef .
 
-_:Nb4fca5300fa849c3aa952665f3a51856 cwl:med_aois_csv _:N016d1596201e4d55813802a27c65ed83 ;
-    cwl:output_dir _:N4c8df3c45d7049668d965f94aba53320 .
+_:N931ff805afd14a519f33bb25807ce060 cwl:position "2"^^xsd:int .
 
-_:Nbeedf0e51d624e33976bb321c0d0ede3 rdfs:label "Tokens STAC item URL"^^xsd:string ;
-    rdfs:comment "URL of the STAC item containing the authentication tokens file"^^xsd:string ;
-    cwl:default "\"https://eocatalog.p2.csgroup.space/collections/cvi-workflow-resources/items/cvi-authentication-template\""^^rdf:JSON ;
-    cwl:type <file:///github/workspace/string> .
+_:N958ae0cdae664328b051fc1e9280b111 cwl:out_geojson [ rdfs:comment "Final CVI results GeoJSON"^^xsd:string ;
+            cwl:outputBinding _:N83740929c39344e28518648d64391943 ;
+            cwl:type <file:///github/workspace/File> ] .
 
-_:Nbf9d4c7c4ca24c1e8071011c193be12a cwl:data_output_dir _:N503912ffe61a447d8f0c4cb5cd70efbc .
+_:N992987ff9be84f7fab3849a403879821 cwl:config_validated [ rdfs:comment "Validated configuration file"^^xsd:string ;
+            cwl:outputBinding _:N7c5f9aaa2eac4e88b5e76d4e057735f6 ;
+            cwl:type <file:///github/workspace/File> ] .
 
-_:Ne52d826acea148558600a42e363cd00e rdfs:comment "Output directory path"^^xsd:string ;
-    cwl:inputBinding _:N498ca5701bec4320a861461ab0d04744 ;
-    cwl:type <file:///github/workspace/string> .
+_:N99cd59f386674d36999e6c197ed4d8df cwl:med_aois_csv _:N83f5cac4d31c4e1c9198925ac0534940 ;
+    cwl:output_dir [ rdfs:comment "Output directory path"^^xsd:string ;
+            cwl:inputBinding _:N715d866a6656436196b9f1bf176b5548 ;
+            cwl:type <file:///github/workspace/string> ] .
 
-_:Ne899490fe7f8439a89bfd4adb60c1af5 cwl:config_json _:N9ea4aa6c569542f8b88da2b5b7a8f66f ;
-    cwl:output_dir _:Ne52d826acea148558600a42e363cd00e .
+_:Na3a35f9df13d42d19a77c7bfdffa7c6a cwl:config_json _:N8e3af61bf58a4d898055066c920d4d47 ;
+    cwl:output_dir _:N39d8ac2996c1452c8788e8dda0d39be7 .
 
-_:Nf931336343854f1f8bd563200a4c2075 cwl:aois_stac_item_url _:N8c9bbaf1feba4bd18cfee10261aa0c87 ;
-    cwl:config_stac_item_url _:N16fde73b089542e69247d85c05c726de ;
-    cwl:tokens_stac_item_url _:Nbeedf0e51d624e33976bb321c0d0ede3 .
+_:Na53f353bb5de4d929bb438a25daefe54 cwl:coastline_gpkg _:N1c3e497b6daf4a1aa24c43f831632300 ;
+    cwl:output_dir [ rdfs:comment "Output directory path"^^xsd:string ;
+            cwl:inputBinding _:N931ff805afd14a519f33bb25807ce060 ;
+            cwl:type <file:///github/workspace/string> ] .
 
-_:N1043302db592425f8fa9d55de737c1d7 a ogcproc:InputDescription ;
-    rdf:first _:N35e4bc4bf41b48008493c0242ff24325 ;
+_:Nc8b088f738e74348b2c92872611265cb cwl:transects_geojson _:N21fc6035db5240cab6eb2da4f26f163e .
+
+_:Nda901be8baed48fcb0b0fa59d5a0efab rdfs:comment "Directory containing downloaded STAC item assets"^^xsd:string ;
+    cwl:outputBinding [ cwl:glob "$(runtime.outdir)/*"^^xsd:string ] ;
+    cwl:type <file:///github/workspace/Directory> .
+
+_:Nebb9bff16418465ca62847371eaec755 cwl:data_output_dir _:Nda901be8baed48fcb0b0fa59d5a0efab .
+
+_:N16e72c2d09c7440fb42a38dc858e974d a ogcproc:InputDescription ;
+    rdf:first _:N02e06ca2ff0d4fa495659c4a36f7766c ;
     rdf:rest () .
 
-_:N4d48305395d0469399a5e624b20556bd a ogcproc:InputDescription ;
-    rdf:first _:Nf931336343854f1f8bd563200a4c2075 ;
+_:N38a604baf4954e5892fc3d0b0fc539cc a ogcproc:OutputDescription ;
+    rdf:first _:Nebb9bff16418465ca62847371eaec755 ;
     rdf:rest () .
 
-_:N605ab1e98cb141f3ae26fe3870be7eb9 a ogcproc:InputDescription ;
-    rdf:first _:Ne899490fe7f8439a89bfd4adb60c1af5 ;
+_:N42f493bcf0a648f986f54dda93a44104 a ogcproc:InputDescription ;
+    rdf:first _:N4d3d8cf74de74f12a352f8cb8e1352ef ;
     rdf:rest () .
 
-_:N76011466cba84e75b94f87e19ef78d02 a ogcproc:InputDescription ;
-    rdf:first _:Nb4fca5300fa849c3aa952665f3a51856 ;
+_:N437355b85ca74f9e8014e21a8e9276b5 a ogcproc:InputDescription ;
+    rdf:first _:N5eb238102c6e4fa58ef18c7d28acd2fd ;
     rdf:rest () .
 
-_:N7c4a64c6ff45488a80f5d860f09e10dc a ogcproc:OutputDescription ;
-    rdf:first _:N1d729686a27345d1bee7ab7de82a3ef6 ;
+_:N4f25ccc724c74e0d923d83cf867a79fe a ogcproc:OutputDescription ;
+    rdf:first _:Nc8b088f738e74348b2c92872611265cb ;
     rdf:rest () .
 
-_:N97b6d11d25b84b889cab25fde26c9d1b a ogcproc:InputDescription ;
-    rdf:first _:N9e60ba27115d4206b86d04cf256556a5 ;
+_:N530568e62d454e40b68c717c129167cf a ogcproc:OutputDescription ;
+    rdf:first _:N048587aab7864a2fa1b44f5e2716bd1f ;
     rdf:rest () .
 
-_:Nbaaf535724834816ad35bd40e5abe8b8 a ogcproc:OutputDescription ;
-    rdf:first _:N13f66a7797154fcdb91a06bb5544dbc4 ;
+_:N6ae86cd17d954567814ec40c43f73561 a ogcproc:InputDescription ;
+    rdf:first _:N99cd59f386674d36999e6c197ed4d8df ;
     rdf:rest () .
 
-_:Nbddc187a178648ae90ee5d6614844ae6 a ogcproc:OutputDescription ;
-    rdf:first _:N53daf27ba9de43e19d0de962c4845390 ;
+_:N848b68d4d22842d99852a624121434f2 a ogcproc:OutputDescription ;
+    rdf:first _:N958ae0cdae664328b051fc1e9280b111 ;
     rdf:rest () .
 
-_:Ncc313451f4404e7ebe5dc59299f5edde a ogcproc:InputDescription ;
-    rdf:first _:N2245a9de93e54a5c946878f6f721eca1 ;
+_:Nbf18f8369f884e2ba7bc509ac805e58c a ogcproc:OutputDescription ;
+    rdf:first _:N992987ff9be84f7fab3849a403879821 ;
     rdf:rest () .
 
-_:Ncc7c4492702d470f8216f62472804d63 a ogcproc:OutputDescription ;
-    rdf:first _:N0a7d91949faf4c519e5b2bf24c810aff ;
+_:Nc4edbbdde4a84a6c8ad20b6f5004e84b a ogcproc:InputDescription ;
+    rdf:first _:Na53f353bb5de4d929bb438a25daefe54 ;
     rdf:rest () .
 
-_:Ne7636444d64d4a66a19fc94c20524f32 a ogcproc:OutputDescription ;
-    rdf:first _:Nbf9d4c7c4ca24c1e8071011c193be12a ;
+_:Nca73609e92c140c482617d8630b53d39 a ogcproc:OutputDescription ;
+    rdf:first _:N55cbcadb536a40f5b6393c1f31c3f65e ;
     rdf:rest () .
 
-_:Neb9ebc6cf7524aa58358484c3af2c310 a ogcproc:OutputDescription ;
-    rdf:first _:N20f3bccb4e7642b3bfad0a9a6d22b716 ;
+_:Ne214710d3dc64ac9b90f51ebe0e2bb32 a ogcproc:InputDescription ;
+    rdf:first _:Na3a35f9df13d42d19a77c7bfdffa7c6a ;
     rdf:rest () .
 
-_:Nf5ec6ffc40d14d24ae8462516f0564e4 a ogcproc:InputDescription ;
-    rdf:first _:N8df81a94273c4c08b29fc002c3c1b820 ;
+_:Nf64e6c514e254ebfbd206e227e2972c6 a ogcproc:InputDescription ;
+    rdf:first _:N59d3ee9129124db692f9ca0fab4ec9d8 ;
     rdf:rest () .
 
-_:Nf83dc1dd84a5498db7a9f1807cc297ca a ogcproc:OutputDescription ;
-    rdf:first _:Na17c31d7daba41698e8d455a132ea16e ;
+_:Nfb8a0cb53602446b8cc0bea91efb9c78 a ogcproc:OutputDescription ;
+    rdf:first _:N8f37d7df14f34cd0aefa3d0903099a43 ;
     rdf:rest () .
 
 
@@ -5835,8 +5827,8 @@ x-jsonld-prefixes:
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.json)
-* JSON version: [schema.json](https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.yaml)
+* YAML version: [schema.yaml](https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.json)
+* JSON version: [schema.json](https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.yaml)
 
 
 # JSON-LD Context
@@ -6134,7 +6126,7 @@ Links to the schema:
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld)
+[context.jsonld](https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld)
 
 ## Sources
 
@@ -6147,6 +6139,6 @@ You can find the full JSON-LD context here:
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/GeoLabs/bblocks-eoap-cct](https://github.com/GeoLabs/bblocks-eoap-cct)
+* URL: [https://github.com/ogcincubator/bblocks-eoap-cct](https://github.com/ogcincubator/bblocks-eoap-cct)
 * Path: `_sources/cwl-to-ogcprocess`
 

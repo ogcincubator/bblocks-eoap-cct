@@ -179,8 +179,8 @@ x-jsonld-prefixes:
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.json)
-* JSON version: [schema.json](https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.yaml)
+* YAML version: [schema.yaml](https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.json)
+* JSON version: [schema.json](https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.yaml)
 
 
 # JSON-LD Context
@@ -216,7 +216,7 @@ Links to the schema:
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/context.jsonld)
+[context.jsonld](https://ogcincubator.github.io/bblocks-eoap-cct/build/annotated/cct/stac/context.jsonld)
 
 ## Sources
 
@@ -228,6 +228,6 @@ You can find the full JSON-LD context here:
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/GeoLabs/bblocks-eoap-cct](https://github.com/GeoLabs/bblocks-eoap-cct)
+* URL: [https://github.com/ogcincubator/bblocks-eoap-cct](https://github.com/ogcincubator/bblocks-eoap-cct)
 * Path: `_sources/stac`
 
