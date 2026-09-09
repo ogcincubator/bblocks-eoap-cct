@@ -38,7 +38,8 @@
     ] ;
 .
 
-# Mark required vs optional inputs based on CWL type
+# Mark required vs optional inputs based on CWL type.
+# An input carrying a cwl:default is optional too: the caller may omit it.
 :InputMinOccurs
     a sh:NodeShape ;
     sh:targetSubjectsOf cwl:input ;
@@ -47,7 +48,7 @@
         sh:construct """
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
-            
+
             CONSTRUCT {
                 ?inputNode ogcproc:minOccurs 1
             }
@@ -55,6 +56,7 @@
                 $this cwl:input ?inputNode .
                 ?inputNode cwl:type ?type .
                 FILTER(!CONTAINS(STR(?type), "?") && !CONTAINS(STR(?type), "null"))
+                FILTER NOT EXISTS { ?inputNode cwl:default ?default }
             }
         """ ;
     ] ;
@@ -68,14 +70,16 @@
         sh:construct """
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
-            
+
             CONSTRUCT {
                 ?inputNode ogcproc:minOccurs 0
             }
             WHERE {
                 $this cwl:input ?inputNode .
                 ?inputNode cwl:type ?type .
-                FILTER(CONTAINS(STR(?type), "?") || CONTAINS(STR(?type), "null"))
+                { FILTER(CONTAINS(STR(?type), "?") || CONTAINS(STR(?type), "null")) }
+                UNION
+                { ?inputNode cwl:default ?default }
             }
         """ ;
     ] ;
